@@ -98,7 +98,7 @@ const jsonLd = {
     <ul class="logo-wall">
       {
         PARTNERS.map((partner) => (
-          <li>
+          <li data-reveal>
             <MediaSlot
               folder="partners"
               file={partner.file}
@@ -178,8 +178,8 @@ const jsonLd = {
     padding: 0;
     margin: var(--space-3) 0 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: var(--space-3) var(--space-2);
     max-width: none;
   }
 
@@ -187,17 +187,20 @@ const jsonLd = {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.7rem;
   }
 
-  /* Grayscale wall, color on hover */
+  /* Grayscale wall, color on hover; logos breathe inside bordered tiles */
   .logo-wall li :global(img) {
     filter: grayscale(1);
-    opacity: 0.75;
+    opacity: 0.8;
     transition: filter 0.2s ease, opacity 0.2s ease;
     object-fit: contain;
     aspect-ratio: 3 / 2;
     background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.35rem;
   }
 
   .logo-wall li:hover :global(img) {
@@ -206,7 +209,13 @@ const jsonLd = {
   }
 
   .partner-line {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
     color: var(--ink-soft);
+  }
+
+  .partner-line strong {
+    color: var(--ink);
+    font-weight: 600;
   }
 </style>

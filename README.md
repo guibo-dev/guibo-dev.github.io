@@ -67,6 +67,45 @@ public/
 
 No component changes are required.
 
+## Design system
+
+All tokens live in `src/styles/global.css` under `:root`; components consume
+tokens only — change a token and the whole site follows.
+
+**Type.** Fraunces Variable (display; the `opsz` variant, so the browser uses
+the high-contrast display cut automatically at large sizes) + Inter Variable
+(body). Fluid scale via `clamp()` tokens: `--text-display`, `--text-title`,
+`--text-section`, `--text-block`, `--text-stat`, `--text-lead`.
+
+**Color.** Warm paper base (`--bg` #faf9f6, `--surface` #ffffff), near-black
+ink (`--ink`, `--ink-soft`), hairlines (`--line`), and a single accent:
+burnt vermilion `--accent` #bc3d0b (hover `--accent-dark` #9a3208), derived
+from the OFF campaign's orange-red family; 5.2:1 on the base — WCAG AA for
+normal text.
+
+**Space & shape.** `--space-1…6` (0.5–6rem) rhythm; `--radius` 4px on all
+media, tiles, and buttons; `--container` 72rem; `--measure` 65ch prose width.
+
+**Motion.** One pattern: elements marked `data-reveal` fade/rise 14px with a
+70ms sibling stagger (IntersectionObserver, ~0.6 KB, in `BaseLayout`).
+Two safety nets: hiding CSS applies only when JS is confirmed (`html.js`)
+and only under `prefers-reduced-motion: no-preference` — no-JS and
+reduced-motion visitors get a fully visible static page. Hover transitions
+(card image zoom, chip borders) sit inside the same media query.
+
+**Components** (`src/components/`): StatStrip (the hero component — display
+numerals, full-bleed rules, container-aligned, 2×2 on mobile), ProjectCard,
+CaseStudyHeader, ContentBlock (`emphasis` adds the accent keyline used for
+Impact), ImageGallery (natural-ratio slots), LinkList + PartnerTags (one
+shared chip family: 0.85rem/550, 0.4rem×1rem padding, 999px radius),
+TalentCard, DataTable (right-aligned tabular numerics), Placeholder,
+MediaSlot, SectionTier (`featured` renders the 2-up flagship grid).
+
+Case-study render order: header → StatStrip → hero image → feature copy →
+blocks (galleries inline where referenced) → partner tags → remaining
+galleries → proof links → prev/next navigation (site order, wrap-around,
+from `src/lib/projects.ts`).
+
 ## Image sizing guide
 
 Gallery images render at their content's natural shape (each slot's `ratio`
