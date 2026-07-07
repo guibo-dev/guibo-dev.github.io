@@ -1,26 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatStrip from '../components/StatStrip.astro';
 import SectionTier from '../components/SectionTier.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import MediaSlot from '../components/MediaSlot.astro';
 import { PARTNERS } from '../data/partners';
+import { TIER_ORDER, getOrderedProjects } from '../lib/projects';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 
-const TIER_ORDER = [
-  'Flagship Campaigns',
-  'Partnerships & Publications',
-  'Events & Activations',
-  'Digital & Operations',
-] as const;
-
-const projects = await getCollection('projects');
+const ordered = await getOrderedProjects();
 const byTier = TIER_ORDER.map((tier) => ({
   tier,
-  projects: projects
-    .filter((p) => p.data.tier === tier)
-    .sort((a, b) => a.data.order - b.data.order),
+  projects: ordered.filter((p) => p.data.tier === tier),
 })).filter((group) => group.projects.length > 0);
 
 const portfolioStats = [
@@ -82,7 +73,7 @@ const jsonLd = {
     <h2>Selected work</h2>
     {
       byTier.map((group) => (
-        <SectionTier title={group.tier}>
+        <SectionTier title={group.tier} featured={group.tier === 'Flagship Campaigns'}>
           {group.projects.map((p) => (
             <ProjectCard
               slug={p.data.slug}

@@ -68,6 +68,8 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
   }
 
   @media (prefers-reduced-motion: no-preference) {
+    /* Hover feedback lives on the image only — the card's own transform
+       belongs to the reveal system and must not be contested. */
     .thumb :global(img) {
       transition: transform 0.5s var(--ease-out);
     }

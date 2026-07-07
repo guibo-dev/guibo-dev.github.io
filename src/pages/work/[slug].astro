@@ -10,17 +10,24 @@ import PartnerTags from '../../components/PartnerTags.astro';
 import TalentCard from '../../components/TalentCard.astro';
 import DataTable from '../../components/DataTable.astro';
 import MediaSlot from '../../components/MediaSlot.astro';
+import { getOrderedProjects } from '../../lib/projects';
 import { SITE_NAME } from '../../config';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map((project) => ({
+  // Site order (tier, then per-tier order) drives prev/next; navigation
+  // wraps so a reader can cycle through every project without dead ends.
+  const ordered = await getOrderedProjects();
+  return ordered.map((project, i) => ({
     params: { slug: project.data.slug },
-    props: { project },
+    props: {
+      project,
+      prev: ordered[(i - 1 + ordered.length) % ordered.length],
+      next: ordered[(i + 1) % ordered.length],
+    },
   }));
 }
 
-const { project } = Astro.props;
+const { project, prev, next } = Astro.props;
 const data = project.data;
 
 // Galleries referenced by a block render inline after that block; the rest
@@ -82,6 +89,7 @@ const jsonLd = {
               badge={block.badge}
               body={block.body}
               bullets={block.bullets}
+              emphasis={block.heading === 'Impact'}
             >
               {block.talent && (
                 <div class="talent-row">
@@ -127,6 +135,19 @@ const jsonLd = {
 
       {data.link_list && <LinkList links={data.link_list} />}
     </div>
+
+    <nav class="case-nav" aria-label="More projects">
+      <div class="container case-nav-grid">
+        <a href={`/work/${prev.data.slug}/`} rel="prev">
+          <span class="dir">&larr; Previous project</span>
+          <span class="name">{prev.data.title}</span>
+        </a>
+        <a href={`/work/${next.data.slug}/`} rel="next" class="next">
+          <span class="dir">Next project &rarr;</span>
+          <span class="name">{next.data.title}</span>
+        </a>
+      </div>
+    </nav>
   </article>
 </BaseLayout>
 
@@ -170,5 +191,63 @@ const jsonLd = {
     grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
     gap: var(--space-3);
     margin-top: var(--space-2);
+  }
+
+  .case-nav {
+    margin-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+
+  .case-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+  }
+
+  .case-nav a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+
+  .case-nav a.next {
+    text-align: right;
+  }
+
+  .dir {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .case-nav a:hover .name {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 40rem) {
+    .case-nav-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-nav a.next {
+      text-align: left;
+    }
   }
 </style>

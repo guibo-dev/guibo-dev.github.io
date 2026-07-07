@@ -56,6 +56,13 @@ const { caption, columns, rows } = Astro.props;
     border-bottom: 1px solid var(--line);
   }
 
+  /* Metric columns: right-aligned, lining figures */
+  td,
+  thead th:not(:first-child) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
   thead th {
     font-size: 0.78rem;
     letter-spacing: 0.07em;

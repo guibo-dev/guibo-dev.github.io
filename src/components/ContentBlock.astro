@@ -4,8 +4,10 @@ interface Props {
   body?: string;
   bullets?: string[];
   badge?: string;
+  /** Marks the payoff block (Impact) with an accent keyline. */
+  emphasis?: boolean;
 }
-const { heading, body, bullets, badge } = Astro.props;
+const { heading, body, bullets, badge, emphasis = false } = Astro.props;
 
 // Body strings may hold multiple paragraphs separated by blank lines.
 const paragraphs = body
@@ -21,7 +23,7 @@ const hasContent =
 
 {
   hasContent && (
-    <section class="content-block">
+    <section class:list={['content-block', { emphasis }]}>
       {heading && (
         <h2>
           {heading}
@@ -49,11 +51,24 @@ const hasContent =
   }
 
   h2 {
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-size: var(--text-block);
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  /* Accent keyline marks the payoff block: full-basis forces its own
+     flex row, max-width keeps the painted bar short. */
+  .emphasis h2::before {
+    content: '';
+    display: block;
+    flex-basis: 100%;
+    max-width: 2rem;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 0.1rem;
   }
 
   .badge {

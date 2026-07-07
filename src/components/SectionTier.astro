@@ -2,11 +2,13 @@
 interface Props {
   title: string;
   id?: string;
+  /** Featured tiers render larger, two-up cards. */
+  featured?: boolean;
 }
-const { title, id } = Astro.props;
+const { title, id, featured = false } = Astro.props;
 ---
 
-<section class="tier" id={id} aria-label={title}>
+<section class:list={['tier', { featured }]} id={id} aria-label={title}>
   <h3 class="tier-title">{title}</h3>
   <div class="cards">
     <slot />
@@ -34,5 +36,11 @@ const { title, id } = Astro.props;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
     gap: var(--space-3);
+  }
+
+  /* Flagship work reads bigger: two-up on desktop */
+  .tier.featured .cards {
+    grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr));
+    gap: var(--space-4);
   }
 </style>
