@@ -1,5 +1,7 @@
 ---
-import '@fontsource-variable/fraunces';
+// opsz variant: variable weight + optical size axes, so Fraunces sets
+// its high-contrast display cut at large sizes automatically.
+import '@fontsource-variable/fraunces/opsz.css';
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
@@ -33,6 +35,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
@@ -75,6 +78,33 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <p class="colophon">&copy; {new Date().getFullYear()} {SITE_NAME}</p>
       </div>
     </footer>
+
+    <script>
+      // Reveal-on-scroll: staggered per sibling group, disabled entirely
+      // under prefers-reduced-motion (CSS never hides elements there).
+      const els = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && els.length > 0) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target as HTMLElement;
+              const parent = el.parentElement;
+              const group = parent
+                ? Array.from(parent.children).filter((c) => c.hasAttribute('data-reveal'))
+                : [el];
+              el.style.setProperty('--reveal-delay', `${(group.indexOf(el) % 8) * 70}ms`);
+              el.classList.add('is-revealed');
+              io.unobserve(el);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-revealed'));
+      }
+    </script>
   </body>
 </html>
 
@@ -130,7 +160,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   }
 
   .site-footer h2 {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-size: var(--text-section);
     max-width: 28ch;
   }
 

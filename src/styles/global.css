@@ -9,12 +9,21 @@
   --ink-soft: #5c5852;
   --line: #e7e3dc;
 
-  /* Single accent: print red — passes WCAG AA on --bg for normal text */
-  --accent: #c8102e;
-  --accent-dark: #a30d26;
+  /* Single accent: burnt vermilion, derived from the OFF campaign's
+     orange-red family. 5.2:1 on --bg — AA for normal text. */
+  --accent: #bc3d0b;
+  --accent-dark: #9a3208;
 
   --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter Variable', -apple-system, 'Segoe UI', sans-serif;
+
+  /* Fluid type scale */
+  --text-display: clamp(2.1rem, 4.6vw, 3.4rem); /* home hero */
+  --text-title: clamp(2.1rem, 4.4vw, 3.2rem); /* case-study h1 */
+  --text-section: clamp(1.6rem, 3vw, 2.2rem); /* section h2 / footer */
+  --text-block: clamp(1.35rem, 2.4vw, 1.75rem); /* content-block h2 */
+  --text-stat: clamp(2.3rem, 4.2vw, 3.6rem); /* StatStrip values */
+  --text-lead: clamp(1.02rem, 1.5vw, 1.15rem);
 
   --container: 72rem;
   --measure: 65ch;
@@ -26,6 +35,8 @@
   --space-4: 2.5rem;
   --space-5: 4rem;
   --space-6: 6rem;
+
+  --ease-out: cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
 /* ------------------------------------------------------------------ */
@@ -57,9 +68,10 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 560;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.018em;
   margin: 0 0 var(--space-2);
   text-wrap: balance;
 }
@@ -117,12 +129,45 @@ a:hover {
 }
 
 /* ------------------------------------------------------------------ */
+/* Reveal-on-scroll                                                    */
+/* Elements are only hidden when JS is confirmed (html.js) and the     */
+/* user allows motion; otherwise everything renders visible.           */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* Utilities                                                           */
 /* ------------------------------------------------------------------ */
 .container {
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-link {

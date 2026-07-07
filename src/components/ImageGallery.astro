@@ -26,17 +26,19 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
   slots.length > 0 && (
     <section class="gallery" aria-label={`${name} gallery`}>
       <h3>{name}</h3>
-      <p class="purpose">{purpose}</p>
+      <p class="purpose sr-only">{purpose}</p>
       <div class={`slots ${mode}`}>
         {slots.map((slot) => (
-          <MediaSlot
-            folder={folder}
-            file={slot.file}
-            alt={slot.alt}
-            label={slot.label}
-            type={slot.type}
-            ratio={slot.ratio ?? (mode === 'hero' ? '16 / 9' : '3 / 2')}
-          />
+          <div class="g-item" data-reveal>
+            <MediaSlot
+              folder={folder}
+              file={slot.file}
+              alt={slot.alt}
+              label={slot.label}
+              type={slot.type}
+              ratio={slot.ratio ?? (mode === 'hero' ? '16 / 9' : '3 / 2')}
+            />
+          </div>
         ))}
       </div>
     </section>
@@ -50,12 +52,6 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
 
   h3 {
     font-size: 1.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .purpose {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
     margin-bottom: var(--space-2);
   }
 

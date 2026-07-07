@@ -11,10 +11,12 @@ interface Props {
 const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
 ---
 
-<article class="project-card">
+<article class="project-card" data-reveal>
   {
     thumbnail && (
-      <MediaSlot folder={thumbnail.folder} file={thumbnail.file} alt={thumbnail.alt} ratio="16 / 10" />
+      <div class="thumb">
+        <MediaSlot folder={thumbnail.folder} file={thumbnail.file} alt={thumbnail.alt} ratio="16 / 10" />
+      </div>
     )
   }
   <h4><a href={`/work/${slug}/`}>{title}</a></h4>
@@ -24,9 +26,16 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
 
 <style>
   .project-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    border-radius: var(--radius);
+  }
+
+  .thumb {
+    overflow: hidden;
+    border-radius: var(--radius);
   }
 
   h4 {
@@ -46,11 +55,6 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
     inset: 0;
   }
 
-  .project-card {
-    position: relative;
-    border-radius: var(--radius);
-  }
-
   .project-card:hover h4 a {
     color: var(--accent-dark);
     text-decoration: underline;
@@ -61,6 +65,16 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
   .project-card:focus-within {
     outline: 3px solid var(--accent);
     outline-offset: 6px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .thumb :global(img) {
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    .project-card:hover .thumb :global(img) {
+      transform: scale(1.03);
+    }
   }
 
   .descriptor {

@@ -136,8 +136,13 @@ const jsonLd = {
   }
 
   h1 {
-    font-size: clamp(1.85rem, 4.2vw, 3.1rem);
-    font-weight: 580;
+    font-size: var(--text-display);
+    line-height: 1.08;
+  }
+
+  /* The wordmark two inches above already says the name — keep this quiet */
+  .hero .eyebrow {
+    color: var(--ink-soft);
   }
 
   .supporting {
@@ -170,7 +175,7 @@ const jsonLd = {
 
   .work h2,
   .partners h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: var(--text-section);
   }
 
   .partners {

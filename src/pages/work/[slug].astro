@@ -9,6 +9,7 @@ import LinkList from '../../components/LinkList.astro';
 import PartnerTags from '../../components/PartnerTags.astro';
 import TalentCard from '../../components/TalentCard.astro';
 import DataTable from '../../components/DataTable.astro';
+import MediaSlot from '../../components/MediaSlot.astro';
 import { SITE_NAME } from '../../config';
 
 export async function getStaticPaths() {
@@ -45,17 +46,27 @@ const jsonLd = {
       <p class="back"><a href="/#work">&larr; All work</a></p>
     </div>
 
-    <CaseStudyHeader
-      title={data.title}
-      descriptor={data.descriptor}
-      roleTag={data.role_tag}
-      hero={data.hero}
-    />
+    <CaseStudyHeader title={data.title} descriptor={data.descriptor} roleTag={data.role_tag} />
 
     {
       data.stat_strip && (
         <div class="strip-wrap">
           <StatStrip items={data.stat_strip} />
+        </div>
+      )
+    }
+
+    {
+      data.hero && (
+        <div class="container case-hero">
+          <MediaSlot
+            folder={data.hero.folder}
+            file={data.hero.file}
+            alt={data.hero.alt}
+            type={data.hero.type}
+            ratio={data.hero.ratio ?? '21 / 9'}
+            loading="eager"
+          />
         </div>
       )
     }
@@ -137,6 +148,10 @@ const jsonLd = {
   }
 
   .strip-wrap {
+    margin-top: var(--space-4);
+  }
+
+  .case-hero {
     margin-top: var(--space-4);
   }
 
