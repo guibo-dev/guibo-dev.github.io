@@ -8,7 +8,7 @@ order: 1
 hero:
   folder: event-app
   file: event-app-screen-01
-  alt: Oslo Freedom Forum event app screenshot
+  alt: Oslo Freedom Forum 2026 event app splash screen with the Dismantling Dictatorship theme
 
 stat_strip:
   - { value: "90%", label: "adoption" }
@@ -32,17 +32,34 @@ galleries:
     folder_slug: event-app
     slots:
       - file: event-app-screen-01
+        alt: Event app splash screen with the Dismantling Dictatorship 2026 theme
+        ratio: 9 / 19.5
+        label: Splash screen
+      - file: event-app-screen-02
         alt: Event app details screen with the Oslo Freedom Forum 2026 venue, dates, and map
         ratio: 9 / 19.5
-      - file: event-app-screen-02
+        label: Event details
+      - file: event-app-screen-03
         alt: Event app conference schedule with sessions across the three Forum days
         ratio: 9 / 19.5
-      - file: event-app-screen-03
+        label: Conference schedule
+      - file: event-app-screen-04
         alt: Event app speaker directory with searchable speaker profiles
         ratio: 9 / 19.5
-      - file: event-app-screen-04
+        label: Speaker directory
+      - file: event-app-screen-05
         alt: Event app navigation menu with schedule, speakers, maps, and practical info
         ratio: 9 / 19.5
-      - file: event-app-screen-05
+        label: Navigation
+      - file: event-app-screen-06
         alt: Event app Expo & Art section showcasing installations and activations
         ratio: 9 / 19.5
+        label: Expo & Art
+      - file: event-app-screen-07
+        alt: Oslo Freedom Forum app listing on the Apple App Store
+        ratio: 9 / 19.5
+        label: App Store listing
+      - file: event-app-screen-08
+        alt: Oslo Freedom Forum app preview screens on the Apple App Store
+        ratio: 9 / 19.5
+        label: App Store preview
