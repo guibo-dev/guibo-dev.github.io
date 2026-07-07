@@ -64,18 +64,23 @@ galleries:
       - file: off-ooh-campaign-2025-roya-mahboob
         alt: Oslo Freedom Forum 2025 campaign creative featuring Roya Mahboob
         label: Roya Mahboob
+        ratio: 2 / 3
       - file: off-ooh-campaign-2025-yulia-navalnaya
         alt: Oslo Freedom Forum 2025 campaign creative featuring Yulia Navalnaya
         label: Yulia Navalnaya
+        ratio: 2 / 3
       - file: off-ooh-campaign-2025-masih-alinejad
         alt: Oslo Freedom Forum 2025 campaign creative featuring Masih Alinejad
         label: Masih Alinejad
+        ratio: 2 / 3
       - file: off-ooh-campaign-2025-denis-mukwege
         alt: Oslo Freedom Forum 2025 campaign creative featuring Denis Mukwege
         label: Denis Mukwege
+        ratio: 3 / 2
       - file: off-ooh-campaign-2025-francis-fukuyama
         alt: Oslo Freedom Forum 2025 campaign creative featuring Francis Fukuyama
         label: Francis Fukuyama
+        ratio: 3 / 2
 
   - name: OFF 2026 Placements
     purpose: scale/real-world placement
@@ -84,24 +89,31 @@ galleries:
       - file: off-ooh-campaign-2026-city-victoire-ingabire-01
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
         label: Oslo city OOH — Victoire Ingabire
+        ratio: 3 / 4
       - file: off-ooh-campaign-2026-city-victoire-ingabire-02
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
         label: Oslo city OOH — Victoire Ingabire
+        ratio: 3 / 4
       - file: off-ooh-campaign-2026-airport-arrivals-01
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
+        ratio: 4 / 3
       - file: off-ooh-campaign-2026-airport-arrivals-02
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
+        ratio: 4 / 3
       - file: off-ooh-campaign-2026-airport-arrivals-03
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
+        ratio: 3 / 4
       - file: off-ooh-campaign-2026-airport-arrivals-04
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
+        ratio: 4 / 3
       - file: off-ooh-campaign-2026-flytoget-train
         alt: Flytoget train placement for the Oslo Freedom Forum campaign
         label: Flytoget train
+        ratio: 3 / 4
 
   - name: Campaign Video
     purpose: motion proof

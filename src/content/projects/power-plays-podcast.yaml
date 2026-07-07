@@ -64,6 +64,7 @@ galleries:
       - file: power-plays-podcast-header
         alt: Power Plays podcast season header artwork
         label: Power Plays header
+        ratio: 1600 / 758
 
   - name: Apple Podcasts Features
     purpose: third-party validation
@@ -72,15 +73,19 @@ galleries:
       - file: power-plays-podcast-apple-new-shows
         alt: Power Plays featured in Apple Podcasts New Shows
         label: New Shows
+        ratio: 9 / 19.5
       - file: power-plays-podcast-apple-soccer-essentials
         alt: Power Plays featured in Apple Podcasts Soccer Essentials
         label: Soccer Essentials
+        ratio: 9 / 19.5
       - file: power-plays-podcast-apple-new-shows-for-you
         alt: Power Plays featured in Apple Podcasts New Shows For You
         label: New Shows For You
+        ratio: 9 / 19.5
       - file: power-plays-podcast-apple-new-shows-documentary
         alt: Power Plays featured in Apple Podcasts New Shows (Documentary)
         label: New Shows (Documentary)
+        ratio: 9 / 19.5
 
   - name: Episode Artwork
     purpose: craft
@@ -89,15 +94,20 @@ galleries:
       - file: power-plays-podcast-episode-01
         alt: Power Plays episode 1 artwork
         label: Episode 1
+        ratio: 1 / 1
       - file: power-plays-podcast-episode-02
         alt: Power Plays episode 2 artwork
         label: Episode 2
+        ratio: 1 / 1
       - file: power-plays-podcast-episode-03
         alt: Power Plays episode 3 artwork
         label: Episode 3
+        ratio: 1 / 1
       - file: power-plays-podcast-episode-04
         alt: Power Plays episode 4 artwork
         label: Episode 4
+        ratio: 1 / 1
       - file: power-plays-podcast-episode-05
         alt: Power Plays episode 5 artwork
         label: Episode 5
+        ratio: 1 / 1

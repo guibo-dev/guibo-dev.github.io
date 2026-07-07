@@ -67,6 +67,25 @@ public/
 
 No component changes are required.
 
+## Image sizing guide
+
+Gallery images render at their content's natural shape (each slot's `ratio`
+in the project YAML), so nothing in a gallery is cropped. Three slot types
+crop to a fixed shape by design — size images for them accordingly:
+
+| Slot | Aspect ratio | Recommended export | Used for |
+| --- | --- | --- | --- |
+| Case-study hero banner | 21:9 | 2100 × 900 px | Top image on each case-study page. Vertical images show only their middle band — keep the subject centered, or supply a landscape crop. |
+| Project card thumbnail | 16:10 | 1600 × 1000 px | Home page cards (reuses the hero image). |
+| Home headshot | 4:5 | 1200 × 1500 px | Hero portrait. |
+| Talent portrait | 3:4 | 900 × 1200 px | TalentCard row (Stand-Up Stands Up). |
+| Partner logo | any | ≤ 1200 px wide | Never cropped (object-fit: contain on a 3:2 tile). Transparent or white background. |
+| Gallery slot | matches image | ≤ 2000 px long edge | Set the slot's `ratio` in the YAML to the image's true shape (e.g. `3 / 2`, `2 / 3`, `1 / 1`, `9 / 19.5`). |
+
+To change what a hero banner shows without re-exporting, give the project's
+`hero:` entry its own `ratio:` (e.g. `ratio: 3 / 2`) — the page simply gets a
+taller, uncropped hero.
+
 ## Asset naming & placeholders
 
 Images live at `public/images/<folder-slug>/` and are named
