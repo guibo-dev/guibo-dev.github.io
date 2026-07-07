@@ -1,0 +1,98 @@
+slug: the-signal
+title: The Signal
+descriptor: A partnership with an independent current-affairs publication, producing print products and activations on autocratic power.
+tier: Partnerships & Publications
+role_tag: Partnership & production lead
+order: 1
+
+hero:
+  folder: the-signal
+  file: the-signal-kleptocrats-dossier-01
+  alt: Kleptocrats Dossier folders and Altered States newspapers produced with The Signal
+
+blocks:
+  - heading: Overview
+    body: >-
+      The Signal is an independent current-affairs publication — no
+      broadcast-rights deals, no access-journalism constraints, no commercial
+      conflicts with the subjects it covers — with distinctive editorial and
+      creative capabilities and an expanding, highly engaged audience in the
+      U.S. and worldwide. Together we produced a series of print products and
+      activations exploring how autocratic power operates.
+
+  - heading: Altered States
+    body: >-
+      A limited-run newspaper examining how dictators use power and illicit
+      wealth to undermine democracy and strengthen authoritarianism, asking:
+      How much influence do foreign autocratic regimes have on democracies?
+
+
+      Event activation: Brought the newspaper to life with a Washington, D.C.
+      launch event for policymakers, journalists, think tanks, and professors —
+      establishing HRF as a thought leader on kleptocracy and foreign lobbying.
+    gallery: Altered States
+
+  - heading: Kleptocrats Dossier
+    body: >-
+      How do you make kleptocracy fun?
+
+
+      A corruption dossier containing everything a U.S. congressman would need
+      to lobby for a foreign government: plane tickets to the Cayman Islands;
+      ID cards of famous U.S. senators and the countries they sold their
+      influence to; a bribery cheat sheet for the easiest way to buy political
+      influence in the U.S. as a foreign government.
+    gallery: Kleptocrats Dossier
+
+  - heading: Shadow Play
+    badge: Upcoming — Launching August 2026
+    body: >-
+      A fanzine-inspired print magazine exploring autocratic influence in
+      global football — combining original journalism, fan voices, and advocacy
+      expertise. It targets two overlapping audiences no publication has served
+      together: the football fan who wants to understand how the sport they
+      love is changing, and the current-affairs reader who wants to understand
+      how dictators build influence.
+
+
+      Vision:
+    bullets:
+      - Syndicate with outlets
+      - Give fans a product that speaks their language
+    gallery: Shadow Play Previews
+
+galleries:
+  - name: Altered States
+    purpose: product showcase
+    folder_slug: the-signal
+    slots:
+      - file: the-signal-altered-states-01
+        alt: Copies of the Altered States newspaper being picked up at the Washington, D.C. launch event
+      - file: the-signal-altered-states-02
+        alt: Attendees examining Altered States materials at the Washington, D.C. launch event
+
+  - name: Kleptocrats Dossier
+    purpose: product showcase
+    folder_slug: the-signal
+    slots:
+      - file: the-signal-kleptocrats-dossier-01
+        alt: Kleptocrats Dossier folders with the bribery cheat sheet fanned out over Altered States newspapers
+      - file: the-signal-kleptocrats-dossier-02
+        alt: Fake senator ID cards and The Signal calling cards laid over the Altered States newspaper
+      - file: the-signal-kleptocrats-dossier-03
+        alt: Fake foreign-government ID card of a U.S. congressman with the Kleptocrats Dossier folders
+
+  - name: Shadow Play Previews
+    purpose: product preview/mockups
+    folder_slug: the-signal
+    slots:
+      - file: the-signal-shadow-play-01
+        alt: Shadow Play magazine preview mockup 1
+      - file: the-signal-shadow-play-02
+        alt: Shadow Play magazine preview mockup 2
+      - file: the-signal-shadow-play-03
+        alt: Shadow Play magazine preview mockup 3
+      - file: the-signal-shadow-play-04
+        alt: Shadow Play magazine preview mockup 4
+      - file: the-signal-shadow-play-05
+        alt: Shadow Play magazine preview mockup 5

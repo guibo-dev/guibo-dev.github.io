@@ -1,0 +1,113 @@
+slug: off-ooh-campaign
+title: Oslo Freedom Forum OOH Campaign
+descriptor: Out-of-home campaign building public recognition for the Oslo Freedom Forum.
+tier: Flagship Campaigns
+role_tag: Managed end-to-end
+order: 1
+
+hero:
+  folder: off-ooh-campaign
+  file: off-ooh-campaign-2026-city-victoire-ingabire-01
+  alt: Oslo city out-of-home placement featuring Victoire Ingabire for the Oslo Freedom Forum campaign
+
+stat_strip:
+  - { value: "$100K", label: "annual budget" }
+  - { value: "2M+", label: "impressions" }
+  - { value: "53%", label: "positive brand impression" }
+  - { value: "$13K", label: "negotiated savings" }
+
+blocks:
+  - heading: Challenge
+    body: >-
+      The Oslo Freedom Forum has run annually in Oslo for 16 years. Industry
+      professionals and journalists know it well, but Oslo's general public
+      remained largely unaware of the event.
+
+  - heading: Objectives
+    bullets:
+      - Build positive brand recognition among Oslo residents
+      - Position the Oslo Freedom Forum as a premier event for human rights advocacy
+      - Associate the Forum with highly recognizable, respected human rights activists
+
+  - heading: Role
+    bullets:
+      - Managed the campaign end-to-end
+      - Negotiated the media buy, image rights, and talent consent
+      - Established campaign goals and vision
+      - Briefed and collaborated with the in-house creative team
+      - Handled all approvals with senior leadership
+
+  - heading: Impact
+    bullets:
+      - 2M+ impressions
+      - 450 retweets and 450k+ views on X
+      - 53% positive brand impression among surveyed residents
+      - $13K in negotiated savings
+
+partner_tags:
+  - Bauer Media
+  - Flytoget
+
+link_list:
+  - label: X post (Kosar Eftekhari)
+    url: https://x.com/kosareftekharii/status/1925455448099922295?s=46&t=6dcAbtLC35DKLpob3HYRZQ
+  - label: X post (Eli Omidvari)
+    url: https://x.com/EliOmidvari/status/1925602433943969899
+  - label: Facebook post (Remy Amahirwa)
+    url: "https://www.facebook.com/remy.amahirwa/posts/pfbid02L5RQgESz1k5pTmi2o9RwHx5EYz2cKthPhzJKP1stmkXYxW3zouXaEWjx8qHuthSkl?rdid=ptgxdPBCz6X2ggfi"
+
+galleries:
+  - name: OFF 2025 Creative
+    purpose: craft/visual proof
+    folder_slug: off-ooh-campaign
+    slots:
+      - file: off-ooh-campaign-2025-roya-mahboob
+        alt: Oslo Freedom Forum 2025 campaign creative featuring Roya Mahboob
+        label: Roya Mahboob
+      - file: off-ooh-campaign-2025-yulia-navalnaya
+        alt: Oslo Freedom Forum 2025 campaign creative featuring Yulia Navalnaya
+        label: Yulia Navalnaya
+      - file: off-ooh-campaign-2025-masih-alinejad
+        alt: Oslo Freedom Forum 2025 campaign creative featuring Masih Alinejad
+        label: Masih Alinejad
+      - file: off-ooh-campaign-2025-denis-mukwege
+        alt: Oslo Freedom Forum 2025 campaign creative featuring Denis Mukwege
+        label: Denis Mukwege
+      - file: off-ooh-campaign-2025-francis-fukuyama
+        alt: Oslo Freedom Forum 2025 campaign creative featuring Francis Fukuyama
+        label: Francis Fukuyama
+
+  - name: OFF 2026 Placements
+    purpose: scale/real-world placement
+    folder_slug: off-ooh-campaign
+    slots:
+      - file: off-ooh-campaign-2026-city-victoire-ingabire-01
+        alt: Oslo city out-of-home placement featuring Victoire Ingabire
+        label: Oslo city OOH — Victoire Ingabire
+      - file: off-ooh-campaign-2026-city-victoire-ingabire-02
+        alt: Oslo city out-of-home placement featuring Victoire Ingabire
+        label: Oslo city OOH — Victoire Ingabire
+      - file: off-ooh-campaign-2026-airport-arrivals-01
+        alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
+        label: Oslo Airport arrivals
+      - file: off-ooh-campaign-2026-airport-arrivals-02
+        alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
+        label: Oslo Airport arrivals
+      - file: off-ooh-campaign-2026-airport-arrivals-03
+        alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
+        label: Oslo Airport arrivals
+      - file: off-ooh-campaign-2026-airport-arrivals-04
+        alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
+        label: Oslo Airport arrivals
+      - file: off-ooh-campaign-2026-flytoget-train
+        alt: Flytoget train placement for the Oslo Freedom Forum campaign
+        label: Flytoget train
+
+  - name: Campaign Video
+    purpose: motion proof
+    folder_slug: off-ooh-campaign
+    slots:
+      - file: off-ooh-campaign-video-airport
+        alt: Oslo Airport campaign video for the Oslo Freedom Forum
+        label: Airport video
+        type: video

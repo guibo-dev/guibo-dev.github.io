@@ -1,0 +1,35 @@
+slug: rule-breakers-screening
+title: Rule Breakers Screening
+descriptor: A private donor screening of the film Rule Breakers with a conversation with Roya Mahboob.
+tier: Events & Activations
+role_tag: Organizer
+order: 2
+
+hero:
+  folder: rule-breakers
+  file: rule-breakers-event-01
+  alt: Private screening of Rule Breakers at SoHo House Chelsea
+
+stat_strip:
+  - { value: "45", label: "attendees" }
+  - { value: "SoHo House", label: "Chelsea" }
+  - { value: "Private", label: "screening" }
+
+blocks:
+  - heading: Overview
+    body: >-
+      Organized a private screening of Rule Breakers — a film based on the life
+      of Roya Mahboob, Afghanistan's first female tech CEO and leader of the
+      country's pioneering all-girls robotics team — for HRF donors and
+      strategic partners, followed by an intimate conversation with Roya.
+
+  - heading: Details
+    body: "Venue: SoHo House Chelsea · Attendance: 45"
+
+galleries:
+  - name: Rule Breakers
+    purpose: atmosphere/context
+    folder_slug: rule-breakers
+    slots:
+      - file: rule-breakers-event-01
+        alt: Rule Breakers screening event at SoHo House Chelsea

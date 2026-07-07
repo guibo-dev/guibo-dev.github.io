@@ -1,0 +1,27 @@
+slug: spotify-ad-campaigns
+title: Spotify Ad Campaigns
+descriptor: Scripted, produced, and optimized monthly Spotify ad campaigns for HRF.
+tier: Digital & Operations
+role_tag: Campaign strategy & production
+order: 3
+
+stat_strip:
+  - { value: "0.09% → 1.12%", label: "CTR" }
+  - { value: "13,216", label: "clicks" }
+  - { value: "91%", label: "completion" }
+
+blocks:
+  - heading: Overview
+    body: >-
+      Scripted, edited, and launched monthly Spotify ad campaigns marketing HRF
+      programs, events, and campaigns. Increased click-through rates from 0.09%
+      to 1.12% — more than doubling performance — generating 13,216 clicks at a
+      91.04% completion rate.
+
+  - heading: Campaign spotlights
+    table:
+      columns: [Campaign, Budget, Clicks, CTR, Reach]
+      rows:
+        - ["Power Plays Podcast", "$1,000", "1,573", "1.30%", "101,233"]
+        - ["OFF 2024 Campaign", "$1,000", "2,794", "2.23%", "125,474"]
+        - ["Art in Protest", "$333", "683", "1.85%", "36,861"]

@@ -1,0 +1,159 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
+import StatStrip from '../../components/StatStrip.astro';
+import ContentBlock from '../../components/ContentBlock.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import LinkList from '../../components/LinkList.astro';
+import PartnerTags from '../../components/PartnerTags.astro';
+import TalentCard from '../../components/TalentCard.astro';
+import DataTable from '../../components/DataTable.astro';
+import { SITE_NAME } from '../../config';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const data = project.data;
+
+// Galleries referenced by a block render inline after that block; the rest
+// render in the standard position (after partner tags, before proof links).
+const galleries = data.galleries ?? [];
+const inlineNames = new Set(data.blocks.map((b) => b.gallery).filter(Boolean));
+const standaloneGalleries = galleries.filter((g) => !inlineNames.has(g.name));
+const galleryByName = new Map(galleries.map((g) => [g.name, g]));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: data.title,
+  description: data.descriptor,
+  creator: { '@type': 'Person', name: SITE_NAME },
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+};
+---
+
+<BaseLayout title={`${data.title} — ${SITE_NAME}`} description={data.descriptor} jsonLd={jsonLd}>
+  <article>
+    <div class="container">
+      <p class="back"><a href="/#work">&larr; All work</a></p>
+    </div>
+
+    <CaseStudyHeader
+      title={data.title}
+      descriptor={data.descriptor}
+      roleTag={data.role_tag}
+      hero={data.hero}
+    />
+
+    {
+      data.stat_strip && (
+        <div class="strip-wrap">
+          <StatStrip items={data.stat_strip} />
+        </div>
+      )
+    }
+
+    <div class="container">
+      {data.feature_copy && <p class="feature-copy">{data.feature_copy}</p>}
+
+      {
+        data.blocks.map((block) => (
+          <>
+            <ContentBlock
+              heading={block.heading}
+              badge={block.badge}
+              body={block.body}
+              bullets={block.bullets}
+            >
+              {block.talent && (
+                <div class="talent-row">
+                  {block.talent.map((t) => (
+                    <TalentCard
+                      name={t.name}
+                      country={t.country}
+                      linkLabel={t.link_label}
+                      url={t.url}
+                      portrait={t.portrait}
+                    />
+                  ))}
+                </div>
+              )}
+              {block.table && (
+                <DataTable columns={block.table.columns} rows={block.table.rows} />
+              )}
+            </ContentBlock>
+            {block.gallery && galleryByName.has(block.gallery) && (
+              <ImageGallery
+                name={galleryByName.get(block.gallery)!.name}
+                purpose={galleryByName.get(block.gallery)!.purpose}
+                folder={galleryByName.get(block.gallery)!.folder_slug}
+                slots={galleryByName.get(block.gallery)!.slots}
+              />
+            )}
+          </>
+        ))
+      }
+
+      {data.partner_tags && <PartnerTags tags={data.partner_tags} />}
+
+      {
+        standaloneGalleries.map((gallery) => (
+          <ImageGallery
+            name={gallery.name}
+            purpose={gallery.purpose}
+            folder={gallery.folder_slug}
+            slots={gallery.slots}
+          />
+        ))
+      }
+
+      {data.link_list && <LinkList links={data.link_list} />}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .back {
+    padding-top: var(--space-3);
+    margin: 0;
+  }
+
+  .back a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+
+  .back a:hover {
+    color: var(--accent-dark);
+  }
+
+  .strip-wrap {
+    margin-top: var(--space-4);
+  }
+
+  .feature-copy {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    font-weight: 480;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    max-width: 32em;
+    margin-block: var(--space-4);
+  }
+
+  .talent-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+</style>

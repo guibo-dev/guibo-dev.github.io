@@ -1,0 +1,216 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StatStrip from '../components/StatStrip.astro';
+import SectionTier from '../components/SectionTier.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import MediaSlot from '../components/MediaSlot.astro';
+import { PARTNERS } from '../data/partners';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
+
+const TIER_ORDER = [
+  'Flagship Campaigns',
+  'Partnerships & Publications',
+  'Events & Activations',
+  'Digital & Operations',
+] as const;
+
+const projects = await getCollection('projects');
+const byTier = TIER_ORDER.map((tier) => ({
+  tier,
+  projects: projects
+    .filter((p) => p.data.tier === tier)
+    .sort((a, b) => a.data.order - b.data.order),
+})).filter((group) => group.projects.length > 0);
+
+const portfolioStats = [
+  { value: '$250K', label: 'portfolio managed' },
+  { value: '2M+', label: 'campaign impressions' },
+  { value: '130k+', label: 'podcast listeners' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_NAME,
+  email: `mailto:${CONTACT_EMAIL}`,
+  description: SITE_DESCRIPTION,
+  url: Astro.site?.toString(),
+  ...(LINKEDIN_URL ? { sameAs: [LINKEDIN_URL] } : {}),
+};
+---
+
+<BaseLayout title={`${SITE_NAME} — Portfolio`} description={SITE_DESCRIPTION} jsonLd={jsonLd}>
+  <!-- 1.1 Hero + Intro -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{SITE_NAME}</p>
+        <h1>
+          In three years I&rsquo;ve gone from marketing intern to running a $250K portfolio — a
+          flagship podcast, a $100K out-of-home campaign in Oslo, and a global comedy event
+          series.
+        </h1>
+        <p class="supporting">
+          Working at a global nonprofit has taught me to deliver on time and on budget with far
+          less than most teams have — and to build the partnerships and processes that let
+          campaigns scale and break through. I thrive where operations, partnerships, and
+          creativity meet, and I&rsquo;m looking to bring that discipline to a company building
+          something people genuinely rely on.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <MediaSlot
+          folder="headshot"
+          file="headshot-portrait-01"
+          alt={`Professional portrait of ${SITE_NAME}`}
+          ratio="4 / 5"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <StatStrip items={portfolioStats} />
+
+  <!-- 1.2 Project Index -->
+  <section class="work container" id="work" aria-label="Project index">
+    <h2>Selected work</h2>
+    {
+      byTier.map((group) => (
+        <SectionTier title={group.tier}>
+          {group.projects.map((p) => (
+            <ProjectCard
+              slug={p.data.slug}
+              title={p.data.title}
+              descriptor={p.data.descriptor}
+              roleTag={p.data.role_tag}
+              thumbnail={
+                p.data.hero
+                  ? { folder: p.data.hero.folder, file: p.data.hero.file, alt: p.data.hero.alt }
+                  : undefined
+              }
+            />
+          ))}
+        </SectionTier>
+      ))
+    }
+  </section>
+
+  <!-- Section 6 — Partners -->
+  <section class="partners container" aria-label="Partners">
+    <h2>Partners</h2>
+    <ul class="logo-wall">
+      {
+        PARTNERS.map((partner) => (
+          <li>
+            <MediaSlot
+              folder="partners"
+              file={partner.file}
+              alt={`${partner.name} logo — ${partner.line}`}
+            />
+            <span class="partner-line">
+              <strong>{partner.name}</strong> — {partner.line}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-5);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(1.85rem, 4.2vw, 3.1rem);
+    font-weight: 580;
+  }
+
+  .supporting {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+
+  /* Portrait above headline on mobile */
+  @media (max-width: 48rem) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-portrait {
+      order: -1;
+      max-width: 16rem;
+    }
+  }
+
+  .work {
+    padding-top: var(--space-5);
+  }
+
+  .work h2,
+  .partners h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .partners {
+    padding-top: var(--space-4);
+  }
+
+  .logo-wall {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: var(--space-3);
+    max-width: none;
+  }
+
+  .logo-wall li {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* Grayscale wall, color on hover */
+  .logo-wall li :global(img) {
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+    background: var(--surface);
+  }
+
+  .logo-wall li:hover :global(img) {
+    filter: none;
+    opacity: 1;
+  }
+
+  .partner-line {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+</style>

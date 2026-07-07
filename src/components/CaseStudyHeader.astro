@@ -1,0 +1,64 @@
+---
+import MediaSlot from './MediaSlot.astro';
+
+interface Props {
+  title: string;
+  descriptor: string;
+  roleTag: string;
+  hero?: {
+    folder: string;
+    file: string;
+    alt: string;
+    type?: 'image' | 'video';
+    ratio?: string;
+  };
+}
+const { title, descriptor, roleTag, hero } = Astro.props;
+---
+
+<header class="case-header">
+  <div class="container">
+    <p class="role"><span class="pill">{roleTag}</span></p>
+    <h1>{title}</h1>
+    <p class="descriptor">{descriptor}</p>
+  </div>
+  {
+    hero && (
+      <div class="container hero-media">
+        <MediaSlot
+          folder={hero.folder}
+          file={hero.file}
+          alt={hero.alt}
+          type={hero.type}
+          ratio={hero.ratio ?? '21 / 9'}
+          loading="eager"
+        />
+      </div>
+    )
+  }
+</header>
+
+<style>
+  .case-header {
+    padding-top: var(--space-5);
+  }
+
+  .role {
+    margin-bottom: var(--space-2);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    max-width: 22ch;
+  }
+
+  .descriptor {
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 55ch;
+  }
+
+  .hero-media {
+    margin-top: var(--space-4);
+  }
+</style>

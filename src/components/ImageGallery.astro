@@ -1,0 +1,83 @@
+---
+import MediaSlot from './MediaSlot.astro';
+
+interface Slot {
+  file: string;
+  alt: string;
+  label?: string;
+  type?: 'image' | 'video';
+  ratio?: string;
+}
+
+interface Props {
+  name: string;
+  purpose: string;
+  folder: string;
+  slots: Slot[];
+}
+
+const { name, purpose, folder, slots } = Astro.props;
+
+// Layout mode follows slot count: single hero, side-by-side pair, grid.
+const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
+---
+
+{
+  slots.length > 0 && (
+    <section class="gallery" aria-label={`${name} gallery`}>
+      <h3>{name}</h3>
+      <p class="purpose">{purpose}</p>
+      <div class={`slots ${mode}`}>
+        {slots.map((slot) => (
+          <MediaSlot
+            folder={folder}
+            file={slot.file}
+            alt={slot.alt}
+            label={slot.label}
+            type={slot.type}
+            ratio={slot.ratio ?? (mode === 'hero' ? '16 / 9' : '3 / 2')}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .gallery {
+    margin-block: var(--space-4);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .purpose {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-2);
+  }
+
+  .slots {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .slots.pair {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .slots.grid {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  }
+
+  @media (max-width: 40rem) {
+    .slots.pair {
+      grid-template-columns: 1fr;
+    }
+    .slots.grid {
+      grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    }
+  }
+</style>

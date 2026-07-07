@@ -1,0 +1,59 @@
+---
+import MediaSlot from './MediaSlot.astro';
+
+interface Props {
+  name: string;
+  country: string;
+  linkLabel?: string;
+  url?: string;
+  portrait?: { folder: string; file: string; alt: string };
+}
+const { name, country, linkLabel = 'Instagram', url, portrait } = Astro.props;
+---
+
+<article class="talent-card">
+  {
+    portrait && (
+      <MediaSlot folder={portrait.folder} file={portrait.file} alt={portrait.alt} ratio="3 / 4" />
+    )
+  }
+  <h3>{name}</h3>
+  <p class="country">{country}</p>
+  {
+    url ? (
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {linkLabel} <span aria-hidden="true">↗</span>
+      </a>
+    ) : (
+      <p class="pending">
+        {linkLabel} <span class="todo-note">TODO: add URL</span>
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .talent-card h3 {
+    font-size: 1.15rem;
+    margin: 0.85rem 0 0.1rem;
+  }
+
+  .country {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+  }
+
+  a,
+  .pending {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .pending {
+    color: var(--ink-soft);
+  }
+</style>

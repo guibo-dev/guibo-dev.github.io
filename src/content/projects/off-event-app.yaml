@@ -1,0 +1,48 @@
+slug: off-event-app
+title: Oslo Freedom Forum Event App
+descriptor: Build, deploy, and maintain the official Oslo Freedom Forum event app.
+tier: Digital & Operations
+role_tag: Product & content owner
+order: 1
+
+hero:
+  folder: event-app
+  file: event-app-screen-01
+  alt: Oslo Freedom Forum event app screenshot
+
+stat_strip:
+  - { value: "90%", label: "adoption" }
+  - { value: "4.5/5", label: "satisfaction" }
+  - { value: "+15%", label: "YoY adoption" }
+
+blocks:
+  - heading: Role
+    bullets:
+      - Manage content migration from CRM back-end to app back-end
+      - Manage external Salesforce integration vendors to keep API integrations streamlined and functioning
+      - Build and verify the conference schedule and speaker profiles
+      - Handle in-event updates, notifications, and troubleshooting
+
+  - heading: Impact
+    body: "90% adoption rate · 4.5/5 user satisfaction · 15% YoY growth in adoption since 2024"
+
+galleries:
+  - name: App Screens
+    purpose: product showcase
+    folder_slug: event-app
+    slots:
+      - file: event-app-screen-01
+        alt: Event app details screen with the Oslo Freedom Forum 2026 venue, dates, and map
+        ratio: 9 / 19.5
+      - file: event-app-screen-02
+        alt: Event app conference schedule with sessions across the three Forum days
+        ratio: 9 / 19.5
+      - file: event-app-screen-03
+        alt: Event app speaker directory with searchable speaker profiles
+        ratio: 9 / 19.5
+      - file: event-app-screen-04
+        alt: Event app navigation menu with schedule, speakers, maps, and practical info
+        ratio: 9 / 19.5
+      - file: event-app-screen-05
+        alt: Event app Expo & Art section showcasing installations and activations
+        ratio: 9 / 19.5

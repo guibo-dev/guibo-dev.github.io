@@ -1,0 +1,52 @@
+---
+import Placeholder from './Placeholder.astro';
+import { findPublicImage, findPublicVideo } from '../lib/media';
+
+interface Props {
+  folder: string;
+  file: string;
+  alt: string;
+  label?: string;
+  type?: 'image' | 'video';
+  ratio?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { folder, file, alt, label, type = 'image', ratio, loading = 'lazy' } = Astro.props;
+
+const src = type === 'video' ? findPublicVideo(folder, file) : findPublicImage(folder, file);
+const purpose = `${type} — ${alt}`;
+---
+
+<figure class="media-slot">
+  {
+    src ? (
+      type === 'video' ? (
+        <video src={src} controls preload="metadata" aria-label={alt} />
+      ) : (
+        <img src={src} alt={alt} loading={loading} decoding="async" style={ratio ? `aspect-ratio: ${ratio}; object-fit: cover; width: 100%;` : undefined} />
+      )
+    ) : (
+      <Placeholder name={file} purpose={purpose} ratio={ratio} />
+    )
+  }
+  {label && <figcaption>{label}</figcaption>}
+</figure>
+
+<style>
+  .media-slot {
+    margin: 0;
+  }
+
+  img,
+  video {
+    width: 100%;
+    border-radius: var(--radius);
+  }
+
+  figcaption {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+  }
+</style>

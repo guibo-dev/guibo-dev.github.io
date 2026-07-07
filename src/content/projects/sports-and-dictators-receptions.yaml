@@ -1,0 +1,43 @@
+slug: sports-and-dictators-receptions
+title: Sports & Dictators Receptions
+descriptor: Two receptions at the Oslo Freedom Forum announcing HRF's sports program and publications.
+tier: Events & Activations
+role_tag: Organizer & producer
+order: 1
+
+hero:
+  folder: events
+  file: events-reception-01
+  alt: Sports & Dictators reception at the Oslo Freedom Forum
+
+stat_strip:
+  - { value: "80–100", label: "attendees" }
+  - { value: "2", label: "receptions" }
+  - { value: "Oslo", label: "Freedom Forum" }
+
+blocks:
+  - heading: Overview
+    body: >-
+      Organized two receptions during the Oslo Freedom Forum to announce HRF's
+      Power Plays podcast and the upcoming Shadow Play, bringing HRF's Sports &
+      Dictators program to the forefront of attendees' minds and driving
+      interest from industry professionals and conference-goers.
+
+  - heading: Details
+    body: "Location: Oslo, Norway · Venues: Eero & Vinland Brasserie · Attendance: 80–100"
+
+galleries:
+  - name: Receptions
+    purpose: atmosphere
+    folder_slug: events
+    slots:
+      - file: events-reception-01
+        alt: Sports & Dictators reception at the Oslo Freedom Forum, photo 1
+      - file: events-reception-02
+        alt: Sports & Dictators reception at the Oslo Freedom Forum, photo 2
+      - file: events-reception-03
+        alt: Sports & Dictators reception at the Oslo Freedom Forum, photo 3
+      - file: events-reception-04
+        alt: Sports & Dictators reception at the Oslo Freedom Forum, photo 4
+      - file: events-reception-05
+        alt: Sports & Dictators reception at the Oslo Freedom Forum, photo 5

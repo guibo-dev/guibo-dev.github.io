@@ -1,0 +1,76 @@
+---
+interface Props {
+  heading?: string;
+  body?: string;
+  bullets?: string[];
+  badge?: string;
+}
+const { heading, body, bullets, badge } = Astro.props;
+
+// Body strings may hold multiple paragraphs separated by blank lines.
+const paragraphs = body
+  ? body
+      .split(/\n\s*\n/)
+      .map((p) => p.trim())
+      .filter(Boolean)
+  : [];
+
+const hasContent =
+  paragraphs.length > 0 || (bullets && bullets.length > 0) || Astro.slots.has('default');
+---
+
+{
+  hasContent && (
+    <section class="content-block">
+      {heading && (
+        <h2>
+          {heading}
+          {badge && <span class="badge">{badge}</span>}
+        </h2>
+      )}
+      {paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+      {bullets && bullets.length > 0 && (
+        <ul>
+          {bullets.map((b) => (
+            <li>{b}</li>
+          ))}
+        </ul>
+      )}
+      <slot />
+    </section>
+  )
+}
+
+<style>
+  .content-block {
+    margin-block: var(--space-4);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  p,
+  ul {
+    font-size: 1.02rem;
+  }
+</style>

@@ -1,0 +1,103 @@
+slug: power-plays-podcast
+title: Power Plays Podcast
+descriptor: A limited-run podcast on the authoritarian history of the World Cup, taken global.
+tier: Flagship Campaigns
+role_tag: Podcast strategy & partnerships lead
+order: 2
+
+hero:
+  folder: power-plays-podcast
+  file: power-plays-podcast-header
+  alt: Power Plays podcast season header artwork
+
+stat_strip:
+  - { value: "130k+", label: "listeners" }
+  - { value: "5.2×", label: "over target" }
+  - { value: "Apple Podcasts", label: "featured (full World Cup)" }
+  - { value: "99.1%", label: "YouTube like ratio" }
+
+blocks:
+  - heading: Challenge
+    body: >-
+      Bring Season 1 of Power Plays — on the authoritarian history of the World
+      Cup — to a global audience in the lead-up to and during the tournament.
+      Break into a crowded podcast space with a limited-run series that had a
+      constrained window of relevance.
+
+  - heading: Goal
+    body: "25,000 total listeners (5k per episode)."
+
+  - heading: Execution
+    bullets:
+      - Secured a partnership with Spanish YouTube channel La Media Inglesa to produce a Spanish-language version — at no cost.
+      - Hired a podcast strategist to optimize the podcast ecosystem, discoverability, ad buys, and launch strategy.
+      - Worked with the creative team on catchy, transferable season and episode graphics to drive the marketing campaign.
+      - Developed the pitch to Apple Podcasts' editorial team to secure a platform feature.
+      - Negotiated host-read ad buys with Crooked Media, securing a 10k+ discount on rates for Pod Save the World and Pod Save the UK.
+
+  - heading: Advertising channels
+    body: >-
+      Spotify · PodNews Newsletter (featured ad) · Pocket Casts · Podcast
+      Addict · Overcast · Pod Save the World · Pod Save the UK · Meta
+
+  - heading: Impact
+    bullets:
+      - 130k+ listeners across platforms (and counting)
+      - Featured on Apple Podcasts for the duration of the FIFA World Cup
+      - 99.1% like ratio on YouTube
+      - 4.5k listeners driven directly from ad spend
+
+partner_tags:
+  - La Media Inglesa
+
+link_list:
+  - label: Listen to Power Plays
+    url: "https://power-plays.captivate.fm/listen?mc_cid=105043662f&mc_eid=eaa04b1cb2"
+  - label: La Media Inglesa collaboration (YouTube playlist)
+    url: "https://www.youtube.com/playlist?list=PL-PQ5u_XdyWwI5z4mxamZO_TBI9bw0pHw"
+
+galleries:
+  - name: Season Artwork
+    purpose: hero/craft
+    folder_slug: power-plays-podcast
+    slots:
+      - file: power-plays-podcast-header
+        alt: Power Plays podcast season header artwork
+        label: Power Plays header
+
+  - name: Apple Podcasts Features
+    purpose: third-party validation
+    folder_slug: power-plays-podcast
+    slots:
+      - file: power-plays-podcast-apple-new-shows
+        alt: Power Plays featured in Apple Podcasts New Shows
+        label: New Shows
+      - file: power-plays-podcast-apple-soccer-essentials
+        alt: Power Plays featured in Apple Podcasts Soccer Essentials
+        label: Soccer Essentials
+      - file: power-plays-podcast-apple-new-shows-for-you
+        alt: Power Plays featured in Apple Podcasts New Shows For You
+        label: New Shows For You
+      - file: power-plays-podcast-apple-new-shows-documentary
+        alt: Power Plays featured in Apple Podcasts New Shows (Documentary)
+        label: New Shows (Documentary)
+
+  - name: Episode Artwork
+    purpose: craft
+    folder_slug: power-plays-podcast
+    slots:
+      - file: power-plays-podcast-episode-01
+        alt: Power Plays episode 1 artwork
+        label: Episode 1
+      - file: power-plays-podcast-episode-02
+        alt: Power Plays episode 2 artwork
+        label: Episode 2
+      - file: power-plays-podcast-episode-03
+        alt: Power Plays episode 3 artwork
+        label: Episode 3
+      - file: power-plays-podcast-episode-04
+        alt: Power Plays episode 4 artwork
+        label: Episode 4
+      - file: power-plays-podcast-episode-05
+        alt: Power Plays episode 5 artwork
+        label: Episode 5

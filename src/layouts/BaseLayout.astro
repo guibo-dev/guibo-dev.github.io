@@ -1,0 +1,164 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Serialized JSON-LD object injected into <head>. */
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description = SITE_DESCRIPTION, jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="container" aria-label="Main">
+        <a class="wordmark" href="/">Guillermo Purchese Escudero</a>
+        <div class="nav-links">
+          <a href="/#work">Work</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container">
+        <h2>
+          Looking for someone who can run operations, build partnerships, and ship creative work
+          that breaks through? Let&rsquo;s talk.
+        </h2>
+        <div class="footer-actions">
+          <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>Email me</a>
+          {
+            LINKEDIN_URL ? (
+              <a class="btn btn-secondary" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            ) : (
+              <span class="btn btn-secondary pending">
+                LinkedIn <span class="todo-note">TODO: add URL</span>
+              </span>
+            )
+          }
+        </div>
+        <p class="colophon">&copy; {new Date().getFullYear()} {SITE_NAME}</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-block: 1.1rem;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .wordmark:hover {
+    color: var(--accent-dark);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-dark);
+  }
+
+  .site-footer {
+    margin-top: var(--space-6);
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    padding-block: var(--space-5);
+  }
+
+  .site-footer h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    max-width: 28ch;
+  }
+
+  .footer-actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+
+  .btn.pending {
+    color: var(--ink-soft);
+    border-color: var(--ink-soft);
+    border-style: dashed;
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn.pending:hover {
+    background: transparent;
+    color: var(--ink-soft);
+  }
+
+  .colophon {
+    margin-top: var(--space-4);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+</style>

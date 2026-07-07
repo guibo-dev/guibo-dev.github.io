@@ -1,0 +1,108 @@
+slug: stand-up-stands-up
+title: Stand-Up Stands Up
+descriptor: A stand-up comedy show at the Oslo Freedom Forum, built from scratch.
+tier: Flagship Campaigns
+role_tag: Founder & Producer
+order: 3
+
+hero:
+  folder: stand-up-stands-up
+  file: stand-up-stands-up-live-01
+  alt: Stand-Up Stands Up live on stage at the 2026 Oslo Freedom Forum
+
+stat_strip:
+  - { value: "300", label: "attendees" }
+  - { value: "490k", label: "views" }
+  - { value: "#2", label: "most-viewed OFF video" }
+  - { value: "Founder", label: "& Producer" }
+
+feature_copy: >-
+  This is the comedy show you were never supposed to see. Stand-Up Stands Up
+  premiered at the 2026 Oslo Freedom Forum — a night of stand-up celebrating
+  comedians who keep performing, keep writing, keep making people laugh even
+  when it can lead to censorship, imprisonment, or exile. Stand-up wraps truth
+  in a punchline. It makes power look ridiculous. And that makes a lot of
+  dictators very, very nervous. Simply put: dictators cannot take a joke. Come
+  for the jokes. Stay for what they mean.
+
+blocks:
+  - heading: Challenge
+    bullets:
+      - Identify, secure, and coordinate dissident comedian talent
+      - Find a venue, produce, and promote the show
+      - Secure budget and approval to build the project from scratch
+
+  - heading: Talent
+    talent:
+      - name: Pandji Pragiwaksono
+        country: Indonesia
+        link_label: Instagram
+        url: "https://www.instagram.com/pandji.pragiwaksono/?hl=en"
+        portrait:
+          folder: stand-up-stands-up
+          file: stand-up-stands-up-portrait-pandji-pragiwaksono
+          alt: Portrait of comedian Pandji Pragiwaksono
+      - name: Ali Sultan
+        country: Yemen
+        link_label: Instagram
+        url: "https://www.instagram.com/alisultancomedy/?hl=en"
+        portrait:
+          folder: stand-up-stands-up
+          file: stand-up-stands-up-portrait-ali-sultan
+          alt: Portrait of comedian Ali Sultan
+      - name: Blank Peng
+        country: China
+        link_label: Instagram
+        url: "https://www.instagram.com/blankpeng404/?hl=en"
+        portrait:
+          folder: stand-up-stands-up
+          file: stand-up-stands-up-portrait-blank-peng
+          alt: Portrait of comedian Blank Peng
+
+  - heading: Impact
+    bullets:
+      - 300 attendees
+      - 490k views and 15k engagements across pre- and post-event promotion
+      - Second most-viewed Oslo Freedom Forum video on YouTube
+      - Second most-saved programming event at the Forum
+      - Press coverage for talent from Deutsche Welle, Minerva, and TV2 (Norwegian national television)
+
+link_list:
+  - label: Origin story (LinkedIn)
+    url: "https://www.linkedin.com/posts/guillermo-purchese-110711213_two-weeks-ago-i-received-an-email-with-the-ugcPost-7470085468873891840-cVWW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYIXFwBgXji4oS_yqMunTXMgsQGPmTlX4c"
+  - label: Instagram promo 1
+    url: "https://www.instagram.com/p/DYnflyRmq5p/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 2
+    url: "https://www.instagram.com/reel/DZz27LGBsv-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 3
+    url: "https://www.instagram.com/reel/DZfh7TWgPmY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 4
+    url: "https://www.instagram.com/p/DYryo0wHOtO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: YouTube recording
+    url: "https://www.youtube.com/watch?v=z86btvHVuTE"
+
+galleries:
+  - name: Live Show
+    purpose: atmosphere/proof
+    folder_slug: stand-up-stands-up
+    slots:
+      - file: stand-up-stands-up-live-01
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 1
+      - file: stand-up-stands-up-live-02
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 2
+      - file: stand-up-stands-up-live-03
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 3
+      - file: stand-up-stands-up-live-04
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 4
+      - file: stand-up-stands-up-live-05
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 5
+      - file: stand-up-stands-up-live-06
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 6
+      - file: stand-up-stands-up-live-07
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 7
+      - file: stand-up-stands-up-live-08
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 8
+      - file: stand-up-stands-up-live-09
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 9
+      - file: stand-up-stands-up-live-10
+        alt: Stand-Up Stands Up live show at the Oslo Freedom Forum, photo 10

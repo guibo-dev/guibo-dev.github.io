@@ -1,0 +1,18 @@
+slug: website-content-management
+title: Website & Content Management
+descriptor: Led the content revamp and ongoing management of HRF's core websites.
+tier: Digital & Operations
+role_tag: Digital content lead
+order: 2
+
+stat_strip:
+  - { value: "60+", label: "pages" }
+  - { value: "600+", label: "posts" }
+  - { value: "600+", label: "speaker pages" }
+
+blocks:
+  - heading: Overview
+    bullets:
+      - Led the content revamp of hrf.org and oslofreedomforum.com
+      - Managed creation of 60+ web pages, 600+ posts, and 600+ speaker pages to date
+      - Developed and manage internal digital content processes using Monday.com, Figma, WordPress, and Elementor — from ideation to creation
