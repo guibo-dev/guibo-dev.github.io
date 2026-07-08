@@ -10,6 +10,11 @@ hero:
   file: stand-up-stands-up-live-01
   alt: Stand-Up Stands Up live on stage at the 2026 Oslo Freedom Forum
 
+thumbnail:
+  folder: stand-up-stands-up
+  file: stand-up-stands-up-card
+  alt: Stand-Up Stands Up on stage at the Oslo Freedom Forum with the show billboard behind
+
 stat_strip:
   - { value: "300", label: "attendees" }
   - { value: "490k", label: "views" }

@@ -5,6 +5,11 @@ tier: Digital Content Management
 role_tag: Campaign Strategy & Production
 order: 3
 
+thumbnail:
+  folder: spotify-ad-campaigns
+  file: spotify-ad-campaigns-card
+  alt: Spotify Ads Manager dashboard showing results for an HRF campaign
+
 stat_strip:
   - { value: "0.09% → 1.12%", label: "CTR" }
   - { value: "13,216", label: "clicks" }

@@ -10,6 +10,11 @@ hero:
   file: power-plays-podcast-header
   alt: Power Plays podcast season header artwork
 
+thumbnail:
+  folder: power-plays-podcast
+  file: power-plays-podcast-card
+  alt: Power Plays podcast title artwork
+
 stat_strip:
   - { value: "130k+", label: "listeners" }
   - { value: "5.2×", label: "over target" }

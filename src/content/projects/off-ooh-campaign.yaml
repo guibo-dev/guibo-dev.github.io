@@ -10,6 +10,11 @@ hero:
   file: off-ooh-campaign-2026-city-victoire-ingabire-01
   alt: Oslo city out-of-home placement featuring Victoire Ingabire for the Oslo Freedom Forum campaign
 
+thumbnail:
+  folder: off-ooh-campaign
+  file: off-ooh-campaign-card
+  alt: Oslo bus-stop placement of the Oslo Freedom Forum campaign featuring Denis Mukwege
+
 stat_strip:
   - { value: "$100K", label: "annual budget" }
   - { value: "2M+", label: "impressions" }

@@ -10,6 +10,11 @@ hero:
   file: rule-breakers-event-01
   alt: Private screening of Rule Breakers at SoHo House Chelsea
 
+thumbnail:
+  folder: rule-breakers
+  file: rule-breakers-card
+  alt: Rule Breakers film key art with the Afghan girls robotics team
+
 stat_strip:
   - { value: "45", label: "attendees" }
   - { value: "SoHo House", label: "Chelsea" }

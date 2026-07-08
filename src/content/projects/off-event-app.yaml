@@ -10,6 +10,11 @@ hero:
   file: event-app-screen-01
   alt: Oslo Freedom Forum 2026 event app splash screen with the Dismantling Dictatorship theme
 
+thumbnail:
+  folder: event-app
+  file: event-app-card
+  alt: Download the OFF 26 App graphic showing programming, networking, maps, and speakers screens
+
 stat_strip:
   - { value: "90%", label: "adoption" }
   - { value: "4.5/5", label: "satisfaction" }

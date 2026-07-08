@@ -5,6 +5,11 @@ tier: Digital Content Management
 role_tag: Website content manager
 order: 2
 
+thumbnail:
+  folder: website-content-management
+  file: website-content-management-card
+  alt: Oslo Freedom Forum website homepage inviting visitors to attend the 2027 Forum
+
 stat_strip:
   - { value: "60+", label: "pages" }
   - { value: "600+", label: "posts" }
