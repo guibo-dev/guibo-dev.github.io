@@ -16,8 +16,8 @@ const byTier = TIER_ORDER.map((tier) => ({
 
 const portfolioStats = [
   { value: '$250K', label: 'portfolio managed' },
-  { value: '2M+', label: 'campaign impressions' },
-  { value: '130k+', label: 'podcast listeners' },
+  { value: '130k+', label: 'podcast listeners (5× over target)' },
+  { value: '1M+', label: 'views generated across campaigns' },
 ];
 
 const jsonLd = {
@@ -37,20 +37,21 @@ const jsonLd = {
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">{SITE_NAME}</p>
+        <p class="greeting">Hey I&rsquo;m Guille,</p>
         <h1>
-          In three years I&rsquo;ve gone from marketing intern to running a $250K portfolio — a
-          flagship podcast, a $100K out-of-home campaign in Oslo, and a global comedy event
-          series.
+          Over the last three years I&rsquo;ve gone from marketing intern to running a $250K
+          portfolio spanning the launch of a flagship podcast, an annual out-of-home marketing
+          campaign in Oslo, and a global comedy event series.
         </h1>
         <p class="supporting">
           Working at a global nonprofit has taught me to deliver on time and on budget with far
-          less than most teams have — and to build the partnerships and processes that let
+          less than most teams have and to build the processes and partnerships that let
           campaigns scale and break through. I thrive where operations, partnerships, and
           creativity meet, and I&rsquo;m looking to bring that discipline to a company building
           something people genuinely rely on.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn btn-primary" href="#work">Explore my work</a>
           <a class="btn btn-secondary" href="#contact">Get in touch</a>
         </div>
       </div>
@@ -70,7 +71,7 @@ const jsonLd = {
 
   <!-- 1.2 Project Index -->
   <section class="work container" id="work" aria-label="Project index">
-    <h2>Selected work</h2>
+    <h2>Featured Campaigns</h2>
     {
       byTier.map((group) => (
         <SectionTier title={group.tier} featured={group.tier === 'Flagship Campaigns'}>
@@ -80,11 +81,10 @@ const jsonLd = {
               title={p.data.title}
               descriptor={p.data.descriptor}
               roleTag={p.data.role_tag}
-              thumbnail={
-                p.data.hero
-                  ? { folder: p.data.hero.folder, file: p.data.hero.file, alt: p.data.hero.alt }
-                  : undefined
-              }
+              thumbnail={(() => {
+                const t = p.data.thumbnail ?? p.data.hero;
+                return t ? { folder: t.folder, file: t.file, alt: t.alt } : undefined;
+              })()}
             />
           ))}
         </SectionTier>
@@ -99,14 +99,10 @@ const jsonLd = {
       {
         PARTNERS.map((partner) => (
           <li data-reveal>
-            <MediaSlot
-              folder="partners"
-              file={partner.file}
-              alt={`${partner.name} logo — ${partner.line}`}
-            />
-            <span class="partner-line">
-              <strong>{partner.name}</strong> — {partner.line}
-            </span>
+            <a href={partner.url} target="_blank" rel="noopener noreferrer">
+              <MediaSlot folder="partners" file={partner.file} alt={`${partner.name} logo`} />
+              <span class="partner-line">{partner.name}</span>
+            </a>
           </li>
         ))
       }
@@ -131,9 +127,14 @@ const jsonLd = {
     line-height: 1.08;
   }
 
-  /* The wordmark two inches above already says the name — keep this quiet */
   .hero .eyebrow {
-    color: var(--ink-soft);
+    color: var(--ink);
+  }
+
+  .greeting {
+    font-size: var(--text-lead);
+    font-weight: 500;
+    margin-bottom: var(--space-1);
   }
 
   .supporting {
@@ -185,9 +186,14 @@ const jsonLd = {
 
   .logo-wall li {
     margin: 0;
+  }
+
+  .logo-wall a {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    text-decoration: none;
+    border-radius: var(--radius);
   }
 
   /* Grayscale wall, color on hover; logos breathe inside bordered tiles */
@@ -209,13 +215,16 @@ const jsonLd = {
   }
 
   .partner-line {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
+    font-weight: 600;
     line-height: 1.5;
-    color: var(--ink-soft);
+    color: var(--ink);
   }
 
-  .partner-line strong {
-    color: var(--ink);
-    font-weight: 600;
+  .logo-wall a:hover .partner-line {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
   }
 </style>

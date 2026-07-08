@@ -22,9 +22,9 @@ const projects = defineCollection({
     descriptor: z.string(),
     tier: z.enum([
       'Flagship Campaigns',
-      'Partnerships & Publications',
+      'Partnership Spotlight',
       'Events & Activations',
-      'Digital & Operations',
+      'Digital Content Management',
     ]),
     role_tag: z.string(),
     /** Position of the card within its tier on Home. */
@@ -36,6 +36,8 @@ const projects = defineCollection({
       .optional(),
     feature_copy: z.string().optional(),
     hero: heroSlot.optional(),
+    /** Home-page card image; falls back to `hero` when absent. */
+    thumbnail: heroSlot.optional(),
     blocks: z.array(
       z.object({
         heading: z.string(),

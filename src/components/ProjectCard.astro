@@ -19,9 +19,9 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
       </div>
     )
   }
+  <p class="role"><span class="pill">{roleTag}</span></p>
   <h4><a href={`/work/${slug}/`}>{title}</a></h4>
   <p class="descriptor">{descriptor}</p>
-  <p class="role"><span class="pill">{roleTag}</span></p>
 </article>
 
 <style>
@@ -40,7 +40,11 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
 
   h4 {
     font-size: 1.3rem;
-    margin: 0.5rem 0 0;
+    margin: 0;
+  }
+
+  .role {
+    margin: 0.5rem 0 0.1rem;
   }
 
   /* Whole-card click target without nesting interactive elements */
@@ -83,9 +87,5 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
     font-size: 0.95rem;
     color: var(--ink-soft);
     margin: 0;
-  }
-
-  .role {
-    margin: 0.25rem 0 0;
   }
 </style>

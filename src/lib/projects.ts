@@ -2,9 +2,9 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const TIER_ORDER = [
   'Flagship Campaigns',
-  'Partnerships & Publications',
+  'Partnership Spotlight',
   'Events & Activations',
-  'Digital & Operations',
+  'Digital Content Management',
 ] as const;
 
 /** All projects in site order: tier order, then per-tier `order`.
