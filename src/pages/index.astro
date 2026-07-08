@@ -122,25 +122,30 @@ const jsonLd = {
     align-items: center;
   }
 
-  h1 {
-    font-size: var(--text-display);
-    line-height: 1.08;
-  }
-
   .hero .eyebrow {
     color: var(--ink);
   }
 
-  .greeting {
-    font-size: var(--text-lead);
-    font-weight: 500;
-    margin-bottom: var(--space-1);
-  }
-
+  /* Greeting, headline, and supporting copy share one body-text voice */
+  .greeting,
+  h1,
   .supporting {
+    font-family: var(--font-body);
     font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: normal;
     color: var(--ink-soft);
     max-width: 58ch;
+    text-wrap: initial;
+  }
+
+  h1 {
+    margin-bottom: var(--space-2);
+  }
+
+  .greeting {
+    margin-bottom: var(--space-2);
   }
 
   .hero-ctas {
