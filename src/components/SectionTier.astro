@@ -9,7 +9,7 @@ const { title, id, featured = false } = Astro.props;
 ---
 
 <section class:list={['tier', { featured }]} id={id} aria-label={title}>
-  <h3 class="tier-title">{title}</h3>
+  <h2 class="tier-title">{title}</h2>
   <div class="cards">
     <slot />
   </div>

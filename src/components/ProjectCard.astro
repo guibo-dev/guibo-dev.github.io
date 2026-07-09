@@ -20,7 +20,7 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
     )
   }
   <p class="role"><span class="pill">{roleTag}</span></p>
-  <h4><a href={`/work/${slug}/`}>{title}</a></h4>
+  <h3><a href={`/work/${slug}/`}>{title}</a></h3>
   <p class="descriptor">{descriptor}</p>
 </article>
 
@@ -38,7 +38,7 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
     border-radius: var(--radius);
   }
 
-  h4 {
+  h3 {
     font-size: 1.3rem;
     margin: 0;
   }
@@ -48,18 +48,18 @@ const { slug, title, descriptor, roleTag, thumbnail } = Astro.props;
   }
 
   /* Whole-card click target without nesting interactive elements */
-  h4 a {
+  h3 a {
     color: var(--ink);
     text-decoration: none;
   }
 
-  h4 a::after {
+  h3 a::after {
     content: '';
     position: absolute;
     inset: 0;
   }
 
-  .project-card:hover h4 a {
+  .project-card:hover h3 a {
     color: var(--accent-dark);
     text-decoration: underline;
     text-decoration-thickness: 1.5px;

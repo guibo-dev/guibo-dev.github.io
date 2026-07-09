@@ -36,7 +36,6 @@ const jsonLd = {
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">{SITE_NAME}</p>
         <p class="greeting">Hey I&rsquo;m Guille,</p>
         <h1>
           Over the last three years I&rsquo;ve gone from marketing intern to running a $250K
@@ -71,7 +70,6 @@ const jsonLd = {
 
   <!-- 1.2 Project Index -->
   <section class="work container" id="work" aria-label="Project index">
-    <h2>Featured Campaigns</h2>
     {
       byTier.map((group) => (
         <SectionTier title={group.tier} featured={group.tier === 'Flagship Campaigns'}>
@@ -122,10 +120,6 @@ const jsonLd = {
     align-items: center;
   }
 
-  .hero .eyebrow {
-    color: var(--ink);
-  }
-
   /* Greeting, headline, and supporting copy share one body-text voice */
   .greeting,
   h1,
@@ -170,7 +164,6 @@ const jsonLd = {
     padding-top: var(--space-5);
   }
 
-  .work h2,
   .partners h2 {
     font-size: var(--text-section);
   }
