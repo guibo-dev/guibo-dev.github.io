@@ -1,8 +1,9 @@
 ---
 /**
- * Proof, ranked by evidential weight: native X embeds first, then link
- * chips for everything else (Facebook, YouTube, publications, listens).
- * Consumes the same link_list data as before — no content changes needed.
+ * Proof, ranked by evidential weight: native social embeds first (X,
+ * Instagram, LinkedIn posts), then link chips for everything else
+ * (Facebook, YouTube, publications, listens). Consumes the same
+ * link_list data as before — no content changes needed.
  */
 import EvidenceEmbed from './EvidenceEmbed.astro';
 import LinkList from './LinkList.astro';
@@ -12,15 +13,19 @@ interface Props {
 }
 const { links } = Astro.props;
 
-const isXPost = (url?: string) =>
-  !!url && /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url);
+const isEmbeddable = (url?: string) =>
+  !!url &&
+  (/^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url) ||
+    /instagram\.com\/(p|reel)\//.test(url) ||
+    /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(url));
 
-const embeds = links.filter((l) => isXPost(l.url));
-const chips = links.filter((l) => !isXPost(l.url));
+const embeds = links.filter((l) => isEmbeddable(l.url));
+const chips = links.filter((l) => !isEmbeddable(l.url));
 ---
 
 <section class="proof" aria-label="Proof">
   <h3>Proof</h3>
+  <p class="lede">See it for yourself — coverage, posts, and reactions from the campaign.</p>
   {
     embeds.length > 0 && (
       <div class="embeds">
@@ -34,20 +39,30 @@ const chips = links.filter((l) => !isXPost(l.url));
 </section>
 
 <style>
+  /* Hairline-topped section so proof reads as a destination, not a footnote */
   .proof {
-    margin-block: var(--space-4);
+    margin-block: var(--space-5) var(--space-4);
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-4);
   }
 
   h3 {
-    font-size: 1.1rem;
+    font-size: var(--text-block);
+    margin-bottom: 0.35rem;
+  }
+
+  .lede {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-3);
   }
 
   .embeds {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
-    gap: var(--space-2);
+    gap: var(--space-3);
     align-items: start;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
   }
 
   /* The nested chip list needs no extra section spacing of its own */

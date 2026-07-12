@@ -1,40 +1,88 @@
 ---
 /**
- * Native X (Twitter) embed with graceful degradation.
+ * Native social embed with graceful degradation. Supports:
+ *  - X posts        → blockquote upgraded by platform.twitter.com/widgets.js
+ *  - Instagram      → blockquote upgraded by instagram.com/embed.js
+ *  - LinkedIn posts → public-post iframe (no script needed)
  *
- * Renders a styled quote-card link immediately (useful on its own), then
- * upgrades to the native embed when X's widget script loads. The script is
- * fetched once per page, lazily, only when an embed approaches the viewport
- * — so pages without embeds pay nothing and pages with them stay fast.
- * A min-height reservation keeps the upgrade from shifting layout badly.
+ * Every variant renders a working styled link immediately; provider scripts
+ * are fetched once, lazily, only when an embed nears the viewport. Reserved
+ * min-heights keep the upgrade from shifting layout badly.
  */
 interface Props {
   url: string;
   label: string;
 }
 const { url, label } = Astro.props;
+
+type Provider = 'x' | 'instagram' | 'linkedin';
+const provider: Provider = /instagram\.com\/(p|reel)\//.test(url)
+  ? 'instagram'
+  : /linkedin\.com\/posts\//.test(url)
+    ? 'linkedin'
+    : 'x';
+
+// LinkedIn public posts embed via an iframe URL derived from the post id
+const liMatch = url.match(/(ugcPost|activity)-(\d+)/);
+const linkedinSrc = liMatch
+  ? `https://www.linkedin.com/embed/feed/update/urn:li:${liMatch[1]}:${liMatch[2]}`
+  : null;
 ---
 
-<div class="evidence-embed" data-evidence-embed>
-  <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
-    <a href={url} target="_blank" rel="noopener noreferrer">
-      {label} <span aria-hidden="true">&#8599;</span>
-    </a>
-  </blockquote>
+<div class:list={['evidence-embed', provider]} data-evidence-embed data-provider={provider}>
+  {
+    provider === 'x' && (
+      <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {label} <span aria-hidden="true">&#8599;</span>
+        </a>
+      </blockquote>
+    )
+  }
+  {
+    provider === 'instagram' && (
+      <blockquote class="instagram-media" data-instgrm-permalink={url} data-instgrm-version="14">
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {label} <span aria-hidden="true">&#8599;</span>
+        </a>
+      </blockquote>
+    )
+  }
+  {
+    provider === 'linkedin' &&
+      (linkedinSrc ? (
+        <iframe src={linkedinSrc} title={label} loading="lazy" allowfullscreen />
+      ) : (
+        <blockquote>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {label} <span aria-hidden="true">&#8599;</span>
+          </a>
+        </blockquote>
+      ))
+  }
 </div>
 
 <script>
+  // Fetch each provider's script once, only when embeds approach the viewport.
   const embeds = document.querySelectorAll('[data-evidence-embed]');
   if (embeds.length > 0 && 'IntersectionObserver' in window) {
     let requested = false;
+    const addScript = (src: string) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      document.head.appendChild(script);
+    };
     const io = new IntersectionObserver(
       (entries) => {
         if (requested || !entries.some((e) => e.isIntersecting)) return;
         requested = true;
-        const script = document.createElement('script');
-        script.src = 'https://platform.twitter.com/widgets.js';
-        script.async = true;
-        document.head.appendChild(script);
+        if (document.querySelector('[data-provider="x"]')) {
+          addScript('https://platform.twitter.com/widgets.js');
+        }
+        if (document.querySelector('[data-provider="instagram"]')) {
+          addScript('https://www.instagram.com/embed.js');
+        }
         io.disconnect();
       },
       { rootMargin: '600px 0px' }
@@ -44,8 +92,12 @@ const { url, label } = Astro.props;
 </script>
 
 <style>
-  .evidence-embed {
+  .evidence-embed.x {
     min-height: 13rem;
+  }
+
+  .evidence-embed.instagram {
+    min-height: 24rem;
   }
 
   /* Fallback card shown until (or in case) the native embed loads */
@@ -68,5 +120,14 @@ const { url, label } = Astro.props;
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 3px;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 33rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
   }
 </style>
