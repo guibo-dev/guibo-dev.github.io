@@ -1,0 +1,57 @@
+---
+/**
+ * Proof, ranked by evidential weight: native X embeds first, then link
+ * chips for everything else (Facebook, YouTube, publications, listens).
+ * Consumes the same link_list data as before — no content changes needed.
+ */
+import EvidenceEmbed from './EvidenceEmbed.astro';
+import LinkList from './LinkList.astro';
+
+interface Props {
+  links: { label: string; url?: string }[];
+}
+const { links } = Astro.props;
+
+const isXPost = (url?: string) =>
+  !!url && /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url);
+
+const embeds = links.filter((l) => isXPost(l.url));
+const chips = links.filter((l) => !isXPost(l.url));
+---
+
+<section class="proof" aria-label="Proof">
+  <h3>Proof</h3>
+  {
+    embeds.length > 0 && (
+      <div class="embeds">
+        {embeds.map((link) => (
+          <EvidenceEmbed url={link.url!} label={link.label} />
+        ))}
+      </div>
+    )
+  }
+  {chips.length > 0 && <LinkList links={chips} heading="" />}
+</section>
+
+<style>
+  .proof {
+    margin-block: var(--space-4);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .embeds {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+    gap: var(--space-2);
+    align-items: start;
+    margin-bottom: var(--space-2);
+  }
+
+  /* The nested chip list needs no extra section spacing of its own */
+  .proof :global(.link-list) {
+    margin-block: 0;
+  }
+</style>

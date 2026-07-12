@@ -30,17 +30,19 @@ const hasContent =
           {badge && <span class="badge">{badge}</span>}
         </h2>
       )}
-      {paragraphs.map((p) => (
-        <p>{p}</p>
-      ))}
-      {bullets && bullets.length > 0 && (
-        <ul>
-          {bullets.map((b) => (
-            <li>{b}</li>
-          ))}
-        </ul>
-      )}
-      <slot />
+      <div class="block-body">
+        {paragraphs.map((p) => (
+          <p>{p}</p>
+        ))}
+        {bullets && bullets.length > 0 && (
+          <ul>
+            {bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        )}
+        <slot />
+      </div>
     </section>
   )
 }
@@ -50,12 +52,33 @@ const hasContent =
     margin-block: var(--space-4);
   }
 
+  /* Editorial rail on wide screens: heading in a fixed left column,
+     content right — one consistent scan line down every case study. */
+  @media (min-width: 64rem) {
+    .content-block {
+      display: grid;
+      grid-template-columns: 13rem minmax(0, 1fr);
+      column-gap: var(--space-4);
+      align-items: start;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      position: sticky;
+      top: var(--space-3);
+    }
+  }
+
   h2 {
-    font-size: var(--text-block);
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  .block-body > :global(:last-child) {
+    margin-bottom: 0;
   }
 
   /* Accent keyline marks the payoff block: full-basis forces its own

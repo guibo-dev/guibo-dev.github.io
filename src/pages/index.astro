@@ -120,8 +120,19 @@ const jsonLd = {
     align-items: center;
   }
 
-  /* Greeting, headline, and supporting copy share one body-text voice */
-  .greeting,
+  /* The greeting is the hero's single display-scale hook */
+  .greeting {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Headline and supporting copy share one body-text voice */
   h1,
   .supporting {
     font-family: var(--font-body);

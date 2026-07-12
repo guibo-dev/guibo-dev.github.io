@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME } from '../config';
+---
+
+<BaseLayout title={`Page not found — ${SITE_NAME}`} description="This page doesn't exist.">
+  <section class="container not-found">
+    <p class="code">404</p>
+    <h1>Page not found.</h1>
+    <p class="note">The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/">Back home</a>
+      <a class="btn btn-secondary" href="/#work">Explore my work</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: var(--space-6);
+    min-height: 45vh;
+  }
+
+  .code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: var(--space-1);
+  }
+
+  h1 {
+    font-size: var(--text-title);
+  }
+
+  .note {
+    color: var(--ink-soft);
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+</style>

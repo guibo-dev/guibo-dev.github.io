@@ -1,0 +1,72 @@
+---
+/**
+ * Native X (Twitter) embed with graceful degradation.
+ *
+ * Renders a styled quote-card link immediately (useful on its own), then
+ * upgrades to the native embed when X's widget script loads. The script is
+ * fetched once per page, lazily, only when an embed approaches the viewport
+ * — so pages without embeds pay nothing and pages with them stay fast.
+ * A min-height reservation keeps the upgrade from shifting layout badly.
+ */
+interface Props {
+  url: string;
+  label: string;
+}
+const { url, label } = Astro.props;
+---
+
+<div class="evidence-embed" data-evidence-embed>
+  <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      {label} <span aria-hidden="true">&#8599;</span>
+    </a>
+  </blockquote>
+</div>
+
+<script>
+  const embeds = document.querySelectorAll('[data-evidence-embed]');
+  if (embeds.length > 0 && 'IntersectionObserver' in window) {
+    let requested = false;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (requested || !entries.some((e) => e.isIntersecting)) return;
+        requested = true;
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        document.head.appendChild(script);
+        io.disconnect();
+      },
+      { rootMargin: '600px 0px' }
+    );
+    embeds.forEach((el) => io.observe(el));
+  }
+</script>
+
+<style>
+  .evidence-embed {
+    min-height: 13rem;
+  }
+
+  /* Fallback card shown until (or in case) the native embed loads */
+  blockquote {
+    margin: 0;
+    padding: var(--space-3);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  blockquote a {
+    font-weight: 550;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  blockquote a:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+</style>

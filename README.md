@@ -96,10 +96,18 @@ reduced-motion visitors get a fully visible static page. Hover transitions
 **Components** (`src/components/`): StatStrip (the hero component — display
 numerals, full-bleed rules, container-aligned, 2×2 on mobile), ProjectCard,
 CaseStudyHeader, ContentBlock (`emphasis` adds the accent keyline used for
-Impact), ImageGallery (natural-ratio slots), LinkList + PartnerTags (one
-shared chip family: 0.85rem/550, 0.4rem×1rem padding, 999px radius),
-TalentCard, DataTable (right-aligned tabular numerics), Placeholder,
-MediaSlot, SectionTier (`featured` renders the 2-up flagship grid).
+Impact; renders as an editorial heading-rail + content grid ≥64rem),
+ImageGallery (natural-ratio slots), ProofSection (splits link_list into
+native X embeds + link chips), EvidenceEmbed (lazy X embed with a styled
+link-card fallback and reserved height), LinkList + PartnerTags (one shared
+chip family: 0.85rem/550, 0.4rem×1rem padding, 999px radius), TalentCard,
+DataTable (right-aligned tabular numerics), Placeholder, MediaSlot,
+SectionTier (`featured` renders the 2-up flagship grid).
+
+**Sharing & chrome.** SVG monogram favicon (`public/favicon.svg`);
+`og:image`/`twitter:card` (summary_large_image) on every page — case studies
+share with their own thumbnail, other pages fall back to campaign imagery
+(`ogImage` prop on BaseLayout); custom 404.
 
 Case-study render order: header → StatStrip → hero image → feature copy →
 blocks (galleries inline where referenced) → partner tags → remaining

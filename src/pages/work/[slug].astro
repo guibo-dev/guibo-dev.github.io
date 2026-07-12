@@ -5,12 +5,13 @@ import CaseStudyHeader from '../../components/CaseStudyHeader.astro';
 import StatStrip from '../../components/StatStrip.astro';
 import ContentBlock from '../../components/ContentBlock.astro';
 import ImageGallery from '../../components/ImageGallery.astro';
-import LinkList from '../../components/LinkList.astro';
+import ProofSection from '../../components/ProofSection.astro';
 import PartnerTags from '../../components/PartnerTags.astro';
 import TalentCard from '../../components/TalentCard.astro';
 import DataTable from '../../components/DataTable.astro';
 import MediaSlot from '../../components/MediaSlot.astro';
 import { getOrderedProjects } from '../../lib/projects';
+import { findPublicImage } from '../../lib/media';
 import { SITE_NAME } from '../../config';
 
 export async function getStaticPaths() {
@@ -45,9 +46,23 @@ const jsonLd = {
   creator: { '@type': 'Person', name: SITE_NAME },
   url: new URL(Astro.url.pathname, Astro.site).toString(),
 };
+
+// Each case study shares with its own imagery
+const ogSlot = data.thumbnail ?? data.hero;
+const ogImage = ogSlot ? (findPublicImage(ogSlot.folder, ogSlot.file) ?? undefined) : undefined;
+
+const navThumb = (p: typeof prev) => {
+  const t = p.data.thumbnail ?? p.data.hero;
+  return t ? { folder: t.folder, file: t.file } : undefined;
+};
 ---
 
-<BaseLayout title={`${data.title} — ${SITE_NAME}`} description={data.descriptor} jsonLd={jsonLd}>
+<BaseLayout
+  title={`${data.title} — ${SITE_NAME}`}
+  description={data.descriptor}
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
   <article>
     <div class="container">
       <p class="back"><a href="/#work">&larr; All work</a></p>
@@ -133,18 +148,36 @@ const jsonLd = {
         ))
       }
 
-      {data.link_list && <LinkList links={data.link_list} />}
+      {data.link_list && <ProofSection links={data.link_list} />}
     </div>
 
     <nav class="case-nav" aria-label="More projects">
       <div class="container case-nav-grid">
         <a href={`/work/${prev.data.slug}/`} rel="prev">
-          <span class="dir">&larr; Previous project</span>
-          <span class="name">{prev.data.title}</span>
+          {
+            navThumb(prev) && (
+              <span class="nav-thumb">
+                <MediaSlot folder={navThumb(prev)!.folder} file={navThumb(prev)!.file} alt="" ratio="16 / 10" />
+              </span>
+            )
+          }
+          <span class="nav-text">
+            <span class="dir">&larr; Previous project</span>
+            <span class="name">{prev.data.title}</span>
+          </span>
         </a>
         <a href={`/work/${next.data.slug}/`} rel="next" class="next">
-          <span class="dir">Next project &rarr;</span>
-          <span class="name">{next.data.title}</span>
+          {
+            navThumb(next) && (
+              <span class="nav-thumb">
+                <MediaSlot folder={navThumb(next)!.folder} file={navThumb(next)!.file} alt="" ratio="16 / 10" />
+              </span>
+            )
+          }
+          <span class="nav-text">
+            <span class="dir">Next project &rarr;</span>
+            <span class="name">{next.data.title}</span>
+          </span>
         </a>
       </div>
     </nav>
@@ -207,13 +240,27 @@ const jsonLd = {
 
   .case-nav a {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+    align-items: center;
+    gap: var(--space-2);
     text-decoration: none;
     border-radius: var(--radius);
   }
 
+  .nav-thumb {
+    flex: 0 0 8.5rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+
   .case-nav a.next {
+    flex-direction: row-reverse;
     text-align: right;
   }
 
@@ -247,7 +294,12 @@ const jsonLd = {
     }
 
     .case-nav a.next {
+      flex-direction: row;
       text-align: left;
+    }
+
+    .nav-thumb {
+      flex-basis: 6.5rem;
     }
   }
 </style>

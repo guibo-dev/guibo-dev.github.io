@@ -9,12 +9,20 @@ import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../con
 interface Props {
   title: string;
   description?: string;
+  /** Public path of the social-share image; defaults to campaign imagery. */
+  ogImage?: string;
   /** Serialized JSON-LD object injected into <head>. */
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description = SITE_DESCRIPTION, jsonLd } = Astro.props;
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  ogImage = '/images/off-ooh-campaign/off-ooh-campaign-card.jpg',
+  jsonLd,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -25,15 +33,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={SITE_NAME} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="generator" content={Astro.generator} />
     <script is:inline>document.documentElement.classList.add('js');</script>
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
@@ -75,6 +87,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
             )
           }
         </div>
+        <p class="email-line">
+          Or write directly: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
         <p class="colophon">&copy; {new Date().getFullYear()} {SITE_NAME}</p>
       </div>
     </footer>
@@ -184,6 +199,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
   .btn.pending:hover {
     background: transparent;
+    color: var(--ink-soft);
+  }
+
+  .email-line {
+    margin-top: var(--space-3);
+    font-size: 0.95rem;
     color: var(--ink-soft);
   }
 

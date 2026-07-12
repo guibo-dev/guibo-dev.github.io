@@ -1,5 +1,6 @@
 ---
 interface Props {
+  /** Section heading; pass an empty string to render the list bare. */
   heading?: string;
   links: { label: string; url?: string }[];
 }
@@ -8,8 +9,8 @@ const { heading = 'Proof', links } = Astro.props;
 
 {
   links.length > 0 && (
-    <section class="link-list" aria-label={heading}>
-      <h3>{heading}</h3>
+    <section class="link-list" aria-label={heading || 'Links'}>
+      {heading && <h3>{heading}</h3>}
       <ul>
         {links.map((link) =>
           link.url ? (
