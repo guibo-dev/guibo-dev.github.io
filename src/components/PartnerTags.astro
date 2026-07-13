@@ -1,8 +1,19 @@
 ---
+/**
+ * Case-study partner strip. Tags that match an entry in the site partner
+ * data render as linked logo tiles (same treatment as the Home logo wall);
+ * unmatched names fall back to text pills.
+ */
+import MediaSlot from './MediaSlot.astro';
+import { PARTNERS } from '../data/partners';
+
 interface Props {
   tags: string[];
 }
 const { tags } = Astro.props;
+
+const partnerFor = (tag: string) =>
+  PARTNERS.find((p) => p.name.toLowerCase() === tag.toLowerCase());
 ---
 
 {
@@ -10,9 +21,19 @@ const { tags } = Astro.props;
     <section class="partner-tags" aria-label="Partners">
       <h3>Partners</h3>
       <ul>
-        {tags.map((tag) => (
-          <li>{tag}</li>
-        ))}
+        {tags.map((tag) => {
+          const partner = partnerFor(tag);
+          return partner ? (
+            <li class="logo-item" data-reveal>
+              <a href={partner.url} target="_blank" rel="noopener noreferrer">
+                <MediaSlot folder="partners" file={partner.file} alt={`${partner.name} logo`} />
+                <span class="partner-name">{partner.name}</span>
+              </a>
+            </li>
+          ) : (
+            <li class="pill-item">{tag}</li>
+          );
+        })}
       </ul>
     </section>
   )
@@ -33,13 +54,62 @@ const { tags } = Astro.props;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-2);
+    align-items: flex-start;
     max-width: none;
   }
 
-  /* Shares chip metrics with LinkList for one coherent chip family */
   li {
     margin: 0;
+  }
+
+  .logo-item {
+    width: 10rem;
+  }
+
+  .logo-item a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+
+  /* Same treatment as the Home logo wall: bordered tile, grayscale,
+     color on hover */
+  .logo-item :global(img) {
+    filter: grayscale(1);
+    opacity: 0.8;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+  }
+
+  .logo-item a:hover :global(img) {
+    filter: none;
+    opacity: 1;
+  }
+
+  .partner-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .logo-item a:hover .partner-name {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  /* Fallback for partners without a logo in the site data */
+  .pill-item {
     font-size: 0.85rem;
     font-weight: 550;
     color: var(--ink-soft);
