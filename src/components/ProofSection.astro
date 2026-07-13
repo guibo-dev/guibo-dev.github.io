@@ -13,27 +13,36 @@ interface Props {
 }
 const { links } = Astro.props;
 
-const isEmbeddable = (url?: string) =>
-  !!url &&
-  (/^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url) ||
-    /instagram\.com\/(p|reel)\//.test(url) ||
-    /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(url));
+const isX = (url?: string) =>
+  !!url && /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url);
+const isInstagram = (url?: string) => !!url && /instagram\.com\/(p|reel)\//.test(url);
+const isLinkedIn = (url?: string) =>
+  !!url && /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(url);
+const isYouTube = (url?: string) => !!url && /(youtube\.com|youtu\.be)/.test(url);
 
-const embeds = links.filter((l) => isEmbeddable(l.url));
-const chips = links.filter((l) => !isEmbeddable(l.url));
+// One row per platform, in fixed order: X → Instagram → LinkedIn
+const embedGroups = [
+  links.filter((l) => isX(l.url)),
+  links.filter((l) => isInstagram(l.url)),
+  links.filter((l) => isLinkedIn(l.url)),
+].filter((group) => group.length > 0);
+
+// Remaining links as chips, YouTube first
+const rest = links.filter((l) => !isX(l.url) && !isInstagram(l.url) && !isLinkedIn(l.url));
+const chips = [...rest.filter((l) => isYouTube(l.url)), ...rest.filter((l) => !isYouTube(l.url))];
 ---
 
 <section class="proof" aria-label="Proof">
   <h3>Proof</h3>
   <p class="lede">See it for yourself — coverage, posts, and reactions from the campaign.</p>
   {
-    embeds.length > 0 && (
+    embedGroups.map((group) => (
       <div class="embeds">
-        {embeds.map((link) => (
+        {group.map((link) => (
           <EvidenceEmbed url={link.url!} label={link.label} />
         ))}
       </div>
-    )
+    ))
   }
   {chips.length > 0 && <LinkList links={chips} heading="" />}
 </section>
