@@ -1,9 +1,9 @@
 ---
 /**
- * Proof, ranked by evidential weight: native social embeds first (X,
- * Instagram, LinkedIn posts), then link chips for everything else
- * (Facebook, YouTube, publications, listens). Consumes the same
- * link_list data as before — no content changes needed.
+ * Proof, one row per platform in fixed order — X, Instagram, LinkedIn,
+ * YouTube, Facebook — with compact columns so a platform's posts share a
+ * row. Anything without a native embed stays a link chip. Consumes the
+ * same link_list data as before — no content changes needed.
  */
 import EvidenceEmbed from './EvidenceEmbed.astro';
 import LinkList from './LinkList.astro';
@@ -13,23 +13,22 @@ interface Props {
 }
 const { links } = Astro.props;
 
-const isX = (url?: string) =>
-  !!url && /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(url);
-const isInstagram = (url?: string) => !!url && /instagram\.com\/(p|reel)\//.test(url);
-const isLinkedIn = (url?: string) =>
-  !!url && /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(url);
-const isYouTube = (url?: string) => !!url && /(youtube\.com|youtu\.be)/.test(url);
+const PLATFORMS = [
+  { name: 'x', test: (u: string) => /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(u) },
+  { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reel)\//.test(u) },
+  { name: 'linkedin', test: (u: string) => /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(u) },
+  { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },
+  { name: 'facebook', test: (u: string) => /facebook\.com\/.+\/posts\//.test(u) },
+] as const;
 
-// One row per platform, in fixed order: X → Instagram → LinkedIn
-const embedGroups = [
-  links.filter((l) => isX(l.url)),
-  links.filter((l) => isInstagram(l.url)),
-  links.filter((l) => isLinkedIn(l.url)),
-].filter((group) => group.length > 0);
+const platformOf = (url?: string) => (url ? PLATFORMS.find((p) => p.test(url))?.name : undefined);
 
-// Remaining links as chips, YouTube first
-const rest = links.filter((l) => !isX(l.url) && !isInstagram(l.url) && !isLinkedIn(l.url));
-const chips = [...rest.filter((l) => isYouTube(l.url)), ...rest.filter((l) => !isYouTube(l.url))];
+const embedGroups = PLATFORMS.map((p) => ({
+  name: p.name,
+  items: links.filter((l) => platformOf(l.url) === p.name),
+})).filter((g) => g.items.length > 0);
+
+const chips = links.filter((l) => !platformOf(l.url));
 ---
 
 <section class="proof" aria-label="Proof">
@@ -37,8 +36,8 @@ const chips = [...rest.filter((l) => isYouTube(l.url)), ...rest.filter((l) => !i
   <p class="lede">See it for yourself — coverage, posts, and reactions from the campaign.</p>
   {
     embedGroups.map((group) => (
-      <div class="embeds">
-        {group.map((link) => (
+      <div class:list={['embeds', `embeds-${group.name}`]}>
+        {group.items.map((link) => (
           <EvidenceEmbed url={link.url!} label={link.label} />
         ))}
       </div>
@@ -66,12 +65,23 @@ const chips = [...rest.filter((l) => isYouTube(l.url)), ...rest.filter((l) => !i
     margin-bottom: var(--space-3);
   }
 
+  /* Compact columns: ~quarter-width tracks so a platform's posts share a
+     row; auto-fill keeps lone embeds small instead of stretching. */
   .embeds {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
-    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+    gap: var(--space-2);
     align-items: start;
     margin-bottom: var(--space-3);
+  }
+
+  /* Instagram's minimum is wider (its iframe floor is 326px, scaled 0.78) */
+  .embeds-instagram {
+    grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+  }
+
+  .embeds-linkedin {
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
   }
 
   /* The nested chip list needs no extra section spacing of its own */
