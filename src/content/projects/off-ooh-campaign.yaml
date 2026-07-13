@@ -7,8 +7,8 @@ order: 3
 
 hero:
   folder: off-ooh-campaign
-  file: off-ooh-campaign-2026-city-victoire-ingabire-01
-  alt: Oslo city out-of-home placement featuring Victoire Ingabire for the Oslo Freedom Forum campaign
+  file: off-ooh-campaign-hero
+  alt: Oslo Freedom Forum campaign poster featuring Denis Mukwege on a Clear Channel bus-stop screen in Oslo
 
 thumbnail:
   folder: off-ooh-campaign
@@ -24,30 +24,30 @@ stat_strip:
 blocks:
   - heading: Challenge
     body: >-
-      The Oslo Freedom Forum has run annually in Oslo for 16 years. Industry
-      professionals and journalists know it well, but Oslo's general public
-      remained largely unaware of the event.
+      For 16 years, the Oslo Freedom Forum has drawn the world's leading human
+      rights voices to Oslo. Yet outside the circle of journalists and
+      advocates who already knew it, the city hosting it barely noticed.
 
   - heading: Objectives
     bullets:
-      - Build positive brand recognition among Oslo residents
-      - Position the Oslo Freedom Forum as a premier event for human rights advocacy
-      - Associate the Forum with highly recognizable, respected human rights activists
+      - Make Oslo residents recognize the Forum happening in their own city
+      - Establish it as the definitive stage for human rights advocacy
+      - Anchor its identity to the activists whose faces the public already trusts
 
   - heading: Role
     bullets:
-      - Managed the campaign end-to-end
+      - Set the campaign's goals, vision, and creative direction
       - Negotiated the media buy, image rights, and talent consent
-      - Established campaign goals and vision
-      - Briefed and collaborated with the in-house creative team
-      - Handled all approvals with senior leadership
+      - Briefed and directed the in-house creative team
+      - Secured sign-off from senior leadership at every stage
+      - Owned the campaign end-to-end, from strategy to placement
 
   - heading: Impact
     bullets:
-      - 2M+ impressions
-      - 450 retweets and 450k+ views on X
-      - 53% positive brand impression among surveyed residents
-      - $13K in negotiated savings
+      - 53% positive brand impression among surveyed Oslo residents
+      - 2M+ impressions across the campaign
+      - 450k+ views across X posts (400+ re-shares)
+      - $13K saved through direct negotiation on media buy and image rights
 
 partner_tags:
   - Bauer Media
@@ -62,69 +62,52 @@ link_list:
     url: "https://www.facebook.com/remy.amahirwa/posts/pfbid02L5RQgESz1k5pTmi2o9RwHx5EYz2cKthPhzJKP1stmkXYxW3zouXaEWjx8qHuthSkl?rdid=ptgxdPBCz6X2ggfi"
 
 galleries:
-  - name: OFF 2025 Creative
+  - name: OFF 2025 Campaign
     purpose: craft/visual proof
     folder_slug: off-ooh-campaign
     slots:
       - file: off-ooh-campaign-2025-roya-mahboob
-        alt: Oslo Freedom Forum 2025 campaign creative featuring Roya Mahboob
+        alt: Oslo street placement of the 2025 campaign featuring Roya Mahboob
         label: Roya Mahboob
-        ratio: 2 / 3
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-yulia-navalnaya
-        alt: Oslo Freedom Forum 2025 campaign creative featuring Yulia Navalnaya
+        alt: Oslo street placement of the 2025 campaign featuring Yulia Navalnaya
         label: Yulia Navalnaya
-        ratio: 2 / 3
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-masih-alinejad
-        alt: Oslo Freedom Forum 2025 campaign creative featuring Masih Alinejad
+        alt: Oslo street placement of the 2025 campaign featuring Masih Alinejad
         label: Masih Alinejad
-        ratio: 2 / 3
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-denis-mukwege
-        alt: Oslo Freedom Forum 2025 campaign creative featuring Denis Mukwege
+        alt: Oslo bus-stop placement of the 2025 campaign featuring Denis Mukwege
         label: Denis Mukwege
-        ratio: 3 / 2
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-francis-fukuyama
-        alt: Oslo Freedom Forum 2025 campaign creative featuring Francis Fukuyama
+        alt: Oslo street placement of the 2025 campaign featuring Francis Fukuyama
         label: Francis Fukuyama
-        ratio: 3 / 2
+        ratio: 1080 / 1290
 
-  - name: OFF 2026 Placements
+  - name: OFF 2026 Campaign
     purpose: scale/real-world placement
     folder_slug: off-ooh-campaign
     slots:
       - file: off-ooh-campaign-2026-city-victoire-ingabire-01
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
         label: Oslo city OOH — Victoire Ingabire
-        ratio: 3 / 4
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2026-city-victoire-ingabire-02
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
         label: Oslo city OOH — Victoire Ingabire
-        ratio: 3 / 4
+        ratio: 1080 / 1290
       - file: off-ooh-campaign-2026-airport-arrivals-01
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
-        ratio: 4 / 3
+        ratio: 1290 / 1080
       - file: off-ooh-campaign-2026-airport-arrivals-02
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
-        ratio: 4 / 3
+        ratio: 1290 / 1080
       - file: off-ooh-campaign-2026-airport-arrivals-03
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
         label: Oslo Airport arrivals
-        ratio: 3 / 4
-      - file: off-ooh-campaign-2026-airport-arrivals-04
-        alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
-        label: Oslo Airport arrivals
-        ratio: 4 / 3
-      - file: off-ooh-campaign-2026-flytoget-train
-        alt: Flytoget train placement for the Oslo Freedom Forum campaign
-        label: Flytoget train
-        ratio: 3 / 4
-
-  - name: Campaign Video
-    purpose: motion proof
-    folder_slug: off-ooh-campaign
-    slots:
-      - file: off-ooh-campaign-video-airport
-        alt: Oslo Airport campaign video for the Oslo Freedom Forum
-        label: Airport video
-        type: video
+        ratio: 1290 / 1080
