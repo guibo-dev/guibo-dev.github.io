@@ -130,9 +130,22 @@ const chips = links.filter((l) => !platformOf(l.url));
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
   }
 
-  /* Players read at roughly the height of the scaled Instagram frames */
+  /* Standalone video row: up to three equal players across, so five videos
+     read as a 3 + 2 layout on desktop. Each keeps a 16:9 frame. */
   .embeds-youtube {
-    grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .embeds-youtube {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .embeds-youtube {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   /* The nested chip list needs no extra section spacing of its own */

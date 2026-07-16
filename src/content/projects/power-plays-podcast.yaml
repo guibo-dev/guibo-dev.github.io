@@ -2,7 +2,7 @@ slug: power-plays-podcast
 title: Power Plays Podcast
 descriptor: A limited-run podcast on the authoritarian history of the World Cup scaled to 130k+ listeners and an Apple Podcasts feature.
 tier: Flagship Campaigns
-role_tag: Podcast Strategy & Partnerships Lead
+role_tag: Marketing & Partnerships Lead
 order: 2
 
 hero:
@@ -18,59 +18,59 @@ thumbnail:
 stat_strip:
   - { value: "130k+", label: "listeners" }
   - { value: "5.2×", label: "over target" }
-  - { value: "Apple Podcasts", label: "featured (full World Cup)" }
-  - { value: "99.1%", label: "YouTube like ratio" }
+  - { value: "99.1%", label: "YouTube approval rating" }
+
+proof_lede: "Enjoy Power Plays in its video and audio versions."
 
 blocks:
   - heading: Challenge
     body: >-
-      Bring Season 1 of Power Plays — on the authoritarian history of the World
-      Cup — to a global audience in the lead-up to and during the tournament.
-      Break into a crowded podcast space with a limited-run series that had a
-      constrained window of relevance.
+      Launch a limited-run podcast on the authoritarian history of the FIFA
+      World Cup into one of the world's most crowded media moments — building
+      global attention before interest disappeared with the final whistle.
 
   - heading: Goal
-    body: "25,000 total listeners (5k per episode)."
+    body: "Reach 25,000 listeners across five episodes during the World Cup campaign."
 
   - heading: Execution
     bullets:
-      - Secured a partnership with Spanish YouTube channel La Media Inglesa to produce a Spanish-language version — at no cost.
-      - Hired a podcast strategist to optimize the podcast ecosystem, discoverability, ad buys, and launch strategy.
-      - Worked with the creative team on catchy, transferable season and episode graphics to drive the marketing campaign.
-      - Developed the pitch to Apple Podcasts' editorial team to secure a platform feature.
-      - Negotiated host-read ad buys with Crooked Media, securing a 10k+ discount on rates for Pod Save the World and Pod Save the UK.
+      - Secured a partnership with Spain's leading football YouTube channel, La Media Inglesa, to launch a Spanish-language edition of Power Plays. Expanded international reach without increasing production costs.
+      - Brought in podcast marketing specialist to strengthen discoverability, refine the launch strategy, and maximize the effectiveness of paid promotion.
+      - Partnered with the creative team to develop a flexible visual system that made the campaign instantly recognizable across paid, organic, and partner channels.
+      - Developed the editorial pitch that secured featured placement on Apple Podcasts throughout the FIFA World Cup.
+      - Negotiated host-read advertising with Crooked Media, extending campaign reach while securing more than $10,000 in discounted placements across Pod Save the World and Pod Save the UK.
 
   - heading: Advertising channels
     body: >-
-      Spotify · PodNews Newsletter (featured ad) · Pocket Casts · Podcast
-      Addict · Overcast · Pod Save the World · Pod Save the UK · Meta
+      Spotify · PodNews · Pocket Casts · Podcast Addict · Overcast · Pod Save
+      the World · Pod Save the UK · Meta
 
   - heading: Impact
     bullets:
-      - 130k+ listeners across platforms (and counting)
-      - Featured on Apple Podcasts for the duration of the FIFA World Cup
-      - 99.1% like ratio on YouTube
-      - 4.5k listeners driven directly from ad spend
+      - Reached more than 130,000 listeners across platforms.
+      - Featured across Apple Podcasts throughout the FIFA World Cup.
+      - Achieved a 99.1% audience approval rating on YouTube.
+      - Generated more than 6,000 attributable listeners through paid media.
 
 partner_tags:
   - La Media Inglesa
+  - Crooked Media
 
 link_list:
   - label: Listen to Power Plays
     url: "https://power-plays.captivate.fm/listen?mc_cid=105043662f&mc_eid=eaa04b1cb2"
-  - label: La Media Inglesa collaboration (YouTube playlist)
-    url: "https://www.youtube.com/playlist?list=PL-PQ5u_XdyWwI5z4mxamZO_TBI9bw0pHw"
+  - label: Power Plays — Episode 1
+    url: "https://www.youtube.com/watch?v=aRv9meE7pXA"
+  - label: Power Plays — Episode 2
+    url: "https://www.youtube.com/watch?v=Mwd0BAEAhrA&t=786s"
+  - label: Power Plays — Episode 3
+    url: "https://www.youtube.com/watch?v=m-mqWdgdrRE&t=1s"
+  - label: Power Plays — Episode 4
+    url: "https://www.youtube.com/watch?v=Cqr1uh6k_rg&t=1s"
+  - label: Power Plays — Episode 5
+    url: "https://www.youtube.com/watch?v=gLlSJZaCqBc"
 
 galleries:
-  - name: Season Artwork
-    purpose: hero/craft
-    folder_slug: power-plays-podcast
-    slots:
-      - file: power-plays-podcast-header
-        alt: Power Plays podcast season header artwork
-        label: Power Plays header
-        ratio: 1600 / 758
-
   - name: Apple Podcasts Features
     purpose: third-party validation
     folder_slug: power-plays-podcast
@@ -91,28 +91,3 @@ galleries:
         alt: Power Plays featured in Apple Podcasts New Shows (Documentary)
         label: New Shows (Documentary)
         ratio: 9 / 19.5
-
-  - name: Episode Artwork
-    purpose: craft
-    folder_slug: power-plays-podcast
-    slots:
-      - file: power-plays-podcast-episode-01
-        alt: Power Plays episode 1 artwork
-        label: Episode 1
-        ratio: 1 / 1
-      - file: power-plays-podcast-episode-02
-        alt: Power Plays episode 2 artwork
-        label: Episode 2
-        ratio: 1 / 1
-      - file: power-plays-podcast-episode-03
-        alt: Power Plays episode 3 artwork
-        label: Episode 3
-        ratio: 1 / 1
-      - file: power-plays-podcast-episode-04
-        alt: Power Plays episode 4 artwork
-        label: Episode 4
-        ratio: 1 / 1
-      - file: power-plays-podcast-episode-05
-        alt: Power Plays episode 5 artwork
-        label: Episode 5
-        ratio: 1 / 1
