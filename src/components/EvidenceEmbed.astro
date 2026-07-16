@@ -123,25 +123,22 @@ const iframeSrc =
     embeds.forEach((el) => io.observe(el));
   }
 
-  // Scaled Instagram frames keep their unscaled layout height, leaving
-  // phantom space below each one. Clamp the host to the visual (scaled)
-  // height whenever the frame's size settles or changes.
-  if (window.matchMedia('(min-width: 64rem)').matches && 'ResizeObserver' in window) {
-    const wraps = document.querySelectorAll('[data-provider="instagram"] .ig-wrap');
-    if (wraps.length > 0) {
-      const clamp = () => {
-        wraps.forEach((wrap) => {
-          const host = wrap.parentElement;
-          const height = wrap.getBoundingClientRect().height; // includes transform
-          if (host && height > 0) {
-            host.style.height = `${Math.ceil(height)}px`;
-            host.style.minHeight = '0';
-          }
-        });
-      };
-      const ro = new ResizeObserver(clamp);
-      wraps.forEach((wrap) => ro.observe(wrap));
-    }
+  // Instagram's embed script occasionally fails to send its resize message,
+  // leaving an iframe collapsed to ~1px (a blank frame). Self-heal: after the
+  // embeds have had time to size, reload the src of any still-collapsed IG
+  // iframe once, which forces Instagram to re-send its height.
+  const healInstagram = () => {
+    document.querySelectorAll('[data-provider="instagram"] iframe').forEach((el) => {
+      const frame = el as HTMLIFrameElement;
+      if (frame.clientHeight < 200 && !frame.dataset.healed) {
+        frame.dataset.healed = '1';
+        frame.src = frame.src;
+      }
+    });
+  };
+  if (document.querySelector('[data-provider="instagram"]')) {
+    setTimeout(healInstagram, 3500);
+    setTimeout(healInstagram, 7000);
   }
 </script>
 
@@ -154,16 +151,12 @@ const iframeSrc =
     min-height: 18rem;
   }
 
-  /* Instagram's iframe floor is 326px; scale it into the compact columns */
+  /* Instagram's iframe floor is 326px; `zoom` shrinks it into the compact
+     columns while reflowing the layout box — no phantom height, no clipping,
+     unlike transform: scale. */
   @media (min-width: 64rem) {
-    .evidence-embed.instagram {
-      overflow: hidden;
-    }
-
     .ig-wrap {
-      width: 326px;
-      transform: scale(0.78);
-      transform-origin: top left;
+      zoom: 0.78;
     }
   }
 

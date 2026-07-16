@@ -121,9 +121,9 @@ const chips = links.filter((l) => !platformOf(l.url));
     }
   }
 
-  /* Instagram's minimum is wider (its iframe floor is 326px, scaled 0.78) */
+  /* Instagram frames reflow to ~254px via zoom (326px floor × 0.78) */
   .embeds-instagram {
-    grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(15.5rem, 100%), 1fr));
   }
 
   .embeds-linkedin {
