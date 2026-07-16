@@ -1,6 +1,6 @@
 slug: stand-up-stands-up
 title: Stand-Up Stands Up
-descriptor: "A stand-up comedy show at the Oslo Freedom Forum, built from scratch — 490K views, 300 attendees and #2 most-watched Forum video this year."
+descriptor: "A stand-up comedy show at the Oslo Freedom Forum, built from scratch: 490K views, 300 attendees and #2 most-watched Forum video this year."
 tier: Flagship Campaigns
 role_tag: Founder & Producer
 order: 1
@@ -19,23 +19,28 @@ stat_strip:
   - { value: "300", label: "attendees" }
   - { value: "490k", label: "views" }
   - { value: "#2", label: "most-viewed OFF video" }
-  - { value: "Founder", label: "& Producer" }
 
-feature_copy: >-
-  This is the comedy show you were never supposed to see. Stand-Up Stands Up
-  premiered at the 2026 Oslo Freedom Forum — a night of stand-up celebrating
-  comedians who keep performing, keep writing, keep making people laugh even
-  when it can lead to censorship, imprisonment, or exile. Stand-up wraps truth
-  in a punchline. It makes power look ridiculous. And that makes a lot of
-  dictators very, very nervous. Simply put: dictators cannot take a joke. Come
-  for the jokes. Stay for what they mean.
+proof_lede: "See it for yourself: coverage, posts, and reactions from the event."
 
 blocks:
+  - heading: About Stand-Up Stands Up
+    body: |-
+      This is the comedy show you were never supposed to see.
+
+      Stand-Up Stands Up premiered at the 2026 Oslo Freedom Forum — a night of stand-up celebrating comedians who keep performing, keep writing, keep making people laugh even when it can lead to censorship, imprisonment, or exile.
+
+      Stand-up wraps truth in a punchline. It makes power look ridiculous. And that makes a lot of dictators very, very nervous.
+
+      Simply put: dictators cannot take a joke.
+
+      Come for the jokes. Stay for what they mean.
+
   - heading: Challenge
     bullets:
-      - Identify, secure, and coordinate dissident comedian talent
-      - Find a venue, produce, and promote the show
-      - Secure budget and approval to build the project from scratch
+      - Win budget and leadership approval for a format with no precedent at the Forum
+      - Identify and secure comedians performing under censorship, imprisonment, or exile. Talent no roster lists.
+      - Find a venue, produce the show, and sell it out
+      - Build an audience beyond the room, before and after the night itself
 
   - heading: Talent
     talent:
@@ -66,14 +71,15 @@ blocks:
 
   - heading: Impact
     bullets:
-      - 300 attendees
-      - 490k views and 15k engagements across pre- and post-event promotion
       - Second most-viewed Oslo Freedom Forum video on YouTube
-      - Second most-saved programming event at the Forum
-      - Press coverage for talent from Deutsche Welle, Minerva, and TV2 (Norwegian national television)
+      - Second most-saved event on the Forum programme
+      - 490k views and 15k engagements across pre- and post-event promotion
+      - Press for the comedians in Deutsche Welle, Minerva, and TV2 (Norwegian national television)
+      - 300 in the room
 
 link_list:
   - label: Origin story (LinkedIn)
+    heading: A brief story about how it all came together
     url: "https://www.linkedin.com/posts/guillermo-purchese-110711213_two-weeks-ago-i-received-an-email-with-the-ugcPost-7470085468873891840-cVWW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYIXFwBgXji4oS_yqMunTXMgsQGPmTlX4c"
   - label: Instagram promo 1
     url: "https://www.instagram.com/p/DYnflyRmq5p/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
@@ -83,6 +89,8 @@ link_list:
     url: "https://www.instagram.com/reel/DZfh7TWgPmY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
   - label: Instagram promo 4
     url: "https://www.instagram.com/p/DYryo0wHOtO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 5
+    url: "https://www.instagram.com/reels/DZ_zlCJDBX7/"
   - label: YouTube recording
     url: "https://www.youtube.com/watch?v=z86btvHVuTE"
 

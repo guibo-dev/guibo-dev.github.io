@@ -20,7 +20,7 @@ interface Props {
 const { url, label } = Astro.props;
 
 type Provider = 'x' | 'instagram' | 'linkedin' | 'youtube' | 'facebook';
-const provider: Provider = /instagram\.com\/(p|reel)\//.test(url)
+const provider: Provider = /instagram\.com\/(p|reels?)\//.test(url)
   ? 'instagram'
   : /linkedin\.com\/posts\//.test(url)
     ? 'linkedin'
@@ -29,6 +29,10 @@ const provider: Provider = /instagram\.com\/(p|reel)\//.test(url)
       : /facebook\.com\/.+\/posts\//.test(url)
         ? 'facebook'
         : 'x';
+
+// Instagram's embed script only accepts /p/ and /reel/ permalinks; the
+// /reels/ viewer form must be normalized or the blockquote never upgrades.
+const instagramPermalink = url.replace('instagram.com/reels/', 'instagram.com/reel/');
 
 // LinkedIn public posts embed via an iframe URL derived from the post id
 const liMatch = url.match(/(ugcPost|activity)-(\d+)/);
@@ -65,7 +69,11 @@ const iframeSrc =
   {
     provider === 'instagram' && (
       <div class="ig-wrap">
-        <blockquote class="instagram-media" data-instgrm-permalink={url} data-instgrm-version="14">
+        <blockquote
+          class="instagram-media"
+          data-instgrm-permalink={instagramPermalink}
+          data-instgrm-version="14"
+        >
           <a href={url} target="_blank" rel="noopener noreferrer">
             {label} <span aria-hidden="true">&#8599;</span>
           </a>

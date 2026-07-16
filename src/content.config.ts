@@ -67,8 +67,17 @@ const projects = defineCollection({
       })
     ),
     partner_tags: z.array(z.string()).optional(),
+    /** Optional page-specific intro line under the Proof heading. */
+    proof_lede: z.string().optional(),
     link_list: z
-      .array(z.object({ label: z.string(), url: z.string().optional() }))
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string().optional(),
+          /** Optional sub-heading rendered above this link's platform row. */
+          heading: z.string().optional(),
+        })
+      )
       .optional(),
     galleries: z
       .array(

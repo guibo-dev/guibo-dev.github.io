@@ -1,23 +1,33 @@
 ---
 /**
- * Proof, one row per platform in fixed order — X, Instagram, LinkedIn,
- * YouTube, Facebook — with compact columns so a platform's posts share a
- * row. Anything without a native embed stays a link chip. Consumes the
- * same link_list data as before — no content changes needed.
+ * Proof, one row per platform in fixed order — X, Instagram, YouTube,
+ * LinkedIn, Facebook — with compact columns so a platform's posts share a
+ * row. A link may carry a `heading`, rendered as a sub-heading above its
+ * platform's row. Anything without a native embed stays a link chip.
+ * Consumes the same link_list data as before — no content changes needed.
  */
 import EvidenceEmbed from './EvidenceEmbed.astro';
 import LinkList from './LinkList.astro';
 
-interface Props {
-  links: { label: string; url?: string }[];
+interface ProofLink {
+  label: string;
+  url?: string;
+  heading?: string;
 }
-const { links } = Astro.props;
+
+interface Props {
+  links: ProofLink[];
+  /** Intro line under the heading; pages can override via proof_lede. */
+  lede?: string;
+}
+const { links, lede = 'See it for yourself — coverage, posts, and reactions from the campaign.' } =
+  Astro.props;
 
 const PLATFORMS = [
   { name: 'x', test: (u: string) => /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(u) },
-  { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reel)\//.test(u) },
-  { name: 'linkedin', test: (u: string) => /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(u) },
+  { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reels?)\//.test(u) },
   { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },
+  { name: 'linkedin', test: (u: string) => /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(u) },
   { name: 'facebook', test: (u: string) => /facebook\.com\/.+\/posts\//.test(u) },
 ] as const;
 
@@ -33,15 +43,21 @@ const chips = links.filter((l) => !platformOf(l.url));
 
 <section class="proof" aria-label="Proof">
   <h3>Proof</h3>
-  <p class="lede">See it for yourself — coverage, posts, and reactions from the campaign.</p>
+  <p class="lede">{lede}</p>
   {
-    embedGroups.map((group) => (
-      <div class:list={['embeds', `embeds-${group.name}`]}>
-        {group.items.map((link) => (
-          <EvidenceEmbed url={link.url!} label={link.label} />
-        ))}
-      </div>
-    ))
+    embedGroups.map((group) => {
+      const rowHeading = group.items.find((l) => l.heading)?.heading;
+      return (
+        <>
+          {rowHeading && <h4 class="row-heading">{rowHeading}</h4>}
+          <div class:list={['embeds', `embeds-${group.name}`]}>
+            {group.items.map((link) => (
+              <EvidenceEmbed url={link.url!} label={link.label} />
+            ))}
+          </div>
+        </>
+      );
+    })
   }
   {chips.length > 0 && <LinkList links={chips} heading="" />}
 </section>
@@ -65,6 +81,15 @@ const chips = links.filter((l) => !platformOf(l.url));
     margin-bottom: var(--space-3);
   }
 
+  .row-heading {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+
   /* Compact columns: ~quarter-width tracks so a platform's posts share a
      row; auto-fill keeps lone embeds small instead of stretching. */
   .embeds {
@@ -82,6 +107,11 @@ const chips = links.filter((l) => !platformOf(l.url));
 
   .embeds-linkedin {
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  }
+
+  /* Players read at roughly the height of the scaled Instagram frames */
+  .embeds-youtube {
+    grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr));
   }
 
   /* The nested chip list needs no extra section spacing of its own */
