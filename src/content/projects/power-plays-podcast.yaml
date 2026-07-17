@@ -57,8 +57,10 @@ partner_tags:
   - Crooked Media
 
 link_list:
-  - label: Listen to Power Plays
-    url: "https://power-plays.captivate.fm/listen?mc_cid=105043662f&mc_eid=eaa04b1cb2"
+  - label: Listen on Spotify
+    url: "https://open.spotify.com/show/033hl8BK4tn7sw8zU78FOU?si=WmJ5MrTMRRO70OzUNP7bpg&utm_source=copy-link"
+  - label: Listen on Apple Podcasts
+    url: "https://podcasts.apple.com/us/podcast/power-plays/id1896697557"
   - label: Power Plays — Episode 1
     url: "https://www.youtube.com/watch?v=aRv9meE7pXA"
   - label: Power Plays — Episode 2

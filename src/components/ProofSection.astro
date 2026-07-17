@@ -27,14 +27,16 @@ const PLATFORMS = [
   { name: 'x', test: (u: string) => /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(u) },
   { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reels?)\//.test(u) },
   { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },
+  { name: 'spotify', test: (u: string) => /open\.spotify\.com\//.test(u) },
+  { name: 'apple', test: (u: string) => /podcasts\.apple\.com\//.test(u) },
   { name: 'linkedin', test: (u: string) => /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(u) },
   { name: 'facebook', test: (u: string) => /facebook\.com\/.+\/posts\//.test(u) },
 ] as const;
 
 const platformOf = (url?: string) => (url ? PLATFORMS.find((p) => p.test(url))?.name : undefined);
 
-let embedGroups = PLATFORMS.map((p) => ({
-  name: p.name,
+let embedGroups: { name: string; items: ProofLink[] }[] = PLATFORMS.map((p) => ({
+  name: p.name as string,
   items: links.filter((l) => platformOf(l.url) === p.name),
 })).filter((g) => g.items.length > 0);
 
@@ -45,6 +47,16 @@ const yt = embedGroups.find((g) => g.name === 'youtube');
 if (ig && yt) {
   ig.items = [...ig.items, ...yt.items];
   embedGroups = embedGroups.filter((g) => g.name !== 'youtube');
+}
+
+// Spotify + Apple players share one "audio" row, in place of the first.
+const audioIdx = embedGroups.findIndex((g) => g.name === 'spotify' || g.name === 'apple');
+if (audioIdx !== -1) {
+  const audioItems = embedGroups
+    .filter((g) => g.name === 'spotify' || g.name === 'apple')
+    .flatMap((g) => g.items);
+  embedGroups = embedGroups.filter((g) => g.name !== 'spotify' && g.name !== 'apple');
+  embedGroups.splice(audioIdx, 0, { name: 'audio', items: audioItems });
 }
 
 const chips = links.filter((l) => !platformOf(l.url));
@@ -145,6 +157,17 @@ const chips = links.filter((l) => !platformOf(l.url));
   @media (min-width: 64rem) {
     .embeds-youtube {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Spotify + Apple players side by side */
+  .embeds-audio {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .embeds-audio {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
