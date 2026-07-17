@@ -1,6 +1,6 @@
 slug: the-signal
 title: The Signal
-descriptor: A partnership with an independent current-affairs publication, producing print products and activations on autocratic power.
+descriptor: A long-term editorial partnership using print journalism, live experiences, and creative storytelling to expose the mechanics of authoritarian power.
 tier: Partnership Spotlight
 role_tag: Partnership Lead
 order: 1
@@ -13,53 +13,43 @@ hero:
 blocks:
   - heading: Overview
     body: >-
-      The Signal is an independent current-affairs publication — no
-      broadcast-rights deals, no access-journalism constraints, no commercial
-      conflicts with the subjects it covers — with distinctive editorial and
-      creative capabilities and an expanding, highly engaged audience in the
-      U.S. and worldwide. Together we produced a series of print products and
-      activations exploring how autocratic power operates.
+      The Signal's independent editorial model made it an ideal creative
+      partner for tackling stories traditional media often overlooks. Together,
+      we developed a series of print publications and public activations that
+      translated complex geopolitical issues into accessible, highly visual
+      storytelling.
 
   - heading: Altered States
     body: >-
-      A limited-run newspaper examining how dictators use power and illicit
-      wealth to undermine democracy and strengthen authoritarianism, asking:
-      How much influence do foreign autocratic regimes have on democracies?
+      A limited-edition newspaper asking a simple question: How much influence
+      do authoritarian regimes already have inside democratic societies?
 
-
-      Event activation: Brought the newspaper to life with a Washington, D.C.
-      launch event for policymakers, journalists, think tanks, and professors —
-      establishing HRF as a thought leader on kleptocracy and foreign lobbying.
-    gallery: Altered States
+  - heading: Event Activation
+    body: >-
+      Brought the newspaper to life with a Washington, D.C. launch event for
+      policymakers, journalists, think tanks, and professors — establishing HRF
+      as a thought leader on kleptocracy and foreign lobbying.
 
   - heading: Kleptocrats Dossier
-    body: >-
+    body: |-
       How do you make kleptocracy fun?
 
-
-      A corruption dossier containing everything a U.S. congressman would need
-      to lobby for a foreign government: plane tickets to the Cayman Islands;
-      ID cards of famous U.S. senators and the countries they sold their
-      influence to; a bribery cheat sheet for the easiest way to buy political
-      influence in the U.S. as a foreign government.
-    gallery: Kleptocrats Dossier
+      We turned corruption into an interactive prop. Designed as the ultimate lobbying starter kit, the dossier included fake Cayman Islands boarding passes, congressional ID cards, and satirical "how-to" guides that exposed just how easily foreign governments can purchase political influence.
+    gallery: Altered States
 
   - heading: Shadow Play
     badge: Upcoming — Launching August 2026
-    body: >-
-      A fanzine-inspired print magazine exploring autocratic influence in
-      global football — combining original journalism, fan voices, and advocacy
-      expertise. It targets two overlapping audiences no publication has served
-      together: the football fan who wants to understand how the sport they
-      love is changing, and the current-affairs reader who wants to understand
-      how dictators build influence.
+    body: |-
+      A fanzine-inspired magazine investigating how authoritarian regimes use football to build influence, launder reputations, and reshape global narratives.
 
-
-      Vision:
-    bullets:
-      - Syndicate with outlets
-      - Give fans a product that speaks their language
+      Built for the overlooked intersection between football supporters and geopolitical readers, Shadow Play translates complex political influence into the language of the world's biggest sport.
     gallery: Shadow Play Previews
+
+  - heading: Vision
+    bullets:
+      - Syndicate investigations and stories through leading global publications.
+      - Create the first publication equally at home in football culture and foreign policy discourse.
+      - Shift authoritarian influence in football from a niche policy issue into mainstream sporting conversation.
 
 galleries:
   - name: Altered States
@@ -70,11 +60,6 @@ galleries:
         alt: Copies of the Altered States newspaper being picked up at the Washington, D.C. launch event
       - file: the-signal-altered-states-02
         alt: Attendees examining Altered States materials at the Washington, D.C. launch event
-
-  - name: Kleptocrats Dossier
-    purpose: product showcase
-    folder_slug: the-signal
-    slots:
       - file: the-signal-kleptocrats-dossier-01
         alt: Kleptocrats Dossier folders with the bribery cheat sheet fanned out over Altered States newspapers
       - file: the-signal-kleptocrats-dossier-02
