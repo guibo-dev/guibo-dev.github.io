@@ -5,6 +5,12 @@ tier: Events & Activations
 role_tag: Producer
 order: 2
 
+hero:
+  folder: rule-breakers
+  file: rule-breakers-card
+  alt: Rule Breakers film key art with the Afghan girls robotics team
+  ratio: 16 / 10
+
 thumbnail:
   folder: rule-breakers
   file: rule-breakers-card
