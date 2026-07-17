@@ -1,6 +1,6 @@
 slug: website-content-management
 title: Website Management
-descriptor: Led the content revamp of hrf.org and oslofreedomforum.com, 60+ pages, 600+ posts, and 600+ speaker profiles, building the content system that HRF runs today.
+descriptor: Led the transformation of hrf.org and oslofreedomforum.com, building the scalable content system that powers HRF's digital publishing while overseeing more than 1,200 pages, posts, and speaker profiles.
 tier: Digital Content Management
 role_tag: Website content manager
 order: 2
@@ -11,13 +11,23 @@ thumbnail:
   alt: Oslo Freedom Forum website homepage inviting visitors to attend the 2027 Forum
 
 stat_strip:
-  - { value: "60+", label: "pages" }
-  - { value: "600+", label: "posts" }
-  - { value: "600+", label: "speaker pages" }
+  - { value: "60+", label: "website pages" }
+  - { value: "600+", label: "published posts" }
+  - { value: "600+", label: "speaker profiles" }
 
 blocks:
   - heading: Overview
     bullets:
-      - Led the content revamp of hrf.org and oslofreedomforum.com
-      - Managed creation of 60+ web pages, 600+ posts, and 600+ speaker pages to date
-      - Developed and manage internal digital content processes using Monday.com, Figma, WordPress, and Elementor — from ideation to creation
+      - Led the transformation of HRF's flagship websites, hrf.org and oslofreedomforum.com.
+      - Scaled HRF's digital publishing operation across 60+ website pages, 600+ articles, and 600+ speaker profiles.
+      - Built the internal publishing workflows that power HRF's digital content production, integrating Monday.com, Figma, WordPress, and Elementor into a scalable end-to-end process.
+
+  - heading: Digital Tools
+    bullets:
+      - WordPress
+      - WP Engine
+      - Monday.com
+      - Figma
+      - Elementor
+      - Airtable
+      - Adobe Photoshop
