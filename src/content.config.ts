@@ -44,6 +44,8 @@ const projects = defineCollection({
         badge: z.string().optional(),
         body: z.string().optional(),
         bullets: z.array(z.string()).optional(),
+        /** Labeled entries (term + detail), e.g. a program/agenda. */
+        entries: z.array(z.object({ term: z.string(), detail: z.string() })).optional(),
         talent: z
           .array(
             z.object({

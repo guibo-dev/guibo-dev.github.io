@@ -3,11 +3,13 @@ interface Props {
   heading?: string;
   body?: string;
   bullets?: string[];
+  /** Labeled term + detail entries (e.g. a program/agenda). */
+  entries?: { term: string; detail: string }[];
   badge?: string;
   /** Marks the payoff block (Impact) with an accent keyline. */
   emphasis?: boolean;
 }
-const { heading, body, bullets, badge, emphasis = false } = Astro.props;
+const { heading, body, bullets, entries, badge, emphasis = false } = Astro.props;
 
 // Body strings may hold multiple paragraphs separated by blank lines.
 const paragraphs = body
@@ -18,7 +20,10 @@ const paragraphs = body
   : [];
 
 const hasContent =
-  paragraphs.length > 0 || (bullets && bullets.length > 0) || Astro.slots.has('default');
+  paragraphs.length > 0 ||
+  (bullets && bullets.length > 0) ||
+  (entries && entries.length > 0) ||
+  Astro.slots.has('default');
 ---
 
 {
@@ -40,6 +45,16 @@ const hasContent =
               <li>{b}</li>
             ))}
           </ul>
+        )}
+        {entries && entries.length > 0 && (
+          <dl class="entries">
+            {entries.map((e) => (
+              <div class="entry">
+                <dt>{e.term}</dt>
+                <dd>{e.detail}</dd>
+              </div>
+            ))}
+          </dl>
         )}
         <slot />
       </div>
@@ -109,6 +124,28 @@ const hasContent =
 
   p,
   ul {
+    font-size: 1.02rem;
+  }
+
+  /* Labeled entries: term in accent, detail beneath */
+  .entries {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .entry dt {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .entry dd {
+    margin: 0;
     font-size: 1.02rem;
   }
 </style>
