@@ -89,6 +89,8 @@ const projects = defineCollection({
           name: z.string(),
           purpose: z.string(),
           folder_slug: z.string(),
+          /** Grid column min-width override (e.g. "10.5rem"). */
+          item_min: z.string().optional(),
           slots: z.array(mediaSlot),
         })
       )

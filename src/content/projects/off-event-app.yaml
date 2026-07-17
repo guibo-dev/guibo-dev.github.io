@@ -1,14 +1,15 @@
 slug: off-event-app
 title: Oslo Freedom Forum Event App
-descriptor: Owned the official Oslo Freedom Forum event app end-to-end. Achieved 90% attendee adoption (15% YoY growth since 2024), 4.5/5 satisfaction.
+descriptor: Led the strategy, execution, and optimization of Oslo Freedom Forum's official event app, driving 90% attendee adoption, a 15% year-over-year increase, and a 4.5/5 satisfaction rating.
 tier: Digital Content Management
 role_tag: Product Lead
 order: 1
 
 hero:
   folder: event-app
-  file: event-app-screen-01
-  alt: Oslo Freedom Forum 2026 event app splash screen with the Dismantling Dictatorship theme
+  file: event-app-card
+  alt: Download the OFF 26 App graphic showing programming, networking, maps, and speakers screens
+  ratio: 16 / 10
 
 thumbnail:
   folder: event-app
@@ -23,18 +24,22 @@ stat_strip:
 blocks:
   - heading: Role
     bullets:
-      - Manage content migration from CRM back-end to app back-end
-      - Manage external Salesforce integration vendors to keep API integrations streamlined and functioning
-      - Build and verify the conference schedule and speaker profiles
-      - Handle in-event updates, notifications, and troubleshooting
+      - Managed CRM-to-app content workflows, ensuring accurate and timely event information across attendee-facing experiences.
+      - Coordinated Salesforce integration partners to maintain seamless data connections between internal systems and the attendee app.
+      - Built and maintained the digital conference experience, ensuring accurate schedules, speaker profiles, and attendee resources.
+      - Led real-time app operations during the conference, managing updates, attendee communications, and technical troubleshooting.
 
   - heading: Impact
-    body: "90% adoption rate · 4.5/5 user satisfaction · 15% YoY growth in adoption since 2024"
+    bullets:
+      - 90% attendee adoption
+      - 4.5/5 satisfaction rating
+      - 15% increase in adoption year-over-year
 
 galleries:
   - name: App Screens
     purpose: product showcase
     folder_slug: event-app
+    item_min: "10.5rem"
     slots:
       - file: event-app-screen-01
         alt: Event app splash screen with the Dismantling Dictatorship 2026 theme
