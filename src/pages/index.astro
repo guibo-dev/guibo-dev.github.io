@@ -4,7 +4,7 @@ import StatStrip from '../components/StatStrip.astro';
 import SectionTier from '../components/SectionTier.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import MediaSlot from '../components/MediaSlot.astro';
-import { PARTNERS } from '../data/partners';
+import { PARTNERS, TOOL_CATEGORIES } from '../data/partners';
 import { TIER_ORDER, getOrderedProjects } from '../lib/projects';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 
@@ -17,7 +17,7 @@ const byTier = TIER_ORDER.map((tier) => ({
 const portfolioStats = [
   { value: '$250K', label: 'portfolio managed' },
   { value: '130k+', label: 'podcast listeners (5× over target)' },
-  { value: '1M+', label: 'views generated across campaigns' },
+  { value: '1M+', label: 'engagements generated across campaigns' },
 ];
 
 const jsonLd = {
@@ -36,19 +36,37 @@ const jsonLd = {
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="greeting">Hey I&rsquo;m Guille,</p>
-        <h1>
-          Over the last three years I&rsquo;ve gone from marketing intern to running a $250K
-          portfolio spanning the launch of a flagship podcast, an annual out-of-home marketing
-          campaign in Oslo, and a global comedy event series.
-        </h1>
-        <p class="supporting">
-          Working at a global nonprofit has taught me to deliver on time and on budget with far
-          less than most teams have and to build the processes and partnerships that let
-          campaigns scale and break through. I thrive where operations, partnerships, and
-          creativity meet, and I&rsquo;m looking to bring that discipline to a company building
-          something people genuinely rely on.
-        </p>
+        <h1 class="greeting">Hey, I&rsquo;m Guille.</h1>
+        <div class="intro">
+          <p>
+            The best compliment I&rsquo;ve ever received at work came from someone who&rsquo;d been
+            furious with me a few days earlier.
+          </p>
+          <p>
+            Her event app kept glitching, and she wasn&rsquo;t shy about telling me. Later that
+            week, she found me after a comedy show I&rsquo;d produced, smiling ear to ear, and said,
+            &ldquo;My new favorite thing is to laugh at dictators.&rdquo;
+          </p>
+          <p>
+            That moment has stayed with me because it captured what I enjoy most about this work:
+            taking an idea and a budget and turning them into something that changes how people
+            think or feel, even if only for a moment.
+          </p>
+          <p>
+            I&rsquo;ve spent three years doing that at a global nonprofit, with far less than most
+            teams have. Launched a flagship podcast. Ran out-of-home campaigns in Oslo. Built a
+            comedy series from nothing.
+          </p>
+          <p>
+            I&rsquo;ve learned that memorable work rarely comes from the biggest budget. More often,
+            it&rsquo;s the result of bold ideas, thoughtful decisions that no one notices, and the
+            people you choose to build alongside.
+          </p>
+          <p>
+            That&rsquo;s the kind of work I enjoy most: where creativity meets execution, ideas
+            become experiences, and the details quietly make all the difference.
+          </p>
+        </div>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">Explore my work</a>
           <a class="btn btn-secondary" href="#contact">Get in touch</a>
@@ -105,6 +123,24 @@ const jsonLd = {
         ))
       }
     </ul>
+
+    {
+      TOOL_CATEGORIES.map((category) => (
+        <div class="tool-category">
+          <h3>{category.title}</h3>
+          <ul class="logo-wall">
+            {category.items.map((tool) => (
+              <li data-reveal>
+                <a href={tool.url} target="_blank" rel="noopener noreferrer">
+                  <MediaSlot folder="partners" file={tool.file} alt={`${tool.name} logo`} />
+                  <span class="partner-line">{tool.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </section>
 </BaseLayout>
 
@@ -117,7 +153,7 @@ const jsonLd = {
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
     gap: var(--space-4);
-    align-items: center;
+    align-items: start;
   }
 
   /* The greeting is the hero's single display-scale hook */
@@ -129,12 +165,11 @@ const jsonLd = {
     line-height: 1.1;
     letter-spacing: -0.018em;
     color: var(--ink);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
   }
 
-  /* Headline and supporting copy share one body-text voice */
-  h1,
-  .supporting {
+  /* Narrative intro paragraphs share one body-text voice */
+  .intro p {
     font-family: var(--font-body);
     font-size: clamp(1rem, 1.5vw, 1.15rem);
     font-weight: 400;
@@ -142,15 +177,11 @@ const jsonLd = {
     letter-spacing: normal;
     color: var(--ink-soft);
     max-width: 58ch;
-    text-wrap: initial;
-  }
-
-  h1 {
     margin-bottom: var(--space-2);
   }
 
-  .greeting {
-    margin-bottom: var(--space-2);
+  .intro p:last-child {
+    margin-bottom: 0;
   }
 
   .hero-ctas {
@@ -181,6 +212,15 @@ const jsonLd = {
 
   .partners {
     padding-top: var(--space-4);
+  }
+
+  /* Tool categories reuse the Partners logo wall beneath it */
+  .tool-category {
+    margin-top: var(--space-5);
+  }
+
+  .tool-category h3 {
+    font-size: 1.3rem;
   }
 
   .logo-wall {
