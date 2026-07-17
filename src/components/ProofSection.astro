@@ -17,18 +17,24 @@ interface ProofLink {
 
 interface Props {
   links: ProofLink[];
+  /** Section heading; defaults to "Proof". */
+  title?: string;
   /** Intro line under the heading; pages can override via proof_lede. */
   lede?: string;
 }
-const { links, lede = 'See it for yourself — coverage, posts, and reactions from the campaign.' } =
-  Astro.props;
+const {
+  links,
+  title = 'Proof',
+  lede = 'See it for yourself — coverage, posts, and reactions from the campaign.',
+} = Astro.props;
 
+// Fixed row order. Audio players (Spotify + Apple) precede video.
 const PLATFORMS = [
   { name: 'x', test: (u: string) => /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(u) },
   { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reels?)\//.test(u) },
-  { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },
   { name: 'spotify', test: (u: string) => /open\.spotify\.com\//.test(u) },
   { name: 'apple', test: (u: string) => /podcasts\.apple\.com\//.test(u) },
+  { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },
   { name: 'linkedin', test: (u: string) => /linkedin\.com\/posts\/.*(ugcPost|activity)-\d+/.test(u) },
   { name: 'facebook', test: (u: string) => /facebook\.com\/.+\/posts\//.test(u) },
 ] as const;
@@ -62,8 +68,8 @@ if (audioIdx !== -1) {
 const chips = links.filter((l) => !platformOf(l.url));
 ---
 
-<section class="proof" aria-label="Proof">
-  <h3>Proof</h3>
+<section class="proof" aria-label={title}>
+  <h3>{title}</h3>
   <p class="lede">{lede}</p>
   {
     embedGroups.map((group) => {
@@ -108,7 +114,12 @@ const chips = links.filter((l) => !platformOf(l.url));
     font-weight: 600;
     letter-spacing: normal;
     color: var(--ink);
-    margin: var(--space-1) 0 0.6rem;
+    margin: var(--space-3) 0 0.7rem;
+  }
+
+  /* First sub-heading sits close under the lede */
+  .lede + .row-heading {
+    margin-top: 0;
   }
 
   /* Compact columns: ~quarter-width tracks so a platform's posts share a

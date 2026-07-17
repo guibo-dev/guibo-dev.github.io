@@ -20,6 +20,7 @@ stat_strip:
   - { value: "5.2×", label: "over target" }
   - { value: "99.1%", label: "YouTube approval rating" }
 
+proof_title: "Listen to Power Plays"
 proof_lede: "Enjoy Power Plays in its video and audio versions."
 
 blocks:
@@ -58,10 +59,12 @@ partner_tags:
 
 link_list:
   - label: Listen on Spotify
+    heading: Listen on your preferred podcast platform.
     url: "https://open.spotify.com/show/033hl8BK4tn7sw8zU78FOU?si=WmJ5MrTMRRO70OzUNP7bpg&utm_source=copy-link"
   - label: Listen on Apple Podcasts
     url: "https://podcasts.apple.com/us/podcast/power-plays/id1896697557"
   - label: Power Plays — Episode 1
+    heading: Power Plays (Versión en Español)
     url: "https://www.youtube.com/watch?v=aRv9meE7pXA"
   - label: Power Plays — Episode 2
     url: "https://www.youtube.com/watch?v=Mwd0BAEAhrA&t=786s"

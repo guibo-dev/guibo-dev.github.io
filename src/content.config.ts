@@ -67,7 +67,9 @@ const projects = defineCollection({
       })
     ),
     partner_tags: z.array(z.string()).optional(),
-    /** Optional page-specific intro line under the Proof heading. */
+    /** Optional page-specific heading for the proof section (default "Proof"). */
+    proof_title: z.string().optional(),
+    /** Optional page-specific intro line under the proof heading. */
     proof_lede: z.string().optional(),
     link_list: z
       .array(

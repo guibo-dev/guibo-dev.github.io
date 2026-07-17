@@ -148,7 +148,11 @@ const navThumb = (p: typeof prev) => {
         ))
       }
 
-      {data.link_list && <ProofSection links={data.link_list} lede={data.proof_lede} />}
+      {
+        data.link_list && (
+          <ProofSection links={data.link_list} title={data.proof_title} lede={data.proof_lede} />
+        )
+      }
     </div>
 
     <nav class="case-nav" aria-label="More projects">
