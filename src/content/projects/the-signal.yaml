@@ -26,9 +26,10 @@ blocks:
 
   - heading: Event Activation
     body: >-
-      Brought the newspaper to life with a Washington, D.C. launch event for
-      policymakers, journalists, think tanks, and professors — establishing HRF
-      as a thought leader on kleptocracy and foreign lobbying.
+      Extended the publication into a Washington, D.C. launch event that brought
+      policymakers, journalists, academics, and researchers into the same
+      conversation — turning editorial content into a live forum on kleptocracy
+      and foreign influence.
 
   - heading: Kleptocrats Dossier
     body: |-
@@ -38,18 +39,18 @@ blocks:
     gallery: Altered States
 
   - heading: Shadow Play
-    badge: Upcoming — Launching August 2026
+    badge: Launching August 2026
     body: |-
       A fanzine-inspired magazine investigating how authoritarian regimes use football to build influence, launder reputations, and reshape global narratives.
 
       Built for the overlooked intersection between football supporters and geopolitical readers, Shadow Play translates complex political influence into the language of the world's biggest sport.
-    gallery: Shadow Play Previews
 
   - heading: Vision
     bullets:
       - Syndicate investigations and stories through leading global publications.
       - Create the first publication equally at home in football culture and foreign policy discourse.
       - Shift authoritarian influence in football from a niche policy issue into mainstream sporting conversation.
+    gallery: Shadow Play Previews
 
 galleries:
   - name: Altered States
