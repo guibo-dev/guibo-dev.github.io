@@ -16,9 +16,18 @@ interface Props {
   slots: Slot[];
   /** Grid column min-width (e.g. "10.5rem"); shrinks/enlarges grid items. */
   itemMin?: string;
+  /** Fixed column count on wider screens (e.g. 4 → two rows of four). */
+  columns?: number;
 }
 
-const { name, purpose, folder, slots, itemMin } = Astro.props;
+const { name, purpose, folder, slots, itemMin, columns } = Astro.props;
+
+const gridStyle = [
+  itemMin ? `--item-min: ${itemMin};` : '',
+  columns ? `--cols: ${columns};` : '',
+]
+  .join(' ')
+  .trim();
 
 // Layout mode follows slot count: single hero, side-by-side pair, grid.
 const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
@@ -29,7 +38,7 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
     <section class="gallery" aria-label={`${name} gallery`}>
       <h3>{name}</h3>
       <p class="purpose sr-only">{purpose}</p>
-      <div class={`slots ${mode}`} style={itemMin ? `--item-min: ${itemMin};` : undefined}>
+      <div class:list={['slots', mode, { 'set-cols': columns }]} style={gridStyle || undefined}>
         {slots.map((slot) => (
           <div class="g-item" data-reveal>
             <MediaSlot
@@ -68,6 +77,13 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
 
   .slots.grid {
     grid-template-columns: repeat(auto-fill, minmax(min(var(--item-min, 14rem), 100%), 1fr));
+  }
+
+  /* Fixed column count on wider screens (mobile still reflows below) */
+  @media (min-width: 40rem) {
+    .slots.grid.set-cols {
+      grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 40rem) {

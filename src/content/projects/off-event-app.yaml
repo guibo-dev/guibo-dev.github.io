@@ -39,7 +39,7 @@ galleries:
   - name: App Screens
     purpose: product showcase
     folder_slug: event-app
-    item_min: "10.5rem"
+    columns: 4
     slots:
       - file: event-app-screen-01
         alt: Event app splash screen with the Dismantling Dictatorship 2026 theme

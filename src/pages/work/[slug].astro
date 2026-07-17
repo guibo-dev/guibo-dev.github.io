@@ -131,6 +131,7 @@ const navThumb = (p: typeof prev) => {
                 folder={galleryByName.get(block.gallery)!.folder_slug}
                 slots={galleryByName.get(block.gallery)!.slots}
                 itemMin={galleryByName.get(block.gallery)!.item_min}
+                columns={galleryByName.get(block.gallery)!.columns}
               />
             )}
           </>
@@ -147,6 +148,7 @@ const navThumb = (p: typeof prev) => {
             folder={gallery.folder_slug}
             slots={gallery.slots}
             itemMin={gallery.item_min}
+            columns={gallery.columns}
           />
         ))
       }
