@@ -1,14 +1,9 @@
 slug: rule-breakers-screening
 title: Rule Breakers Screening
-descriptor: A private donor screening of Rule Breakers for 45 HRF funders and strategic partners, with an intimate on-stage conversation with Roya Mahboob, Afghanistan's first female tech CEO.
+descriptor: An intimate screening of Rule Breakers for 45 HRF funders and strategic partners, followed by a private conversation with Roya Mahboob, Afghanistan's first female tech CEO and the inspiration behind the film.
 tier: Events & Activations
 role_tag: Producer
 order: 2
-
-hero:
-  folder: rule-breakers
-  file: rule-breakers-event-01
-  alt: Private screening of Rule Breakers at SoHo House Chelsea
 
 thumbnail:
   folder: rule-breakers
@@ -16,25 +11,31 @@ thumbnail:
   alt: Rule Breakers film key art with the Afghan girls robotics team
 
 stat_strip:
-  - { value: "45", label: "attendees" }
-  - { value: "SoHo House", label: "Chelsea" }
-  - { value: "Private", label: "screening" }
+  - { value: "45", label: "HRF funders & partners" }
+  - { value: "1", label: "private screening" }
+  - { value: "1", label: "exclusive conversation" }
 
 blocks:
   - heading: Overview
+    body: |-
+      Hosted an exclusive screening of Rule Breakers for HRF donors and strategic partners, bringing supporters closer to the story of Roya Mahboob, Afghanistan's first female tech CEO and the leader behind the country's pioneering all-girls robotics team.
+
+      The evening concluded with a personal conversation exploring technology, education, and the fight for opportunity under authoritarian rule.
+
+  - heading: Goal
     body: >-
-      Organized a private screening of Rule Breakers — a film based on the life
-      of Roya Mahboob, Afghanistan's first female tech CEO and leader of the
-      country's pioneering all-girls robotics team — for HRF donors and
-      strategic partners, followed by an intimate conversation with Roya.
+      Strengthen relationships with HRF's supporters through an intimate
+      experience that combined storytelling, conversation, and direct access to
+      one of the world's leading voices on technology and freedom.
+
+  - heading: Program
+    entries:
+      - term: Private Screening
+        detail: Rule Breakers
+      - term: In Conversation
+        detail: |-
+          Celine Assaf Boustani, President, Human Rights Foundation
+          Roya Mahboob, Afghan technology entrepreneur and inspiration behind Rule Breakers
 
   - heading: Details
-    body: "Venue: SoHo House Chelsea · Attendance: 45"
-
-galleries:
-  - name: Rule Breakers
-    purpose: atmosphere/context
-    folder_slug: rule-breakers
-    slots:
-      - file: rule-breakers-event-01
-        alt: Rule Breakers screening event at SoHo House Chelsea
+    body: "Venue: SoHo House Chelsea"
