@@ -55,6 +55,14 @@ if (ig && yt) {
   embedGroups = embedGroups.filter((g) => g.name !== 'youtube');
 }
 
+// X posts and Facebook posts (both short social posts) share one row.
+const xGroup = embedGroups.find((g) => g.name === 'x');
+const fbGroup = embedGroups.find((g) => g.name === 'facebook');
+if (xGroup && fbGroup) {
+  xGroup.items = [...xGroup.items, ...fbGroup.items];
+  embedGroups = embedGroups.filter((g) => g.name !== 'facebook');
+}
+
 // Spotify + Apple players share one "audio" row, in place of the first.
 const audioIdx = embedGroups.findIndex((g) => g.name === 'spotify' || g.name === 'apple');
 if (audioIdx !== -1) {
