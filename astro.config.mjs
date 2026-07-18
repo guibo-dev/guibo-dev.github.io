@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// TODO: replace with the production domain before deploy.
-// This is the only place the site URL lives; sitemap, canonical URLs,
-// and Open Graph tags all derive from it.
+// The site URL lives here; sitemap, canonical URLs, and Open Graph tags all
+// derive from it. Change to the custom domain (e.g. https://yourdomain.com)
+// once it is connected — see DEPLOYMENT.md, Section 8.
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://guibo-dev.github.io',
   integrations: [sitemap()],
 });
