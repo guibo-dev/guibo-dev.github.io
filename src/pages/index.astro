@@ -40,32 +40,35 @@ const jsonLd = {
         <div class="intro">
           <p>
             The best compliment I&rsquo;ve ever received at work came from someone who&rsquo;d been
-            furious with me a few days earlier.
+            furious with me a few days earlier. Her event app kept glitching, and she wasn&rsquo;t
+            shy about telling me. Later that week she found me after a comedy show I&rsquo;d produced,
+            grinning ear to ear: &ldquo;My new favorite thing is to laugh at dictators.&rdquo;
           </p>
           <p>
-            Her event app kept glitching, and she wasn&rsquo;t shy about telling me. Later that
-            week, she found me after a comedy show I&rsquo;d produced, smiling ear to ear, and said,
-            &ldquo;My new favorite thing is to laugh at dictators.&rdquo;
+            That show started as an idea nobody asked me for. A stand-up night taking on dictators,
+            with comedians from places where that joke can get you arrested. I pitched it, my boss
+            didn&rsquo;t say no, and I spent the next year turning an idea into a stage: finding the
+            venue, signing the talent, selling the tickets, and holding my nerve when one comedian
+            sent over a set so far over the line I had to trust him to know his own craft. He did.
+            Three hundred people gave him a standing ovation.
           </p>
           <p>
-            That moment has stayed with me because it captured what I enjoy most about this work:
-            taking an idea and a budget and turning them into something that changes how people
-            think or feel, even if only for a moment.
+            That&rsquo;s what I like most about marketing: taking an idea, finding the right people,
+            and building the thing that turns it into something people actually remember.
           </p>
           <p>
-            I&rsquo;ve spent three years doing that at a global nonprofit, with far less than most
-            teams have. Launched a flagship podcast. Ran out-of-home campaigns in Oslo. Built a
-            comedy series from nothing.
+            I&rsquo;ve spent three years doing that at the Human Rights Foundation. Launched a
+            flagship podcast that beat its target fivefold, built with a host, a production team, and
+            a strategist I leaned on hard. Ran an out-of-home campaign in Oslo across partners,
+            creatives, and vendors who all needed to move at once. Built a comedy series from
+            nothing.
           </p>
           <p>
-            I&rsquo;ve learned that memorable work rarely comes from the biggest budget. More often,
-            it&rsquo;s the result of bold ideas, thoughtful decisions that no one notices, and the
-            people you choose to build alongside.
+            None of it came from a big budget. It came from a bold idea, a hundred quiet decisions no
+            one sees, and the people I chose to build alongside. That&rsquo;s where I&rsquo;m at my
+            best, sitting between the creative idea and everything it takes to make it real.
           </p>
-          <p>
-            That&rsquo;s the kind of work I enjoy most: where creativity meets execution, ideas
-            become experiences, and the details quietly make all the difference.
-          </p>
+          <p>Take a look around. I&rsquo;d love to tell you the rest.</p>
         </div>
       </div>
       <div class="hero-portrait">
@@ -128,7 +131,7 @@ const jsonLd = {
       TOOL_CATEGORIES.map((category) => (
         <div class="tool-category">
           <h3>{category.title}</h3>
-          <ul class="logo-wall">
+          <ul class="logo-wall compact">
             {category.items.map((tool) => (
               <li data-reveal>
                 <a href={tool.url} target="_blank" rel="noopener noreferrer">
@@ -261,6 +264,19 @@ const jsonLd = {
   .logo-wall li:hover :global(img) {
     filter: none;
     opacity: 1;
+  }
+
+  /* Compact skills/tools wall: smaller tiles than the Partners wall */
+  .logo-wall.compact {
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  }
+
+  .logo-wall.compact li :global(img) {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .logo-wall.compact .partner-line {
+    font-size: 0.75rem;
   }
 
   .partner-line {
