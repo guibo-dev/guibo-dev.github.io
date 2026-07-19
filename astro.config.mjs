@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 // derive from it. Change to the custom domain (e.g. https://yourdomain.com)
 // once it is connected — see DEPLOYMENT.md, Section 8.
 export default defineConfig({
-  site: 'https://guibo-dev.github.io',
+  site: 'https://guillermopurchese.com',
   integrations: [sitemap()],
 });
