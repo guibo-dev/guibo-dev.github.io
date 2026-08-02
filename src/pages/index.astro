@@ -5,6 +5,7 @@ import SectionTier from '../components/SectionTier.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import MediaSlot from '../components/MediaSlot.astro';
 import { PARTNERS, TOOL_CATEGORIES } from '../data/partners';
+import { EXPERIENCE, EDUCATION } from '../data/career';
 import { TIER_ORDER, getOrderedProjects } from '../lib/projects';
 import { SITE_NAME, SITE_DESCRIPTION, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 
@@ -36,6 +37,7 @@ const jsonLd = {
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
+        <p class="hero-role">Marketing Specialist · Human Rights Foundation</p>
         <h1 class="greeting">Hey, I&rsquo;m Guille.</h1>
         <div class="intro">
           <p>
@@ -88,6 +90,48 @@ const jsonLd = {
   </section>
 
   <StatStrip items={portfolioStats} />
+
+  <!-- 1.15 Experience & Education -->
+  <section class="career container" aria-label="Experience and education">
+    {
+      [
+        { label: 'Experience', items: EXPERIENCE },
+        { label: 'Education', items: EDUCATION },
+      ].map((group) => (
+        <div class="career-group">
+          <h2>{group.label}</h2>
+          <ul class="career-list">
+            {group.items.map((item) => (
+              <li data-reveal>
+                <a
+                  class:list={['c-logo', { dark: item.dark }]}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${item.org} — opens in a new tab`}
+                >
+                  <MediaSlot folder="career" file={item.logo} alt={`${item.org} logo`} ratio="1 / 1" />
+                </a>
+                <span class="c-body">
+                  <span class="c-head">
+                    <span class="c-role">
+                      {item.role}
+                      {item.note && <span class="c-note">{item.note}</span>}
+                    </span>
+                    <span class="c-dates">{item.dates}</span>
+                  </span>
+                  <span class="c-org">
+                    {item.org} · {item.location}
+                  </span>
+                  <span class="c-desc">{item.description}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
 
   <!-- 1.2 Project Index -->
   <section class="work container" id="work" aria-label="Project index">
@@ -159,6 +203,16 @@ const jsonLd = {
     align-items: start;
   }
 
+  /* Current-role label: instant professional context above the greeting */
+  .hero-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-2);
+  }
+
   /* The greeting is the hero's single display-scale hook */
   .greeting {
     font-family: var(--font-display);
@@ -202,6 +256,156 @@ const jsonLd = {
     .hero-portrait {
       order: -1;
       max-width: 16rem;
+    }
+  }
+
+  /* Experience & Education — editorial rail, matching the case-study blocks */
+  .career {
+    padding-top: var(--space-5);
+  }
+
+  .career-group {
+    margin-block: var(--space-4);
+  }
+
+  .career-group h2 {
+    font-size: 1.3rem;
+  }
+
+  @media (min-width: 64rem) {
+    .career-group {
+      display: grid;
+      grid-template-columns: 13rem minmax(0, 1fr);
+      column-gap: var(--space-4);
+      align-items: start;
+    }
+
+    .career-group h2 {
+      margin-bottom: 0;
+      position: sticky;
+      top: var(--space-3);
+    }
+  }
+
+  .career-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .career-list li {
+    margin: 0;
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .c-logo {
+    flex: 0 0 4.25rem;
+    display: block;
+    border-radius: var(--radius);
+  }
+
+  .c-logo :global(img) {
+    width: 4.25rem;
+    height: 4.25rem;
+    object-fit: contain;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.6rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .c-logo:hover :global(img) {
+    border-color: var(--accent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .c-logo:hover :global(img) {
+      transform: translateY(-2px);
+    }
+  }
+
+  .c-logo.dark :global(img) {
+    background: #111;
+    border-color: #111;
+    padding: 0.7rem;
+  }
+
+  .c-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .c-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .c-role {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .c-note {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .c-dates {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .c-org {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 550;
+    color: var(--ink);
+    margin-top: 0.15rem;
+  }
+
+  .c-desc {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+    max-width: 58ch;
+  }
+
+  @media (max-width: 40rem) {
+    .c-logo {
+      flex-basis: 3.25rem;
+    }
+    .c-logo :global(img) {
+      width: 3.25rem;
+      height: 3.25rem;
+      padding: 0.45rem;
     }
   }
 
