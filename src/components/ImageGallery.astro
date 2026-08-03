@@ -5,6 +5,7 @@ interface Slot {
   file: string;
   alt: string;
   label?: string;
+  description?: string;
   type?: 'image' | 'video';
   ratio?: string;
 }
@@ -18,9 +19,11 @@ interface Props {
   itemMin?: string;
   /** Fixed column count on wider screens (e.g. 4 → two rows of four). */
   columns?: number;
+  /** Hide the visible heading (visually a continuation of the prior gallery). */
+  hideHeading?: boolean;
 }
 
-const { name, purpose, folder, slots, itemMin, columns } = Astro.props;
+const { name, purpose, folder, slots, itemMin, columns, hideHeading } = Astro.props;
 
 const gridStyle = [
   itemMin ? `--item-min: ${itemMin};` : '',
@@ -35,8 +38,8 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
 
 {
   slots.length > 0 && (
-    <section class="gallery" aria-label={`${name} gallery`}>
-      <h3>{name}</h3>
+    <section class:list={['gallery', { continuation: hideHeading }]} aria-label={`${name} gallery`}>
+      <h3 class:list={{ 'sr-only': hideHeading }}>{name}</h3>
       <p class="purpose sr-only">{purpose}</p>
       <div class:list={['slots', mode, { 'set-cols': columns }]} style={gridStyle || undefined}>
         {slots.map((slot) => (
@@ -46,6 +49,7 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
               file={slot.file}
               alt={slot.alt}
               label={slot.label}
+              description={slot.description}
               type={slot.type}
               ratio={slot.ratio ?? (mode === 'hero' ? '16 / 9' : '3 / 2')}
             />
@@ -59,6 +63,11 @@ const mode = slots.length === 1 ? 'hero' : slots.length === 2 ? 'pair' : 'grid';
 <style>
   .gallery {
     margin-block: var(--space-4);
+  }
+
+  /* A continuation gallery flows tightly under the previous one */
+  .gallery.continuation {
+    margin-top: var(--space-2);
   }
 
   h3 {

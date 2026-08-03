@@ -8,6 +8,7 @@ const mediaSlot = z.object({
   file: z.string(),
   alt: z.string(),
   label: z.string().optional(),
+  description: z.string().optional(),
   type: z.enum(['image', 'video']).default('image'),
   ratio: z.string().optional(),
 });
@@ -46,6 +47,10 @@ const projects = defineCollection({
         bullets: z.array(z.string()).optional(),
         /** Labeled entries (term + detail), e.g. a program/agenda. */
         entries: z.array(z.object({ term: z.string(), detail: z.string() })).optional(),
+        /** Logo tiles (e.g. a tool stack), rendered like the homepage wall. */
+        logos: z
+          .array(z.object({ name: z.string(), file: z.string(), url: z.string().optional() }))
+          .optional(),
         talent: z
           .array(
             z.object({
@@ -93,6 +98,8 @@ const projects = defineCollection({
           item_min: z.string().optional(),
           /** Fixed column count on wider screens (e.g. 4). */
           columns: z.number().optional(),
+          /** Hide the visible heading (renders as a continuation gallery). */
+          hide_heading: z.boolean().optional(),
           slots: z.array(mediaSlot),
         })
       )

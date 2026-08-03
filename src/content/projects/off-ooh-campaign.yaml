@@ -30,9 +30,9 @@ blocks:
 
   - heading: Objectives
     bullets:
-      - Make Oslo residents recognize the Forum happening in their own city
-      - Establish it as the definitive stage for human rights advocacy
-      - Anchor its identity to the activists whose faces the public already trusts
+      - Make Oslo residents recognise the Forum happening in their own city.
+      - Establish it as the definitive global stage for human rights advocacy.
+      - Anchor its identity to the activists whose faces the public already trust.
 
   - heading: Role
     bullets:
@@ -69,22 +69,27 @@ galleries:
       - file: off-ooh-campaign-2025-roya-mahboob
         alt: Oslo street placement of the 2025 campaign featuring Roya Mahboob
         label: Roya Mahboob
+        description: "Afghanistan's first female technology entrepreneur, pioneering digital education and economic opportunity for women and girls."
         ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-yulia-navalnaya
         alt: Oslo street placement of the 2025 campaign featuring Yulia Navalnaya
         label: Yulia Navalnaya
+        description: A leading voice for Russian democracy and the widow of opposition leader Alexei Navalny.
         ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-masih-alinejad
         alt: Oslo street placement of the 2025 campaign featuring Masih Alinejad
         label: Masih Alinejad
+        description: "Iranian journalist and activist whose fearless campaign against compulsory hijab has become a global symbol of women's resistance."
         ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-denis-mukwege
         alt: Oslo bus-stop placement of the 2025 campaign featuring Denis Mukwege
         label: Denis Mukwege
+        description: Nobel Peace Prize laureate whose decades of medical and human rights work in Congo have exposed the devastating human cost of conflict and sexual violence.
         ratio: 1080 / 1290
       - file: off-ooh-campaign-2025-francis-fukuyama
         alt: Oslo street placement of the 2025 campaign featuring Francis Fukuyama
         label: Francis Fukuyama
+        description: Political scientist and author whose influential work on democracy continues to shape debates about freedom, governance, and global politics.
         ratio: 1080 / 1290
 
   - name: OFF 2026 Campaign
@@ -93,21 +98,30 @@ galleries:
     slots:
       - file: off-ooh-campaign-2026-city-victoire-ingabire-01
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
-        label: Oslo city OOH — Victoire Ingabire
+        label: Victoire Ingabire
+        description: Imprisoned Rwandan opposition leader and democracy advocate who has spent decades advocating for freedom and democratic participation in Rwanda.
         ratio: 1080 / 1290
       - file: off-ooh-campaign-2026-city-victoire-ingabire-02
         alt: Oslo city out-of-home placement featuring Victoire Ingabire
-        label: Oslo city OOH — Victoire Ingabire
+        label: Victoire Ingabire
+        description: Imprisoned Rwandan opposition leader and democracy advocate who has spent decades advocating for freedom and democratic participation in Rwanda.
         ratio: 1080 / 1290
+
+  - name: Oslo Airport
+    purpose: airport arrivals placements
+    folder_slug: off-ooh-campaign
+    hide_heading: true
+    columns: 3
+    slots:
       - file: off-ooh-campaign-2026-airport-arrivals-01
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
-        label: Oslo Airport arrivals
+        label: Oslo Airport
         ratio: 1290 / 1080
       - file: off-ooh-campaign-2026-airport-arrivals-02
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
-        label: Oslo Airport arrivals
+        label: Oslo Airport
         ratio: 1290 / 1080
       - file: off-ooh-campaign-2026-airport-arrivals-03
         alt: Oslo Airport arrivals placement for the Oslo Freedom Forum campaign
-        label: Oslo Airport arrivals
+        label: Oslo Airport
         ratio: 1290 / 1080

@@ -7,12 +7,15 @@ interface Props {
   file: string;
   alt: string;
   label?: string;
+  /** Optional second caption line beneath the label. */
+  description?: string;
   type?: 'image' | 'video';
   ratio?: string;
   loading?: 'lazy' | 'eager';
 }
 
-const { folder, file, alt, label, type = 'image', ratio, loading = 'lazy' } = Astro.props;
+const { folder, file, alt, label, description, type = 'image', ratio, loading = 'lazy' } =
+  Astro.props;
 
 const src = type === 'video' ? findPublicVideo(folder, file) : findPublicImage(folder, file);
 const purpose = `${type} — ${alt}`;
@@ -30,7 +33,14 @@ const purpose = `${type} — ${alt}`;
       <Placeholder name={file} purpose={purpose} ratio={ratio} />
     )
   }
-  {label && <figcaption>{label}</figcaption>}
+  {
+    (label || description) && (
+      <figcaption>
+        {label && <span class="cap-label">{label}</span>}
+        {description && <span class="cap-desc">{description}</span>}
+      </figcaption>
+    )
+  }
 </figure>
 
 <style>
@@ -45,8 +55,27 @@ const purpose = `${type} — ${alt}`;
   }
 
   figcaption {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
     margin-top: 0.5rem;
+  }
+
+  .cap-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .cap-desc {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
+  }
+
+  /* When there's no description, the label alone keeps the muted caption look */
+  .cap-label:only-child {
+    font-weight: 500;
+    color: var(--ink-soft);
   }
 </style>

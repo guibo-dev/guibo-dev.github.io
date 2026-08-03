@@ -9,6 +9,7 @@ import ProofSection from '../../components/ProofSection.astro';
 import PartnerTags from '../../components/PartnerTags.astro';
 import TalentCard from '../../components/TalentCard.astro';
 import DataTable from '../../components/DataTable.astro';
+import LogoWall from '../../components/LogoWall.astro';
 import MediaSlot from '../../components/MediaSlot.astro';
 import { getOrderedProjects } from '../../lib/projects';
 import { findPublicImage } from '../../lib/media';
@@ -123,6 +124,7 @@ const navThumb = (p: typeof prev) => {
               {block.table && (
                 <DataTable columns={block.table.columns} rows={block.table.rows} />
               )}
+              {block.logos && <LogoWall items={block.logos} compact />}
             </ContentBlock>
             {block.gallery && galleryByName.has(block.gallery) && (
               <ImageGallery
@@ -149,6 +151,7 @@ const navThumb = (p: typeof prev) => {
             slots={gallery.slots}
             itemMin={gallery.item_min}
             columns={gallery.columns}
+            hideHeading={gallery.hide_heading}
           />
         ))
       }

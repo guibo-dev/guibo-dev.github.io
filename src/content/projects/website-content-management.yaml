@@ -23,11 +23,11 @@ blocks:
       - Built the internal publishing workflows that power HRF's digital content production, integrating Monday.com, Figma, WordPress, and Elementor into a scalable end-to-end process.
 
   - heading: Digital Tools
-    bullets:
-      - WordPress
-      - WP Engine
-      - Monday.com
-      - Figma
-      - Elementor
-      - Airtable
-      - Adobe Photoshop
+    logos:
+      - { name: WordPress, file: partners-wordpress, url: "https://wordpress.com/" }
+      - { name: WP Engine, file: partners-wp-engine, url: "https://wpengine.com/" }
+      - { name: Monday.com, file: partners-monday, url: "https://monday.com" }
+      - { name: Figma, file: partners-figma, url: "https://www.figma.com" }
+      - { name: Elementor, file: partners-elementor, url: "https://elementor.com/" }
+      - { name: Airtable, file: partners-airtable, url: "https://www.airtable.com/" }
+      - { name: Adobe Photoshop, file: partners-adobe-photoshop, url: "https://www.adobe.com/" }

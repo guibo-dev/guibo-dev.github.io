@@ -1,0 +1,112 @@
+---
+/**
+ * Grid of linked logo tiles — the same treatment as the homepage Partners
+ * and tool-category walls (grayscale, bordered, color on hover). Reused so
+ * logos read identically wherever they appear.
+ */
+import MediaSlot from './MediaSlot.astro';
+
+interface Item {
+  name: string;
+  file: string;
+  url?: string;
+}
+
+interface Props {
+  items: Item[];
+  /** Smaller tiles (skills/tools) vs the default partner size. */
+  compact?: boolean;
+  folder?: string;
+}
+
+const { items, compact = false, folder = 'partners' } = Astro.props;
+---
+
+<ul class:list={['logo-wall', { compact }]}>
+  {
+    items.map((item) => (
+      <li data-reveal>
+        {item.url ? (
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
+            <MediaSlot folder={folder} file={item.file} alt={`${item.name} logo`} />
+            <span class="logo-name">{item.name}</span>
+          </a>
+        ) : (
+          <div class="static">
+            <MediaSlot folder={folder} file={item.file} alt={`${item.name} logo`} />
+            <span class="logo-name">{item.name}</span>
+          </div>
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .logo-wall {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: var(--space-3) var(--space-2);
+    max-width: none;
+  }
+
+  .logo-wall.compact {
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  }
+
+  .logo-wall li {
+    margin: 0;
+  }
+
+  .logo-wall a,
+  .logo-wall .static {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+
+  /* Grayscale wall, color on hover; logos breathe inside bordered tiles */
+  .logo-wall li :global(img) {
+    filter: grayscale(1);
+    opacity: 0.8;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.35rem;
+  }
+
+  .logo-wall.compact li :global(img) {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .logo-wall li:hover :global(img) {
+    filter: none;
+    opacity: 1;
+  }
+
+  .logo-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .logo-wall.compact .logo-name {
+    font-size: 0.75rem;
+  }
+
+  .logo-wall a:hover .logo-name {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+</style>
