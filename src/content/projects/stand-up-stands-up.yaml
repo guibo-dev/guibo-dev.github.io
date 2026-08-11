@@ -17,7 +17,7 @@ thumbnail:
 
 stat_strip:
   - { value: "300", label: "attendees" }
-  - { value: "490k", label: "views" }
+  - { value: "950k+", label: "views" }
   - { value: "#2", label: "most-viewed OFF video" }
 
 proof_lede: "See it for yourself: coverage, posts, and reactions from the event."
@@ -75,11 +75,13 @@ blocks:
     bullets:
       - Second most-viewed Oslo Freedom Forum video on YouTube
       - Second most-saved event on the Forum programme
-      - 490k views and 15k engagements across pre- and post-event promotion
+      - 950k+ views and 15k engagements across pre- and post-event promotion
       - Press for the comedians in Deutsche Welle, Minerva, and TV2 (Norwegian national television)
       - 300 in the room
 
 link_list:
+  - label: Ali Sultan (Instagram)
+    url: "https://www.instagram.com/alisultancomedy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
   - label: Origin story (LinkedIn)
     heading: A brief story about how it all came together
     url: "https://www.linkedin.com/posts/guillermo-purchese-110711213_two-weeks-ago-i-received-an-email-with-the-ugcPost-7470085468873891840-cVWW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYIXFwBgXji4oS_yqMunTXMgsQGPmTlX4c"

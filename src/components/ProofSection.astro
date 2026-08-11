@@ -31,7 +31,7 @@ const {
 // Fixed row order. Audio players (Spotify + Apple) precede video.
 const PLATFORMS = [
   { name: 'x', test: (u: string) => /^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[^/]+\/status\//.test(u) },
-  { name: 'instagram', test: (u: string) => /instagram\.com\/(p|reels?)\//.test(u) },
+  { name: 'instagram', test: (u: string) => /instagram\.com\//.test(u) },
   { name: 'spotify', test: (u: string) => /open\.spotify\.com\//.test(u) },
   { name: 'apple', test: (u: string) => /podcasts\.apple\.com\//.test(u) },
   { name: 'youtube', test: (u: string) => /youtube\.com\/(watch|playlist)|youtu\.be\//.test(u) },

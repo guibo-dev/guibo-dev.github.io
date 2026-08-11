@@ -22,7 +22,7 @@ interface Props {
 const { url, label } = Astro.props;
 
 type Provider = 'x' | 'instagram' | 'linkedin' | 'youtube' | 'spotify' | 'apple' | 'facebook';
-const provider: Provider = /instagram\.com\/(p|reels?)\//.test(url)
+const provider: Provider = /instagram\.com\//.test(url)
   ? 'instagram'
   : /linkedin\.com\/posts\//.test(url)
     ? 'linkedin'
@@ -36,8 +36,10 @@ const provider: Provider = /instagram\.com\/(p|reels?)\//.test(url)
             ? 'facebook'
             : 'x';
 
-// Instagram's embed script only accepts /p/ and /reel/ permalinks; the
-// /reels/ viewer form must be normalized or the blockquote never upgrades.
+// Instagram's embed script only embeds /p/ and /reel/ permalinks (not profile
+// links); the /reels/ viewer form must be normalized or the blockquote never
+// upgrades. Non-post Instagram URLs (e.g. a profile) render as a styled link.
+const isInstagramPost = /instagram\.com\/(p|reels?)\//.test(url);
 const instagramPermalink = url.replace('instagram.com/reels/', 'instagram.com/reel/');
 
 // LinkedIn public posts embed via an iframe URL derived from the post id
@@ -83,7 +85,11 @@ const iframeSrc =
             : null;
 ---
 
-<div class:list={['evidence-embed', provider]} data-evidence-embed data-provider={provider}>
+<div
+  class:list={['evidence-embed', provider, { 'link-only': provider === 'instagram' && !isInstagramPost }]}
+  data-evidence-embed
+  data-provider={provider}
+>
   {
     provider === 'x' && (
       <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
@@ -94,19 +100,26 @@ const iframeSrc =
     )
   }
   {
-    provider === 'instagram' && (
-      <div class="ig-wrap">
-        <blockquote
-          class="instagram-media"
-          data-instgrm-permalink={instagramPermalink}
-          data-instgrm-version="14"
-        >
+    provider === 'instagram' &&
+      (isInstagramPost ? (
+        <div class="ig-wrap">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink={instagramPermalink}
+            data-instgrm-version="14"
+          >
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {label} <span aria-hidden="true">&#8599;</span>
+            </a>
+          </blockquote>
+        </div>
+      ) : (
+        <blockquote>
           <a href={url} target="_blank" rel="noopener noreferrer">
             {label} <span aria-hidden="true">&#8599;</span>
           </a>
         </blockquote>
-      </div>
-    )
+      ))
   }
   {
     (provider === 'linkedin' ||
@@ -186,6 +199,11 @@ const iframeSrc =
 
   .evidence-embed.instagram {
     min-height: 18rem;
+  }
+
+  /* A non-post Instagram URL (e.g. a profile) can't embed; show a link card. */
+  .evidence-embed.instagram.link-only {
+    min-height: 0;
   }
 
   /* Instagram's iframe floor is 326px; `zoom` shrinks it into the compact
