@@ -1,6 +1,6 @@
 slug: power-plays-podcast
 title: Power Plays Podcast
-descriptor: A limited-run podcast on the authoritarian history of the World Cup scaled to 130k+ listeners and an Apple Podcasts feature.
+descriptor: A limited-run podcast on the authoritarian history of the World Cup scaled to 140k+ listeners and an Apple Podcasts feature.
 tier: Flagship Campaigns
 role_tag: Marketing & Partnerships Lead
 order: 2
@@ -16,8 +16,8 @@ thumbnail:
   alt: Power Plays podcast title artwork
 
 stat_strip:
-  - { value: "130k+", label: "listeners" }
-  - { value: "5.2×", label: "over target" }
+  - { value: "140k+", label: "listeners" }
+  - { value: "5.6×", label: "over target" }
   - { value: "99.1%", label: "YouTube approval rating" }
 
 proof_title: "Listen to Power Plays"
@@ -48,7 +48,7 @@ blocks:
 
   - heading: Impact
     bullets:
-      - Reached more than 130,000 listeners across platforms.
+      - Reached more than 140,000 listeners across platforms.
       - Featured across Apple Podcasts throughout the FIFA World Cup.
       - Achieved a 99.1% audience approval rating on YouTube.
       - Generated more than 6,000 attributable listeners through paid media.

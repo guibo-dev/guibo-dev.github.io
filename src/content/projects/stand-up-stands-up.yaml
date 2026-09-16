@@ -17,7 +17,7 @@ thumbnail:
 
 stat_strip:
   - { value: "300", label: "attendees" }
-  - { value: "950k+", label: "views" }
+  - { value: "2.5m+", label: "views" }
   - { value: "#2", label: "most-viewed OFF video" }
 
 proof_lede: "See it for yourself: coverage, posts, and reactions from the event."
@@ -75,25 +75,27 @@ blocks:
     bullets:
       - Second most-viewed Oslo Freedom Forum video on YouTube
       - Second most-saved event on the Forum programme
-      - 950k+ views and 15k engagements across pre- and post-event promotion
+      - 2.5m+ views and 50k+ engagements across pre- and post-event promotion
       - Press for the comedians in Deutsche Welle, Minerva, and TV2 (Norwegian national television)
       - 300 in the room
 
 link_list:
-  - label: Ali Sultan (Instagram)
-    url: "https://www.instagram.com/alisultancomedy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+  - label: Instagram promo 1
+    url: "https://www.instagram.com/reel/Dby-sAjx_9g/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+  - label: Instagram promo 2
+    url: "https://www.instagram.com/reel/Db1KT0jS0sA/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
   - label: Origin story (LinkedIn)
     heading: A brief story about how it all came together
     url: "https://www.linkedin.com/posts/guillermo-purchese-110711213_two-weeks-ago-i-received-an-email-with-the-ugcPost-7470085468873891840-cVWW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYIXFwBgXji4oS_yqMunTXMgsQGPmTlX4c"
-  - label: Instagram promo 1
-    url: "https://www.instagram.com/p/DYnflyRmq5p/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-  - label: Instagram promo 2
-    url: "https://www.instagram.com/reel/DZz27LGBsv-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
   - label: Instagram promo 3
-    url: "https://www.instagram.com/reel/DZfh7TWgPmY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    url: "https://www.instagram.com/p/DYnflyRmq5p/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
   - label: Instagram promo 4
-    url: "https://www.instagram.com/p/DYryo0wHOtO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    url: "https://www.instagram.com/reel/DZz27LGBsv-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
   - label: Instagram promo 5
+    url: "https://www.instagram.com/reel/DZfh7TWgPmY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 6
+    url: "https://www.instagram.com/p/DYryo0wHOtO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  - label: Instagram promo 7
     url: "https://www.instagram.com/reels/DZ_zlCJDBX7/"
   - label: YouTube recording
     url: "https://www.youtube.com/watch?v=z86btvHVuTE"
