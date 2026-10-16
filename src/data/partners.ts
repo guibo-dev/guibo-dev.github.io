@@ -30,6 +30,16 @@ export const PARTNERS = [
     file: 'partners-josimar',
     url: 'https://josimarfootball.com/',
   },
+  {
+    name: 'Empower',
+    file: 'partners-empower',
+    url: 'https://empower.agency/',
+  },
+  {
+    name: 'Projections on Walls',
+    file: 'partners-projections-on-walls',
+    url: 'https://pow.world/',
+  },
 ];
 
 /** Tools & platforms, grouped by category. Same logo-tile treatment as the

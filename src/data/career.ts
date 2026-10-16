@@ -1,11 +1,16 @@
 /** Experience & Education timeline for the homepage. Logos live in
  *  public/images/career/. `dark` gives a logo a dark tile (e.g. RAVR). */
 export interface CareerItem {
-  role: string;
+  /** Single-role entry. Omit when `roles` is given (a promotion stack). */
+  role?: string;
   note?: string;
   org: string;
   location: string;
-  dates: string;
+  /** Date range for a single-role entry. Omit when `roles` is given. */
+  dates?: string;
+  /** Promotion progression at one org, most recent first — the org becomes
+   *  the entry's headline and these render as a connected timeline. */
+  roles?: { title: string; dates: string }[];
   logo: string;
   url: string;
   dark?: boolean;
@@ -14,10 +19,14 @@ export interface CareerItem {
 
 export const EXPERIENCE: CareerItem[] = [
   {
-    role: 'Marketing Specialist',
     org: 'Human Rights Foundation',
     location: 'New York, NY',
-    dates: 'Oct 2023 – Present',
+    roles: [
+      { title: 'Marketing Manager', dates: 'Oct 2026 – Present' },
+      { title: 'Marketing Specialist', dates: 'Jan 2026 – Sep 2026' },
+      { title: 'Marketing and Communications Assistant', dates: 'Jun 2024 – Dec 2025' },
+      { title: 'Marketing and Communications Intern', dates: 'Oct 2023 – May 2024' },
+    ],
     logo: 'career-hrf',
     url: 'https://hrf.org',
     description:

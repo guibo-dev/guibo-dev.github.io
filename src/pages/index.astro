@@ -37,7 +37,7 @@ const jsonLd = {
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="hero-role">Marketing Specialist · Human Rights Foundation</p>
+        <p class="hero-role">Marketing Manager · Human Rights Foundation</p>
         <h1 class="greeting">Hey, I&rsquo;m Guille.</h1>
         <div class="intro">
           <p>
@@ -113,17 +113,37 @@ const jsonLd = {
                   <MediaSlot folder="career" file={item.logo} alt={`${item.org} logo`} ratio="1 / 1" />
                 </a>
                 <span class="c-body">
-                  <span class="c-head">
-                    <span class="c-role">
-                      {item.role}
-                      {item.note && <span class="c-note">{item.note}</span>}
-                    </span>
-                    <span class="c-dates">{item.dates}</span>
-                  </span>
-                  <span class="c-org">
-                    {item.org} · {item.location}
-                  </span>
-                  <span class="c-desc">{item.description}</span>
+                  {item.roles ? (
+                    <>
+                      <span class="c-head">
+                        <span class="c-role">{item.org}</span>
+                      </span>
+                      <span class="c-org">{item.location}</span>
+                      <span class="c-progression">
+                        {item.roles.map((r, i) => (
+                          <span class:list={['c-step', { current: i === 0 }]}>
+                            <span class="c-step-title">{r.title}</span>
+                            <span class="c-step-dates">{r.dates}</span>
+                          </span>
+                        ))}
+                      </span>
+                      <span class="c-desc">{item.description}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span class="c-head">
+                        <span class="c-role">
+                          {item.role}
+                          {item.note && <span class="c-note">{item.note}</span>}
+                        </span>
+                        <span class="c-dates">{item.dates}</span>
+                      </span>
+                      <span class="c-org">
+                        {item.org} · {item.location}
+                      </span>
+                      <span class="c-desc">{item.description}</span>
+                    </>
+                  )}
                 </span>
               </li>
             ))}
@@ -396,6 +416,74 @@ const jsonLd = {
     color: var(--ink-soft);
     margin-top: 0.4rem;
     max-width: 58ch;
+  }
+
+  /* Promotion stack: one org, its roles as a connected timeline (growth) */
+  .c-progression {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+    position: relative;
+  }
+
+  /* Vertical rail linking the role markers */
+  .c-progression::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .c-step {
+    position: relative;
+    padding-left: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  /* Role marker; the current role is filled with the accent */
+  .c-step::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.42em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+  }
+
+  .c-step.current::before {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .c-step-title {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 550;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .c-step.current .c-step-title {
+    font-weight: 650;
+  }
+
+  .c-step-dates {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   @media (max-width: 40rem) {
