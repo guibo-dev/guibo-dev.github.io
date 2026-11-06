@@ -226,9 +226,24 @@ const iframeSrc =
   }
 
   /* A forced link card (article / embed-blocked source): just the fallback
-     card, no reserved embed height. */
+     card, no reserved embed height. The whole card is the click target. */
   .evidence-embed.link {
     min-height: 0;
+  }
+
+  .evidence-embed.link blockquote {
+    position: relative;
+    transition: border-color 0.2s ease;
+  }
+
+  .evidence-embed.link blockquote a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .evidence-embed.link blockquote:hover {
+    border-color: var(--accent);
   }
 
   /* Instagram's iframe floor is 326px; `zoom` shrinks it into the compact
