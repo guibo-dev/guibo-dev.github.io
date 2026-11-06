@@ -79,7 +79,11 @@ if (audioIdx !== -1) {
   embedGroups.splice(audioIdx, 0, { name: 'audio', items: audioItems });
 }
 
-const chips = links.filter((l) => !platformOf(l));
+// Links with no native embed (articles, embed-blocked video) render as
+// bordered link cards alongside the embeds, so every proof item reads as a
+// card. A rare url-less entry falls back to a plain chip.
+const linkCards = links.filter((l) => !platformOf(l) && l.url);
+const textChips = links.filter((l) => !platformOf(l) && !l.url);
 ---
 
 <section class="proof" aria-label={title}>
@@ -100,7 +104,16 @@ const chips = links.filter((l) => !platformOf(l));
       );
     })
   }
-  {chips.length > 0 && <LinkList links={chips} heading="" />}
+  {
+    linkCards.length > 0 && (
+      <div class="embeds embeds-links">
+        {linkCards.map((link) => (
+          <EvidenceEmbed url={link.url!} label={link.label} variant="link" />
+        ))}
+      </div>
+    )
+  }
+  {textChips.length > 0 && <LinkList links={textChips} heading="" />}
 </section>
 
 <style>

@@ -18,8 +18,12 @@
 interface Props {
   url: string;
   label: string;
+  /** Force a plain bordered link card instead of a native embed — for
+   *  sources with no embed (articles) or that block embedding. */
+  variant?: 'embed' | 'link';
 }
-const { url, label } = Astro.props;
+const { url, label, variant = 'embed' } = Astro.props;
+const isLink = variant === 'link';
 
 type Provider = 'x' | 'instagram' | 'linkedin' | 'youtube' | 'spotify' | 'apple' | 'facebook';
 const provider: Provider = /instagram\.com\//.test(url)
@@ -86,12 +90,25 @@ const iframeSrc =
 ---
 
 <div
-  class:list={['evidence-embed', provider, { 'link-only': provider === 'instagram' && !isInstagramPost }]}
+  class:list={[
+    'evidence-embed',
+    isLink ? 'link' : provider,
+    { 'link-only': isLink || (provider === 'instagram' && !isInstagramPost) },
+  ]}
   data-evidence-embed
-  data-provider={provider}
+  data-provider={isLink ? undefined : provider}
 >
   {
-    provider === 'x' && (
+    isLink && (
+      <blockquote>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {label} <span aria-hidden="true">&#8599;</span>
+        </a>
+      </blockquote>
+    )
+  }
+  {
+    !isLink && provider === 'x' && (
       <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
         <a href={url} target="_blank" rel="noopener noreferrer">
           {label} <span aria-hidden="true">&#8599;</span>
@@ -100,7 +117,8 @@ const iframeSrc =
     )
   }
   {
-    provider === 'instagram' &&
+    !isLink &&
+      provider === 'instagram' &&
       (isInstagramPost ? (
         <div class="ig-wrap">
           <blockquote
@@ -122,11 +140,12 @@ const iframeSrc =
       ))
   }
   {
-    (provider === 'linkedin' ||
-      provider === 'youtube' ||
-      provider === 'spotify' ||
-      provider === 'apple' ||
-      provider === 'facebook') &&
+    !isLink &&
+      (provider === 'linkedin' ||
+        provider === 'youtube' ||
+        provider === 'spotify' ||
+        provider === 'apple' ||
+        provider === 'facebook') &&
       (iframeSrc ? (
         <iframe
           src={iframeSrc}
@@ -203,6 +222,12 @@ const iframeSrc =
 
   /* A non-post Instagram URL (e.g. a profile) can't embed; show a link card. */
   .evidence-embed.instagram.link-only {
+    min-height: 0;
+  }
+
+  /* A forced link card (article / embed-blocked source): just the fallback
+     card, no reserved embed height. */
+  .evidence-embed.link {
     min-height: 0;
   }
 
