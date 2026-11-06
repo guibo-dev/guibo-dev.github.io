@@ -13,6 +13,7 @@ interface ProofLink {
   label: string;
   url?: string;
   heading?: string;
+  embed?: boolean;
 }
 
 interface Props {
@@ -39,11 +40,16 @@ const PLATFORMS = [
   { name: 'facebook', test: (u: string) => /facebook\.com\/.+\/posts\//.test(u) },
 ] as const;
 
-const platformOf = (url?: string) => (url ? PLATFORMS.find((p) => p.test(url))?.name : undefined);
+// A link with `embed: false` is forced to a plain chip (e.g. a video whose
+// source blocks embedding), even when its URL matches a platform.
+const platformOf = (link: ProofLink) =>
+  link.embed === false || !link.url
+    ? undefined
+    : PLATFORMS.find((p) => p.test(link.url!))?.name;
 
 let embedGroups: { name: string; items: ProofLink[] }[] = PLATFORMS.map((p) => ({
   name: p.name as string,
-  items: links.filter((l) => platformOf(l.url) === p.name),
+  items: links.filter((l) => platformOf(l) === p.name),
 })).filter((g) => g.items.length > 0);
 
 // When a page has both Instagram posts and a YouTube video, fold the video
@@ -73,7 +79,7 @@ if (audioIdx !== -1) {
   embedGroups.splice(audioIdx, 0, { name: 'audio', items: audioItems });
 }
 
-const chips = links.filter((l) => !platformOf(l.url));
+const chips = links.filter((l) => !platformOf(l));
 ---
 
 <section class="proof" aria-label={title}>

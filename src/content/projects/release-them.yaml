@@ -1,0 +1,107 @@
+slug: release-them
+title: Release Them
+descriptor: "A projection campaign across Washington, DC, with a single demand: release the prisoners."
+tier: Flagship Campaigns
+role_tag: Project Manager
+order: 0
+
+hero:
+  folder: release-them
+  file: release-them-hero
+  alt: Faces of eight Chinese prisoners of conscience projected across a Washington, DC building beneath the Washington Monument, with the words "Xi Jinping, release the legislator doctor artist student professor pastors"
+  ratio: 16 / 9
+
+thumbnail:
+  folder: release-them
+  file: release-them-card
+  alt: "Release Them projection on a Washington, DC landmark: prisoners' faces and the demand to Xi Jinping"
+
+stat_strip:
+  - { value: "8", label: "prisoners of conscience" }
+  - { value: "4", label: "DC landmarks projected" }
+  - { value: "25", label: "media placements" }
+  - { value: "184K+", label: "social impressions" }
+
+blocks:
+  - heading: About
+    body: |-
+      As Xi Jinping arrived in the United States for a summit framed around trade, technology, and great-power diplomacy, HRF built the counterpoint. Centered on eight prisoners of conscience, the campaign made Xi's human rights abuses impossible to ignore and pressed for accountability from him and the Chinese Communist Party.
+
+      The eight are a student, a legislator, a professor, a doctor, an artist, and three pastors — ordinary people imprisoned by Xi's government for ordinary acts, each one protected under international human rights law. They are defined by their passions and their livelihoods, not by the cells the CCP has arbitrarily placed them in.
+
+  - heading: Challenge
+    bullets:
+      - Create an unmissable moment in Washington, DC, that put the prisoners' cases in front of the world
+      - Orchestrate a cohesive media, social, and experiential campaign built to drive coverage
+      - Run multiple vendors, stunts, and interviews in parallel, on a single timeline
+      - Break a multi-layered campaign through into national and international media
+
+  - heading: Strategy
+    bullets:
+      - "Live projections across some of DC's most recognizable landmarks: the National Gallery of Art, the Wilson Memorial Arch, Memorial Bridge, and the US Department of Agriculture"
+      - A full-page ad in Roll Call, Capitol Hill's most-read newspaper
+      - Six trucks circling DC's busiest streets, timed to Xi Jinping's arrival
+      - Coordinated press and wire photography to capture the moment and carry the prisoners' cases — and their families — into the news cycle
+
+  - heading: Goals
+    bullets:
+      - Generate significant coverage in Washington, DC, nationally, and internationally
+      - Humanize the innocent individuals imprisoned in China, across the full range of who they are
+      - Force human rights onto the agenda of Xi Jinping's visit
+
+  - heading: Impact
+    bullets:
+      - $4,354.93 raised in online donations
+      - Scale — roughly 25 high-quality placements across 19 distinct outlets
+      - "Priority outlets: CNN with Jake Tapper, LiveNow Fox, The Epoch Times, and RealClearPolitics, plus wire photography from Reuters, AFP, and Getty"
+      - On-site press — 9 journalists and news photographers covered the installation directly
+      - "Social media: 184K+ impressions, 38K+ reach, 6.6K+ engagements, and 952 shares"
+    gallery: Release Them
+
+proof_lede: "Coverage from the week Xi Jinping came to Washington — in DC, nationally, and internationally."
+link_list:
+  - label: CNN with Jake Tapper
+    url: "https://x.com/GaoPu1231/status/2103625640452997296"
+  - label: AFP News Agency
+    url: "https://www.youtube.com/watch?v=yW6BopvcMsI"
+    embed: false
+  - label: RealClearPolitics
+    url: "https://www.realclearpolitics.com/articles/2026/09/23/advocates_to_trump_confront_xi_on_chinas_religious_prisoners__154531.html"
+  - label: LiveNOW from FOX
+    url: "https://www.livenowfox.com/video/fmc-jaj5pz2fr7klg3jn"
+  - label: The Epoch Times
+    url: "https://www.theepochtimes.com/china/faces-of-chinese-political-prisoners-light-up-washington-buildings-as-xi-arrives-for-summit-6094307"
+
+galleries:
+  - name: Release Them
+    purpose: installation documentation across DC
+    folder_slug: release-them
+    slots:
+      - file: release-them-usda
+        alt: The campaign projected as a wide banner across the US Department of Agriculture building, showing the prisoners' faces and the demand to Xi Jinping
+        label: U.S. Department of Agriculture
+        ratio: 4 / 3
+      - file: release-them-national-gallery
+        alt: A tall red projection reading "Release the doctor, student, legislator, artist, pastors, professor" with the Human Rights Foundation logo on the National Gallery of Art, the US Capitol dome lit in the distance
+        label: National Gallery of Art
+        ratio: 4 / 3
+      - file: release-them-wilson-arch
+        alt: The prisoners' faces and the demand to Xi Jinping projected onto the Wilson Memorial Arch, with the Lincoln Memorial and red traffic light-trails beyond
+        label: Wilson Memorial Arch
+        ratio: 4 / 3
+      - file: release-them-memorial-bridge
+        alt: The projection lighting up a stone pier of Memorial Bridge above the Potomac, the city skyline and a projector beam behind it
+        label: Memorial Bridge
+        ratio: 4 / 3
+      - file: release-them-projection-trucks
+        alt: A crowd at a night crossing watching mobile LED trucks display a prisoner's face and the words "Release the... Owen Chow"
+        label: Mobile projection trucks
+        ratio: 4 / 3
+      - file: release-them-roll-call-ad
+        alt: A reader at a DC crosswalk holding the full-page Roll Call ad with the prisoners' faces and the demand to Xi Jinping
+        label: Full-page ad in Roll Call
+        ratio: 4 / 3
+      - file: release-them-team
+        alt: The campaign team gathered beneath the red projection on the National Gallery of Art, several holding copies of the printed ad
+        label: The team on site
+        ratio: 2 / 3

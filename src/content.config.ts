@@ -85,6 +85,9 @@ const projects = defineCollection({
           url: z.string().optional(),
           /** Optional sub-heading rendered above this link's platform row. */
           heading: z.string().optional(),
+          /** Force a plain link chip instead of a native embed — for sources
+           *  that block embedding (e.g. an AFP-restricted YouTube video). */
+          embed: z.boolean().optional(),
         })
       )
       .optional(),
